@@ -50,4 +50,14 @@ public abstract class Staff extends User {
     public final void setStatus(Status status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Staff{"
+                + super.toString()
+                +
+                "salary=" + salary +
+                ", status=" + status +
+                '}';
+    }
 }

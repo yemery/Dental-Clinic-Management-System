@@ -6,10 +6,11 @@ import org.example.model.enums.Mutuelle;
 import java.time.LocalDate;
 
 public class Patient extends Person {
-
+// we are planning to put patient attr within medical case not the opposite !!!
     private String registration;
     private Mutuelle mutuelle;
     private String job;
+    private MedicalCase medicalCase;
 
     public Patient(String registration, Mutuelle mutuelle, String job) {
         this.registration = registration;
