@@ -13,6 +13,7 @@ public class Consultation {
     private Intervention intervention;
     private Invoice invoice = null;
     private Prescription prescription = null;
+    private Certificate certificate = null;
 
     public Consultation() {
         this.id = UUID.randomUUID().toString();
@@ -68,6 +69,10 @@ public class Consultation {
 
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
+    }
+
+    public void setCertificate(Certificate certificate) {
+        this.certificate = certificate;
     }
 
     public Prescription getPrescription() {

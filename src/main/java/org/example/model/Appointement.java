@@ -1,5 +1,6 @@
 package org.example.model;
 
+import org.example.model.enums.AppointementStatus;
 import org.example.model.enums.AppoitmentType;
 
 import java.time.LocalDate;
@@ -14,17 +15,19 @@ public class Appointement {
     private LocalTime time;
     private LocalDate date;
     private AppoitmentType type;
+    private AppointementStatus status;
     private List<Consultation> consultations = new ArrayList<>();
 
     public Appointement() {
         this.id = UUID.randomUUID().toString();
     }
 
-    public Appointement(LocalTime time, LocalDate date, AppoitmentType type) {
+    public Appointement(LocalTime time, LocalDate date, AppoitmentType type, AppointementStatus status) {
         this();
         this.time = time;
         this.date = date;
         this.type = type;
+        this.status = status;
     }
 
     public String getId() {
@@ -53,6 +56,22 @@ public class Appointement {
 
     public void setType(AppoitmentType type) {
         this.type = type;
+    }
+
+    public AppointementStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AppointementStatus status) {
+        this.status = status;
+    }
+
+    public List<Consultation> getConsultations() {
+        return consultations;
+    }
+
+    public void setConsultations(List<Consultation> consultations) {
+        this.consultations = consultations;
     }
 
     @Override

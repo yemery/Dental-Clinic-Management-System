@@ -11,6 +11,8 @@ public class MedicalCase {
     private Patient patient; // remove medical case attr within patient when you re conviced
     private LocalDate creationDate = LocalDate.now();
     private List<Appointement> appointments;
+    private List<MedicalHistory> medicalHistories;
+    private
 
     public MedicalCase() {
         this.id = UUID.randomUUID().toString();
@@ -25,8 +27,9 @@ public class MedicalCase {
         return appointments;
     }
 
-    public void setAppointments(List<Appointement> appointments) {
-        this.appointments = appointments;
+    public void setAppointments(Appointement appointment) {
+
+        this.appointments.add(appointment);
     }
 
 //    to get consultations map over appointment we should use this method in the medialCase service
@@ -50,5 +53,23 @@ public class MedicalCase {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public List<MedicalHistory> getMedicalHistories() {
+        return medicalHistories;
+    }
+
+    public void setMedicalHistories(MedicalHistory md) {
+        medicalHistories.add(md);
     }
 }
