@@ -6,14 +6,14 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Act {
-    private Integer id;
+    private String id;
     private String name;
     private double basePrice;
     private ActCategory category;
 
 
     public Act() {
-        this.id= UUID.randomUUID().hashCode();
+        this.id=UUID.randomUUID().toString();
     }
     public Act(long id, String name, double basePrice, ActCategory category) {
         this();
@@ -22,7 +22,7 @@ public class Act {
         this.category = category;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -55,7 +55,7 @@ public class Act {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Act act = (Act) o;
-        return Objects.equals(name, act.name); // we donno where and how to use it (might change the equals criteria)
+        return Objects.equals(id, act.id) || Objects.equals(name, act.name); // we donno where and how to use it (might change the equals criteria)
     }
 
     @Override

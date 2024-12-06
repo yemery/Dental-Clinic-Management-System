@@ -12,11 +12,12 @@ public class MedicalCase {
     private LocalDate creationDate = LocalDate.now();
     private List<Appointement> appointments;
     private List<MedicalHistory> medicalHistories;
-    private
+//    private Doctor doctor; 1 doctor
 
     public MedicalCase() {
         this.id = UUID.randomUUID().toString();
-        this.appointments = new ArrayList<Appointement>();
+
+    // this.medicalHistories = new ArrayList<>();
     }
 
     public String getId() {
@@ -54,8 +55,6 @@ public class MedicalCase {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
-
-
 
     public LocalDate getCreationDate() {
         return creationDate;
