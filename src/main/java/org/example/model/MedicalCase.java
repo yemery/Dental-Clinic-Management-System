@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class MedicalCase {
-    private String id;
+    private Long id;
     private Patient patient; // remove medical case attr within patient when you re conviced
     private LocalDate creationDate = LocalDate.now();
     private List<Appointement> appointments;
@@ -15,12 +15,12 @@ public class MedicalCase {
 //    private Doctor doctor; 1 doctor
 
     public MedicalCase() {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().timestamp();
 
     // this.medicalHistories = new ArrayList<>();
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

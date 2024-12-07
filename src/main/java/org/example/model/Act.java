@@ -6,23 +6,23 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Act {
-    private String id;
+    private final Long id;
     private String name;
     private double basePrice;
     private ActCategory category;
 
 
     public Act() {
-        this.id=UUID.randomUUID().toString();
+        this.id=System.currentTimeMillis();
     }
-    public Act(long id, String name, double basePrice, ActCategory category) {
+    public Act( String name, double basePrice, ActCategory category) {
         this();
         this.name = name;
         this.basePrice = basePrice;
         this.category = category;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

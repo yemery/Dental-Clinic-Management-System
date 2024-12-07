@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.UUID;
 
 public class Intervention {
-    private String id;
+    private final Long id;
     private double price;
     private List<Act> acts = new ArrayList<Act>();
 
     public Intervention() {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().timestamp();
     }
 
     public Intervention(double price) {
@@ -19,7 +19,7 @@ public class Intervention {
 
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

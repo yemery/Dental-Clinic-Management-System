@@ -7,14 +7,14 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Invoice {
-    private String id;
+    private final Long id;
     private LocalDate date;
     private Double totalAmount;
     private Double payedAmount;
     private PaymentType type;
 
     public Invoice() {
-        this.id = UUID.randomUUID().toString();
+        this.id = System.currentTimeMillis();
     }
 
     public Invoice(LocalDate date, Double totalAmount, Double payedAmount, PaymentType type) {
@@ -35,7 +35,7 @@ public class Invoice {
         return totalAmount - payedAmount;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

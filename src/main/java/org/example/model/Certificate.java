@@ -5,14 +5,14 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Certificate {
-    private String id;
+    private final Long id;
     private String reason;
     private LocalDate startDate;
     private LocalDate endDate;
 
 
     public Certificate() {
-        this.id = UUID.randomUUID().toString();
+        this.id = System.currentTimeMillis();
     }
 
     public Certificate(String reason, LocalDate startDate, LocalDate endDate) {
@@ -22,7 +22,7 @@ public class Certificate {
         this.endDate = endDate;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -72,4 +72,10 @@ public class Certificate {
                 ", endDate=" + endDate +
                 '}';
     }
+
+    public Long getID() {
+        return id;
+    }
+
+
 }

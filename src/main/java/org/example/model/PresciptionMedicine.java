@@ -3,18 +3,14 @@ package org.example.model;
 import java.util.UUID;
 
 public class PresciptionMedicine {
-    private String id;
+    private final Long id;
     private Integer minQuantity;
     private Integer maxQuantity;
     private String description;
     private Medicine medicine;
 
     public PresciptionMedicine() {
-        this.id = UUID.randomUUID().toString();
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.id = UUID.randomUUID().timestamp();
     }
 
     public int getMin() {

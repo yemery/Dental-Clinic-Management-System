@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Person {
-    protected String id;
+    protected final Long id;
     protected String firstName;
     protected String lastName;
     protected String CIN;
@@ -19,8 +19,7 @@ public abstract class Person {
 
 
     public Person() {
-
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().timestamp();
     }
 
     public Person(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender) {
@@ -46,7 +45,7 @@ public abstract class Person {
         this.gender = person.gender;
 
     }
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Appointement {
-    private String id;
+    private final Long id;
     private LocalTime time;
     private LocalDate date;
     private AppoitmentType type;
@@ -19,7 +19,7 @@ public class Appointement {
     private List<Consultation> consultations = new ArrayList<>();
 
     public Appointement() {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().timestamp();
     }
 
     public Appointement(LocalTime time, LocalDate date, AppoitmentType type, AppointementStatus status) {
@@ -30,7 +30,7 @@ public class Appointement {
         this.status = status;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

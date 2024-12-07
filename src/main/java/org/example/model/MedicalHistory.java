@@ -7,14 +7,14 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class MedicalHistory {
-    private String id;
+    private final Long id;
     private String label;
     private CategoryMedicalHistory category;
     private String description;
     private Risk risk;
 
     public MedicalHistory() {
-        this.id= UUID.randomUUID().toString();
+        this.id= UUID.randomUUID().timestamp();
     }
     public MedicalHistory(String label, String description, CategoryMedicalHistory category, Risk risk) {
         this();
@@ -24,7 +24,7 @@ public class MedicalHistory {
         this.risk = risk;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

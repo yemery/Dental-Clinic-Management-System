@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ActService {
     Act addAct(Act act);
-    Act getAct(int id);
+    Act getAct(Long id);
     Act updateAct(Act act);
-    void deleteAct(int id);
+    void deleteAct(Act act);
     List<Act> getActs();
 
 

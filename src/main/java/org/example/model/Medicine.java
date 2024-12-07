@@ -1,15 +1,15 @@
 package org.example.model;
 
-import java.util.UUID;
 
+import java.util.UUID;
 public class Medicine {
-    private String id;
+    private final Long id;
     private Double price;
     private String name;
     private String description;
 
     public Medicine() {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().timestamp();
     }
 
     public Medicine(Double price, String name, String description) {
@@ -19,8 +19,8 @@ public class Medicine {
         this.description = description;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public Double getPrice() {

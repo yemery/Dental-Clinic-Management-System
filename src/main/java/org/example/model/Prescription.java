@@ -7,15 +7,15 @@ import java.util.UUID;
 public class Prescription
 {
     // ordonnance
-    private String id;
-    private LocalDate date = LocalDate.now();
+    private final Long id;
+    private final LocalDate date = LocalDate.now();
     private List<PresciptionMedicine> prescriptionsMedicine;
 
     public Prescription() {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().timestamp();
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

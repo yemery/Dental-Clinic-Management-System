@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class Consultation {
-    private String id;
+    private final Long id;
     private ConsultationType type;
     private String note;
     private LocalDate date;
@@ -16,7 +16,7 @@ public class Consultation {
     private Certificate certificate = null;
 
     public Consultation() {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().timestamp();
     }
 
     public Consultation(ConsultationType type, String note, LocalDate date, Intervention intervention) {
@@ -27,7 +27,7 @@ public class Consultation {
         this.intervention = intervention;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
