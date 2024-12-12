@@ -14,7 +14,7 @@ public class MedicalHistory {
     private Risk risk;
 
     public MedicalHistory() {
-        this.id= UUID.randomUUID().timestamp();
+        this.id=System.currentTimeMillis();
     }
     public MedicalHistory(String label, String description, CategoryMedicalHistory category, Risk risk) {
         this();
