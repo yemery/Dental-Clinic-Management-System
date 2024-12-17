@@ -1,6 +1,7 @@
 package org.example.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,11 +10,12 @@ public class Prescription
 
     private final Long id;
     private final LocalDate date = LocalDate.now();
-    private List<PrescriptionMedicine> prescriptionsMedicine;
+    private List<PrescriptionMedicine> prescriptionsMedicine = new ArrayList<>();
 
     public Prescription() {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
+
 
     public Long getId() {
         return id;
@@ -28,7 +30,7 @@ public class Prescription
     }
 
     public void setPrescriptionsMedicine(PrescriptionMedicine pm) {
-        this.prescriptionsMedicine.add(pm);
+        prescriptionsMedicine.add(pm);
     }
 
     @Override

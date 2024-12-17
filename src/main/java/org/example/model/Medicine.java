@@ -7,6 +7,7 @@ public class Medicine {
     private Double price;
     private String name;
     private String description;
+    // wait
 
     public Medicine() {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());

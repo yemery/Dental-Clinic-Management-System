@@ -1,0 +1,13 @@
+package org.example.service.api;
+
+import org.example.model.Prescription;
+
+import java.util.List;
+
+public interface PrescriptionService {
+    Prescription getPrescriptionById(Long ID);
+    Prescription addPrescription(Prescription prescription);
+    Prescription updatePrescription(Prescription prescription);
+    void deletePrescription(Prescription prescription);
+    List<Prescription> getAllPrescriptions();
+}

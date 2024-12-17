@@ -13,6 +13,14 @@ public class PrescriptionMedicine {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
+    public PrescriptionMedicine(Integer minQuantity, Integer maxQuantity, String description, Medicine medicine) {
+        this();
+        this.minQuantity = minQuantity;
+        this.maxQuantity = maxQuantity;
+        this.description = description;
+        this.medicine = medicine;
+    }
+
     public Long getId() {return id;}
 
     public int getMin() {
