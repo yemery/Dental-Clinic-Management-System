@@ -2,24 +2,24 @@ package org.example.model;
 
 import java.util.UUID;
 
-public class PresciptionMedicine {
+public class PrescriptionMedicine {
     private final Long id;
     private Integer minQuantity;
     private Integer maxQuantity;
     private String description;
     private Medicine medicine;
 
-    public PresciptionMedicine() {
-        this.id = UUID.randomUUID().timestamp();
+    public PrescriptionMedicine() {
+        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
+
+    public Long getId() {return id;}
 
     public int getMin() {
         return minQuantity;
     }
 
-    public void setMin(int min) {
-        this.minQuantity = min;
-    }
+    public void setMin(int min) { this.minQuantity = min; }
 
     public int getMax() {
         return maxQuantity;

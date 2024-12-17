@@ -6,13 +6,13 @@ import java.util.UUID;
 
 public class Prescription
 {
-    // ordonnance
+
     private final Long id;
     private final LocalDate date = LocalDate.now();
-    private List<PresciptionMedicine> prescriptionsMedicine;
+    private List<PrescriptionMedicine> prescriptionsMedicine;
 
     public Prescription() {
-        this.id = UUID.randomUUID().timestamp();
+        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
     public Long getId() {
@@ -23,11 +23,11 @@ public class Prescription
         return date;
     }
 
-    public List<PresciptionMedicine> getPrescriptionsMedicine() {
+    public List<PrescriptionMedicine> getPrescriptionsMedicine() {
         return prescriptionsMedicine;
     }
 
-    public void setPrescriptionsMedicine(PresciptionMedicine pm) {
+    public void setPrescriptionsMedicine(PrescriptionMedicine pm) {
         this.prescriptionsMedicine.add(pm);
     }
 
