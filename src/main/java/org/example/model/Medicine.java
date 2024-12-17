@@ -9,8 +9,8 @@ public class Medicine {
     private String description;
 
     public Medicine() {
-        this.id = UUID.randomUUID().timestamp();
-    }
+        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
+    };
 
     public Medicine(Double price, String name, String description) {
         this();
