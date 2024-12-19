@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Appointement {
+public class Appointment {
     private final Long id;
     private LocalTime time;
     private LocalDate date;
@@ -18,11 +18,11 @@ public class Appointement {
     private AppointementStatus status;
     private List<Consultation> consultations = new ArrayList<>();
 
-    public Appointement() {
-        this.id = UUID.randomUUID().timestamp();
+    public Appointment() {
+        this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
-    public Appointement(LocalTime time, LocalDate date, AppoitmentType type, AppointementStatus status) {
+    public Appointment(LocalTime time, LocalDate date, AppoitmentType type, AppointementStatus status) {
         this();
         this.time = time;
         this.date = date;
@@ -70,8 +70,8 @@ public class Appointement {
         return consultations;
     }
 
-    public void setConsultations(List<Consultation> consultations) {
-        this.consultations = consultations;
+    public void setConsultations(Consultation consultation) {
+        this.consultations.add(consultation);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class Appointement {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Appointement that = (Appointement) o;
+        Appointment that = (Appointment) o;
         return Objects.equals(id, that.id);
     }
 }
