@@ -6,7 +6,7 @@ import org.example.model.Intervention;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InterventionImp implements IDao<Intervention,Long> {
+public class InterventionDaoImp implements IDao<Intervention,Long> {
     private final List<Intervention> interventions= new ArrayList<>();
     @Override
     public List<Intervention> getAll() throws Exception {

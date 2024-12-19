@@ -1,14 +1,14 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.implementation.InterventionImp;
+import org.example.dao.implementation.InterventionDaoImp;
 import org.example.model.Intervention;
 import org.example.service.api.InterventionService;
 
 import java.util.List;
 
 public class InterventionServiceImpl implements InterventionService {
-    public final IDao<Intervention, Long> dao = new InterventionImp();
+    public final IDao<Intervention, Long> dao = new InterventionDaoImp();
 
     @Override
     public Intervention addIntervention(Intervention intervention) {

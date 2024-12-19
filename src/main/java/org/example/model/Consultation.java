@@ -3,6 +3,8 @@ package org.example.model;
 import org.example.model.enums.ConsultationType;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Consultation {
@@ -10,21 +12,26 @@ public class Consultation {
     private ConsultationType type;
     private String note;
     private LocalDate date;
-    private Intervention intervention;
     private Invoice invoice = null;
     private Prescription prescription = null;
     private Certificate certificate = null;
+    private List<Intervention> interventions = new ArrayList<Intervention>();
 
     public Consultation() {
-        this.id = UUID.randomUUID().timestamp();
+        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
-    public Consultation(ConsultationType type, String note, LocalDate date, Intervention intervention) {
+    public Consultation(ConsultationType type, String note, LocalDate date, Invoice invoice,Prescription prescription) {
         this();
         this.type = type;
         this.note = note;
         this.date = date;
-        this.intervention = intervention;
+        this.invoice=invoice;
+        this.prescription=prescription;
+    }
+
+    public void setInterventions(Intervention intervention) {
+        this.interventions.add(intervention);
     }
 
     public Long getId() {
@@ -55,14 +62,6 @@ public class Consultation {
         this.date = date;
     }
 
-    public Intervention getIntervention() {
-        return intervention;
-    }
-
-    public void setIntervention(Intervention intervention) {
-        this.intervention = intervention;
-    }
-
     public Invoice getInvoice() {
         return invoice;
     }
@@ -79,6 +78,14 @@ public class Consultation {
         return prescription;
     }
 
+    public Certificate getCertificate() {
+        return certificate;
+    }
+
+    public List<Intervention> getInterventions() {
+        return interventions;
+    }
+
     public void setPrescription(Prescription prescription) {
         this.prescription = prescription;
     }
@@ -90,9 +97,9 @@ public class Consultation {
                 ", type=" + type +
                 ", note='" + note + '\'' +
                 ", date=" + date +
-                ", intervention=" + intervention +
                 ", invoice=" + invoice +
                 ", prescription=" + prescription +
+                ", intervention=" + interventions +
                 '}';
     }
 }
