@@ -9,8 +9,8 @@ public class Intervention {
     private double price;
     private List<Act> acts = new ArrayList<Act>();
 
-    public Intervention() {
-        this.id = UUID.randomUUID().timestamp();
+    public Intervention()  {
+        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
     public Intervention(double price) {
