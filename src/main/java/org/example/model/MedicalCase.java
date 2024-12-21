@@ -1,6 +1,7 @@
 package org.example.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -9,14 +10,22 @@ public class MedicalCase {
     private Long id;
     private Patient patient; // remove medical case attr within patient when you re conviced
     private LocalDate creationDate = LocalDate.now();
-    private List<Appointment> appointments;
-    private List<MedicalHistory> medicalHistories;
-//    private Doctor doctor; 1 doctor
+    private List<Appointment> appointments = new ArrayList<>();
+    private List<MedicalHistory> medicalHistories = new ArrayList<>();
 
     public MedicalCase() {
-        this.id = UUID.randomUUID().timestamp();
+        this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
+    }
 
-    // this.medicalHistories = new ArrayList<>();
+    public MedicalCase(Patient patient, List<Appointment> appointments, List<MedicalHistory> medicalHistories) {
+        this();
+        this.patient = patient;
+        this.appointments = appointments;
+        this.medicalHistories = medicalHistories;
+    }
+    public MedicalCase(Patient patient) {
+        this();
+        this.patient = patient;
     }
 
     public Long getId() {
@@ -69,5 +78,16 @@ public class MedicalCase {
 
     public void setMedicalHistories(MedicalHistory md) {
         medicalHistories.add(md);
+    }
+
+    @Override
+    public String toString() {
+        return "MedicalCase{" +
+                "id=" + id +
+                ", patient=" + patient +
+                ", creationDate=" + creationDate +
+                ", appointments=" + appointments +
+                ", medicalHistories=" + medicalHistories +
+                '}';
     }
 }

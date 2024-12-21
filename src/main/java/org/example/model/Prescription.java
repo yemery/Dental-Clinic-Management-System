@@ -40,5 +40,4 @@ public class Prescription
                 ", date=" + date +
                 ", prescriptionsMedicine=" + prescriptionsMedicine +
                 '}';
-    }
-}
+    }}

@@ -16,7 +16,7 @@ public class Appointment {
     private LocalDate date;
     private AppoitmentType type;
     private AppointementStatus status;
-    private List<Consultation> consultations = new ArrayList<>();
+    private Consultation consultation;
 
     public Appointment() {
         this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
@@ -66,12 +66,12 @@ public class Appointment {
         this.status = status;
     }
 
-    public List<Consultation> getConsultations() {
-        return consultations;
+    public Consultation getConsultation() {
+        return this.consultation;
     }
 
     public void setConsultations(Consultation consultation) {
-        this.consultations.add(consultation);
+        this.consultation= consultation;
     }
 
     @Override
@@ -81,6 +81,7 @@ public class Appointment {
                 ", time=" + time +
                 ", date=" + date +
                 ", type=" + type +
+                "consultation=" + consultation +
                 '}';
     }
 

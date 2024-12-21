@@ -20,17 +20,9 @@ public class PrescriptionView {
         prescriptionC.addPrescription(p1);
 
         prescriptionC.displayPrescriptions();
-        // wait
 
-        // crud test
-
-        // we dug is false a l okht shakespear
-        // wa u said we dug ana glt lik rah ghalta
-        // nvm
-
-//        prescriptionC.deletePrescription(p1);
-//        prescriptionC.displayPrescriptions();
-        // ana w 3yit la 3yit 11:30 ylh ntfrj fshi7aja wn3s
+        prescriptionC.deletePrescription(p1);
+        prescriptionC.displayPrescriptions();
 
     }
 }

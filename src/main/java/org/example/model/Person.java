@@ -19,7 +19,7 @@ public abstract class Person {
 
 
     public Person() {
-        this.id = UUID.randomUUID().timestamp();
+        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
     public Person(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender) {
