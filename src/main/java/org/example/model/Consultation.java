@@ -102,4 +102,8 @@ public class Consultation {
                 ", intervention=" + interventions +
                 '}';
     }
+
+    public boolean removeIntervention(Intervention intervention) {
+        return interventions.remove(intervention);
+    }
 }
