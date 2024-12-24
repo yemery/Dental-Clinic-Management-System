@@ -4,6 +4,7 @@ import org.example.dao.IDao;
 import org.example.dao.implementation.ConsultationDaoImpl;
 import org.example.model.Certificate;
 import org.example.model.Consultation;
+import org.example.model.Intervention;
 import org.example.service.api.ConsultationService;
 
 import java.util.List;
@@ -52,6 +53,16 @@ public class ConsultationServiceImpl implements ConsultationService {
     public void deleteConsultation(Consultation consultation) {
         try{
             dao.delete(consultation);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean removeIntervention(Consultation consultation, Intervention intervention) {
+        try{
+            consultation.removeIntervention(intervention);
+            return true;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

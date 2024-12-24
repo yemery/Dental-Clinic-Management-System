@@ -43,6 +43,7 @@ public class ConsultationView {
         Consultation c2= new Consultation(ConsultationType.EMERGENCY,"note2", LocalDate.now(), inv2,p1);
 
         c1.setInterventions(i1);
+        c1.setInterventions(i2);
         c2.setInterventions(i2);
 
         consultationC.addConsultation(c1);
@@ -50,7 +51,10 @@ public class ConsultationView {
 
 
         consultationC.displayAllConsultations();
+        System.out.println(c1.getInterventions().size());
 
+        consultationC.removeIntervention(c1, i1);
+        System.out.println(c1.getInterventions().size());
 
     }
 }

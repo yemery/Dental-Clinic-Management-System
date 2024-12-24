@@ -15,7 +15,7 @@ public class Consultation {
     private Invoice invoice = null;
     private Prescription prescription = null;
     private Certificate certificate = null;
-    private List<Intervention> interventions = new ArrayList<Intervention>();
+    private List<Intervention> interventions = new ArrayList<>();
 
     public Consultation() {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());

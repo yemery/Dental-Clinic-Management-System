@@ -1,6 +1,7 @@
 package org.example.presentation.controller;
 
 import org.example.model.Consultation;
+import org.example.model.Intervention;
 import org.example.service.api.ConsultationService;
 import org.example.service.implementation.ConsultationServiceImpl;
 
@@ -18,4 +19,11 @@ public class ConsultationController {
     }
 
     public void deleteConsultation(Consultation consultation){ consultationService.deleteConsultation(consultation);}
+
+//    public void removeIntervention(Consultation consultation, Intervention intervention){
+//        consultationService.getConsultation(consultation.getId()).removeIntervention(intervention);
+//    }
+    public boolean removeIntervention(Consultation consultation,Intervention intervention){
+        return consultationService.removeIntervention(consultation,intervention);
+    }
 }
