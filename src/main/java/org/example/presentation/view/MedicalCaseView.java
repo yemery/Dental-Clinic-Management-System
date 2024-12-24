@@ -74,5 +74,10 @@ public class MedicalCaseView {
        medicalCaseController.getAllMedicalCase();
 //        medicalCaseController.deleteMedicalCase(mc1);
 //        medicalCaseController.addMedicalCase(mc1);
+
+
+        System.out.println(mc1.getAppointments().size());
+        medicalCaseController.removeAppointment(mc1, ap2);
+        System.out.println(mc1.getAppointments().size());
 }
 }

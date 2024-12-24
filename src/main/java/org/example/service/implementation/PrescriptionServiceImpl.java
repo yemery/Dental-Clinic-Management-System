@@ -3,6 +3,7 @@ package org.example.service.implementation;
 import org.example.dao.IDao;
 import org.example.dao.implementation.PrescriptionDaoImpl;
 import org.example.model.Prescription;
+import org.example.model.PrescriptionMedicine;
 import org.example.service.api.PrescriptionService;
 
 import java.util.List;
@@ -47,6 +48,16 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     public List<Prescription> getAllPrescriptions() {
         try{
             return dao.getAll();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean removePrescriptionMedicine(Prescription prescription,PrescriptionMedicine prescriptionMedicine) {
+        try{
+            prescription.removePrescriptionMedicine(prescriptionMedicine);
+            return true;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

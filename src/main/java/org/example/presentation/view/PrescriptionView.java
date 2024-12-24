@@ -20,7 +20,10 @@ public class PrescriptionView {
         prescriptionC.addPrescription(p1);
 
         prescriptionC.displayPrescriptions();
+        System.out.println(p1.getPrescriptionsMedicine().size());
 
+        prescriptionC.removePrescriptionMedicine(p1,prescrMed);
+        System.out.println(p1.getPrescriptionsMedicine().size());
         prescriptionC.deletePrescription(p1);
         prescriptionC.displayPrescriptions();
 

@@ -39,6 +39,10 @@ public class Intervention {
             this.acts.add(act);
     }
 
+
+    public  boolean removeAct(Act act) {
+        return this.acts.remove(act);
+    }
     @Override
     public String toString() {
         return "Intervention{" +

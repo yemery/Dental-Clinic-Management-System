@@ -90,4 +90,12 @@ public class MedicalCase {
                 ", medicalHistories=" + medicalHistories +
                 '}';
     }
+
+    public boolean removeAppointment(Appointment appointment) {
+        return this.appointments.remove(appointment);
+    }
+
+    public boolean removeMedicalHistory(MedicalHistory md) {
+        return this.medicalHistories.remove(md);
+    }
 }

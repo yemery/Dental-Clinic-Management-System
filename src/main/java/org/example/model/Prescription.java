@@ -32,7 +32,9 @@ public class Prescription
     public void setPrescriptionsMedicine(PrescriptionMedicine pm) {
         prescriptionsMedicine.add(pm);
     }
-
+    public boolean removePrescriptionMedicine(PrescriptionMedicine pm) {
+        return prescriptionsMedicine.remove(pm);
+    }
     @Override
     public String toString() {
         return "Prescription{" +

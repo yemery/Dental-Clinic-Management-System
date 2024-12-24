@@ -1,6 +1,6 @@
 package org.example.presentation.controller;
 
-import org.example.model.MedicalCase;
+import org.example.model.*;
 import org.example.service.api.MedicalCaseService;
 import org.example.service.implementation.MedicalCaseImpl;
 
@@ -23,5 +23,11 @@ public class MedicalCaseController {
         medicalCaseService.getMedicalCase(id);
     }
 
+    public boolean removeAppointment(MedicalCase medicalCase,Appointment appointment) {
+        return medicalCaseService.removeAppointment(medicalCase, appointment);
+    }
 
+    public boolean removeMedicalHistory(MedicalCase medicalCase, MedicalHistory medicalHistory) {
+        return medicalCaseService.removeMedicalHistory(medicalCase, medicalHistory);
+    }
 }

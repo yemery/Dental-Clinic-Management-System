@@ -1,5 +1,6 @@
 package org.example.presentation.controller;
 
+import org.example.model.Act;
 import org.example.model.Intervention;
 import org.example.service.api.InterventionService;
 import org.example.service.implementation.InterventionServiceImpl;
@@ -21,4 +22,13 @@ public void updateIntervention(Intervention intervention){
 public void deleteIntervention(Intervention intervention){
     interventionService.deleteIntervention(intervention);
 }
+
+
+
+public boolean removeAct(Intervention intervention, Act act){
+    return interventionService.removeAct(intervention, act);
 }
+
+}
+
+

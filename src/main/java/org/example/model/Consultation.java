@@ -106,4 +106,5 @@ public class Consultation {
     public boolean removeIntervention(Intervention intervention) {
         return interventions.remove(intervention);
     }
+
 }

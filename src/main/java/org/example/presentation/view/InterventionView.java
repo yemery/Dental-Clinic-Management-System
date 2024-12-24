@@ -36,10 +36,12 @@ public class InterventionView {
         i1.setPrice(800);
 
         interventionC.updateIntervention(i1);
+
+        System.out.println(i1.getActs().size());
+        interventionC.removeAct(i1,a1);
+        System.out.println(i1.getActs().size());
+        System.out.println(a1);
         interventionC.displayAllInterventions();
-
-
-
 
 
     }
