@@ -1,8 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.implementation.ConsultationDaoImpl;
-import org.example.model.Certificate;
+import org.example.dao.ArrayListImpl.ConsultationDaoImpl;
 import org.example.model.Consultation;
 import org.example.model.Intervention;
 import org.example.service.api.ConsultationService;

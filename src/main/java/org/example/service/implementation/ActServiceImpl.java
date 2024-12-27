@@ -1,7 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.implementation.ActDaoImpl;
+import org.example.dao.ArrayListImpl.ActDaoImpl;
 import org.example.model.Act;
 import org.example.service.api.ActService;
 

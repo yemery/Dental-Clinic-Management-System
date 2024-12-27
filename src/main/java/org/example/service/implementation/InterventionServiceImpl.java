@@ -1,7 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.implementation.InterventionDaoImp;
+import org.example.dao.ArrayListImpl.InterventionDaoImp;
 import org.example.model.Act;
 import org.example.model.Intervention;
 import org.example.service.api.InterventionService;

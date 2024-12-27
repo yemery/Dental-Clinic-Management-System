@@ -1,7 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.implementation.MedicalHistoryDaoImpl;
+import org.example.dao.ArrayListImpl.MedicalHistoryDaoImpl;
 import org.example.model.MedicalHistory;
 import org.example.service.api.MedicslHistoryService;
 

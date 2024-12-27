@@ -1,11 +1,10 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.implementation.InvoiceDaoImpl;
+import org.example.dao.ArrayListImpl.InvoiceDaoImpl;
 import org.example.model.Invoice;
 import org.example.service.api.InvoiceService;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 public class InvoiceServiceImpl implements InvoiceService {

@@ -1,4 +1,4 @@
-package org.example.dao.implementation;
+package org.example.dao.ArrayListImpl;
 
 import org.example.dao.IDao;
 import org.example.model.Certificate;

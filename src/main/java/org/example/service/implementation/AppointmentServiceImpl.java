@@ -1,7 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.implementation.AppointmentDaoImpl;
+import org.example.dao.ArrayListImpl.AppointmentDaoImpl;
 import org.example.model.Appointment;
 import org.example.service.api.AppointmentService;
 

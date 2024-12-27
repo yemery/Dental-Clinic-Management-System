@@ -1,7 +1,6 @@
-package org.example.dao.implementation;
+package org.example.dao.ArrayListImpl;
 
 import org.example.dao.IDao;
-import org.example.model.Act;
 import org.example.model.Prescription;
 
 import java.util.ArrayList;

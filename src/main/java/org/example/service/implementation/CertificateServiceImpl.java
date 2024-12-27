@@ -1,7 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.implementation.CertificateDaoImp;
+import org.example.dao.ArrayListImpl.CertificateDaoImp;
 import org.example.model.Certificate;
 import org.example.service.api.CertificateService;
 
