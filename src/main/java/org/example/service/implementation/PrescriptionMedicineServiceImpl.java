@@ -40,9 +40,9 @@ public class PrescriptionMedicineServiceImpl implements PrescriptionMedicineServ
     }
 
     @Override
-    public void deleteMedicinePrescription(PrescriptionMedicine prescription) {
+    public void deleteMedicinePrescription(Long ID) {
         try {
-            dao.delete(prescription);
+            dao.delete(ID);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

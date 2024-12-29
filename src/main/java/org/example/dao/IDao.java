@@ -7,5 +7,5 @@ public interface IDao<T, ID>  {
     T getById(ID id) throws Exception;
     T add(T t) throws Exception;
     T update(T t) throws Exception;
-    void delete(T t) throws Exception;
+    void delete(ID id) throws Exception;
 }

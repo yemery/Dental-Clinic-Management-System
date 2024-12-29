@@ -49,9 +49,9 @@ public class ConsultationServiceImpl implements ConsultationService {
     }
 
     @Override
-    public void deleteConsultation(Consultation consultation) {
+    public void deleteConsultation(Long ID) {
         try{
-            dao.delete(consultation);
+            dao.delete(ID);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

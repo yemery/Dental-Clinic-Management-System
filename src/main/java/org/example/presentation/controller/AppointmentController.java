@@ -16,8 +16,8 @@ public class AppointmentController {
     public void updateAppointment(Appointment appointment) {
         appointmentService.updateAppointment(appointment);
     }
-    public void deleteAppointment(Appointment appointment) {
-        appointmentService.deleteAppointment(appointment);
+    public void deleteAppointment(Long ID) {
+        appointmentService.deleteAppointment(ID);
     }
 
 }

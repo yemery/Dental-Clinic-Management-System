@@ -16,8 +16,8 @@ public class PatientController {
     public void updatePatient(Patient Patient) {
         patientService.updatePatient(Patient);
     }
-    public void deletePatient(Patient Patient) {
-        patientService.deletePatient(Patient);
+    public void deletePatient(Long ID) {
+        patientService.deletePatient(ID);
     }
 
 }

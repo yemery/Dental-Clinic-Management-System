@@ -10,6 +10,6 @@ public class InvoiceController {
     public void addInvoice(Invoice i){ invoiceService.addInvoice(i);}
     public void displayAllInvoices(){invoiceService.getAllInvoices().forEach(System.out::println);}
     public void updateInvoice(Invoice i){invoiceService.updateInvoice(i);}
-    public void deleteInvoice(Invoice i){invoiceService.deleteInvoice(i);}
+    public void deleteInvoice(Long ID){invoiceService.deleteInvoice(ID);}
 
 }

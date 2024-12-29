@@ -10,5 +10,5 @@ public class MedicsHistoryController {
     public void addMHistory(MedicalHistory mh) {mhService.addMedicsHistory(mh);}
     public void showAllMHistories(){mhService.getAllMedicsHistory().forEach(System.out::println);}
     public void updateMHistory(MedicalHistory mh) {mhService.updateMedicsHistory(mh);}
-    public void deleteMHistory(MedicalHistory mh) {mhService.deleteMedicsHistory(mh);}
+    public void deleteMHistory(Long ID) {mhService.deleteMedicsHistory(ID);}
 }

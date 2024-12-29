@@ -9,7 +9,7 @@ public class MedicineController {
 
     public void add(Medicine med) {medicineService.addMedicine(med);}
     public void update(Medicine med) {medicineService.updateMedicine(med);}
-    public void delete(Medicine med) {medicineService.deleteMedicine(med);}
+    public void delete(Long ID) {medicineService.deleteMedicine(ID);}
     public void getMedicine(){medicineService.getMedicine().forEach(System.out::println);}
 
 }

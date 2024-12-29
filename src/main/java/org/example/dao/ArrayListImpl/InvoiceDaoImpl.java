@@ -1,6 +1,7 @@
 package org.example.dao.ArrayListImpl;
 
 import org.example.dao.IDao;
+import org.example.model.Intervention;
 import org.example.model.Invoice;
 
 import java.util.ArrayList;
@@ -40,10 +41,9 @@ public class InvoiceDaoImpl implements IDao<Invoice,Long> {
     }
 
     @Override
-    public void delete(Invoice invoice) throws Exception {
-        if (!invoices.contains(invoice)){
-            throw new Exception("No Act found with ID: " + invoice.getId());
-        }
-        invoices.remove(invoice);
+    public void delete(Long ID) throws Exception {
+        Invoice existingInvoice = this.getById(ID);
+
+        invoices.remove(existingInvoice);
     }
 }

@@ -46,9 +46,9 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
-    public void deleteInvoice(Invoice invoice) {
+    public void deleteInvoice(Long ID) {
         try{
-            dao.delete(invoice);
+            dao.delete(ID);
             System.out.println("Invoice deleted successfully");
         }
         catch(Exception e){

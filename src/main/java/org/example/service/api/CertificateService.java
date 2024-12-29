@@ -10,6 +10,6 @@ public interface CertificateService{
    Certificate updateCertificate(Certificate certificate);
    Certificate getCertificate(Long certificateId);
    List<Certificate> getAllCertificates();
-   void deleteCertificate(Certificate certificate);
+   void deleteCertificate(Long ID);
 
 }

@@ -1,6 +1,7 @@
 package org.example.dao.ArrayListImpl;
 
 import org.example.dao.IDao;
+import org.example.model.Invoice;
 import org.example.model.MedicalCase;
 
 import java.util.ArrayList;
@@ -39,9 +40,10 @@ public class MedicalCaseDaoImpl  implements IDao<MedicalCase,Long> {
     }
 
     @Override
-    public void delete(MedicalCase medicalCase) throws Exception {
-        if (!medicalCases.contains(medicalCase)) throw new Exception("No medical case found");
-        medicalCases.remove(medicalCase);
+    public void delete(Long ID) throws Exception {
+        MedicalCase existingMedicalCase = this.getById(ID);
+
+        medicalCases.remove(existingMedicalCase);
 
     }
 }

@@ -19,8 +19,8 @@ public void updateIntervention(Intervention intervention){
 
 }
 
-public void deleteIntervention(Intervention intervention){
-    interventionService.deleteIntervention(intervention);
+public void deleteIntervention(Long ID){
+    interventionService.deleteIntervention(ID);
 }
 
 

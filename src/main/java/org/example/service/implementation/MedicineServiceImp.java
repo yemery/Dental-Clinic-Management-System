@@ -48,10 +48,10 @@ public class MedicineServiceImp implements MedicineService {
     }
 
     @Override
-    public void deleteMedicine(Medicine medicine) {
+    public void deleteMedicine(Long ID) {
     try{
         System.out.println("This Medicine is deleted");
-        dao.delete(medicine);
+        dao.delete(ID);
     } catch (Exception e) {
         System.out.println(e.getMessage());
         throw new RuntimeException(e);

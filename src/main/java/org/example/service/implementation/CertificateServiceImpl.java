@@ -52,9 +52,9 @@ public class CertificateServiceImpl implements CertificateService {
     }
 
     @Override
-    public void deleteCertificate(Certificate certificate) {
+    public void deleteCertificate(Long ID) {
         try{
-            dao.delete(certificate);
+            dao.delete(ID);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

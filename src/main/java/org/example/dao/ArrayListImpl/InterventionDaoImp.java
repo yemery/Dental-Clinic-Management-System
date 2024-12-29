@@ -1,6 +1,7 @@
 package org.example.dao.ArrayListImpl;
 
 import org.example.dao.IDao;
+import org.example.model.Act;
 import org.example.model.Intervention;
 
 import java.util.ArrayList;
@@ -45,9 +46,9 @@ public class InterventionDaoImp implements IDao<Intervention,Long> {
     }
 
     @Override
-    public void delete(Intervention intervention) throws Exception {
-            if (intervention != null){
-                interventions.remove(intervention);
-            }
+    public void delete(Long ID) throws Exception {
+        Intervention existingIntervention = this.getById(ID);
+
+        interventions.remove(existingIntervention);
     }
 }

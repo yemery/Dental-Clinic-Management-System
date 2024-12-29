@@ -43,10 +43,9 @@ public class AppointmentDaoImpl implements IDao<Appointment,Long> {
     }
 
     @Override
-    public void delete(Appointment appointment) throws Exception {
-        if (!appointments.contains(appointment)) {
-            throw new Exception("Appointment not found");
-        }
-        appointments.remove(appointment);
+    public void delete(Long ID) throws Exception {
+        Appointment existingAppointment = this.getById(ID);
+
+        appointments.remove(existingAppointment);
     }
 }

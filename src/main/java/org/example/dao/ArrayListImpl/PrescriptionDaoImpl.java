@@ -2,6 +2,7 @@ package org.example.dao.ArrayListImpl;
 
 import org.example.dao.IDao;
 import org.example.model.Prescription;
+import org.example.model.PrescriptionMedicine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +39,9 @@ public class PrescriptionDaoImpl  implements IDao<Prescription,Long> {
     }
 
     @Override
-    public void delete(Prescription prescription) throws Exception {
-            if (prescription != null){
-                prescriptions.remove(prescription);
-            }
-            throw new Exception("No prescription found");
+    public void delete(Long ID) throws Exception {
+        Prescription existingPrescription = this.getById(ID);
+        prescriptions.remove(existingPrescription);
 
     }
 }

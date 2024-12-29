@@ -8,6 +8,6 @@ public interface MedicslHistoryService {
     MedicalHistory addMedicsHistory(MedicalHistory mh);
     MedicalHistory getMedicsHistory(Long ID);
     MedicalHistory updateMedicsHistory(MedicalHistory mh);
-    void deleteMedicsHistory(MedicalHistory mh);
+    void deleteMedicsHistory(Long ID);
     List<MedicalHistory> getAllMedicsHistory();
 }

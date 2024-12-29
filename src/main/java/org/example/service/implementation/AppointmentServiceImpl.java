@@ -38,9 +38,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void deleteAppointment(Appointment appointment) {
+    public void deleteAppointment(Long ID) {
         try {
-            dao.delete(appointment);
+            dao.delete(ID);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -24,7 +24,7 @@ public class PrescriptionView {
 
         prescriptionC.removePrescriptionMedicine(p1,prescrMed);
         System.out.println(p1.getPrescriptionsMedicine().size());
-        prescriptionC.deletePrescription(p1);
+//        prescriptionC.deletePrescription(p1);
         prescriptionC.displayPrescriptions();
 
     }

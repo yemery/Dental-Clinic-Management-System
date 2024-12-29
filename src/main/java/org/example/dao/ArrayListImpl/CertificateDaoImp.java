@@ -1,6 +1,7 @@
 package org.example.dao.ArrayListImpl;
 
 import org.example.dao.IDao;
+import org.example.model.Act;
 import org.example.model.Certificate;
 
 import java.util.ArrayList;
@@ -47,10 +48,9 @@ public class CertificateDaoImp implements IDao<Certificate,Long> {
     }
 
     @Override
-    public void delete(Certificate certificate) throws Exception {
-            if(certificate != null) {
-                certificates.remove(certificate);
-            }
-            throw new Exception("No Certificate Been Deleted");
+    public void delete(Long ID) throws Exception {
+        Certificate existingCertificate = this.getById(ID);
+
+        certificates.remove(existingCertificate);
     }
 }

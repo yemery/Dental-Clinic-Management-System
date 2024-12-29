@@ -1,6 +1,7 @@
 package org.example.dao.ArrayListImpl;
 
 import org.example.dao.IDao;
+import org.example.model.Act;
 import org.example.model.Consultation;
 
 import java.util.ArrayList;
@@ -51,9 +52,9 @@ public class ConsultationDaoImpl implements IDao<Consultation,Long> {
     }
 
     @Override
-    public void delete(Consultation consultation) throws Exception {
-            if (consultation != null){
-                consultations.remove(consultation);
-            }
+    public void delete(Long ID) throws Exception {
+        Consultation existingConsultation = this.getById(ID);
+
+        consultations.remove(existingConsultation);
     }
 }

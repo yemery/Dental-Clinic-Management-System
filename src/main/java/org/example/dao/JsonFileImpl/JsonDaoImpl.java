@@ -2,29 +2,34 @@ package org.example.dao.JsonFileImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
+import org.example.dao.IDao;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsonDaoImpl<T, ID> {
+public class JsonDaoImpl<T, ID> implements IDao<T, ID> {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final File file;
+    private static final String DIRECTORY_PATH = "database";
+    private final Class<T> type;
 
-    // Constructor to initialize the file
-    public JsonDaoImpl(String filePath) {
-        this.file = new File(filePath);
+    public JsonDaoImpl(String fileName, Class<T> type) {
+        this.file = new File(DIRECTORY_PATH,fileName);
+        this.type = type;
+
     }
 
-    // Fetch all entries from the file
     public List<T> getAll() throws Exception {
         if (file.exists()) {
-            return objectMapper.readValue(file, new TypeReference<List<T>>() {});
+            return objectMapper.readValue(
+                    file,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, type)
+            );
         }
         return new ArrayList<>();
     }
 
-    // Fetch an entry by ID
     public T getById(ID id) throws Exception {
         List<T> currentData = getAll();
         for (T item : currentData) {
@@ -35,7 +40,6 @@ public class JsonDaoImpl<T, ID> {
         return null;
     }
 
-    // Append a new entry to the file
     public T add(T t) throws Exception {
         List<T> currentData = getAll(); // Load existing data
         currentData.add(t); // Append the new entry
@@ -43,21 +47,24 @@ public class JsonDaoImpl<T, ID> {
         return t;
     }
 
-    // Update an entry (remove and re-add it)
     public T update(T t) throws Exception {
-        delete(t); // Remove the existing entry
+        List<T> currentData = getAll();
+        ID id = (ID) t.getClass().getMethod("getId").invoke(t); // Assuming there is a getID method in the class
+
+//        System.out.println(id.toString());
+        delete(id); // Remove the existing entry
         add(t); // Add the updated entry
         return t;
+
     }
 
-    // Delete an entry from the file
-    public void delete(T t) throws Exception {
+    public void delete(ID ID) throws Exception {
         List<T> currentData = getAll();
-        currentData.remove(t);
+        T findObjectByID=getById(ID);
+        currentData.remove(findObjectByID);
         saveToFile(currentData);
     }
 
-    // Save the list to the file
     private void saveToFile(List<T> data) throws Exception {
         objectMapper.writeValue(file, data);
     }
@@ -101,7 +108,7 @@ public class JsonDaoImpl<T, ID> {
             }
 
             // Create a JsonDaoImpl instance with file path
-            JsonDaoImpl<Book, String> bookDao = new JsonDaoImpl<>("books.json");
+            JsonDaoImpl<Book, String> bookDao = new JsonDaoImpl<>("books.json",Book.class);
 
             // Create some books
             Book book1 = new Book("1", "Effective Java");

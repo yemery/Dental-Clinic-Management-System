@@ -21,9 +21,9 @@ public class MedicsHistoryServiceImpl implements MedicslHistoryService {
     }
 
     @Override
-    public void deleteMedicsHistory(MedicalHistory mh) {
+    public void deleteMedicsHistory(Long ID) {
         try{
-            dao.delete(mh);
+            dao.delete(ID);
         }
         catch(Exception e){
             throw new RuntimeException(e);

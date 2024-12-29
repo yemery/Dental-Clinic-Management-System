@@ -20,9 +20,11 @@ public class ActController  {
     public void updateAct(Act act) {
         actService.updateAct(act);
     }
-    public void deleteAct(Act act) {
-        actService.deleteAct(act);
+    public void deleteAct(Long ID) {
+        actService.deleteAct(ID);
     }
+
+    public Act getAct(Long ID) {return actService.getAct(ID);}
 
 
 }

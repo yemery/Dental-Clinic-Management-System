@@ -8,6 +8,6 @@ public interface AppointmentService {
     Appointment addAppointment(Appointment appointment);
     Appointment getAppointment(Long id);
     Appointment updateAppointment(Appointment appointment);
-    void deleteAppointment(Appointment appointment);
+    void deleteAppointment(Long ID);
     List<Appointment> getAppointments();
 }

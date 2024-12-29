@@ -18,7 +18,7 @@ public class MedicsHistoryView {
 
         mhC.showAllMHistories();
 //        mh.setRisk(Risk.LOW);
-        mhC.deleteMHistory(mh);
+//        mhC.deleteMHistory(mh);
         mhC.showAllMHistories();
 
     }

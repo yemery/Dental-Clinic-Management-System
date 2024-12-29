@@ -10,8 +10,8 @@ public class MedicalCaseController {
     public void addMedicalCase(MedicalCase medicalCase) {
         medicalCaseService.addMedicalCase(medicalCase);
     }
-    public void deleteMedicalCase(MedicalCase medicalCase) {
-        medicalCaseService.deleteMedicalCase(medicalCase);
+    public void deleteMedicalCase(Long ID) {
+        medicalCaseService.deleteMedicalCase(ID);
     }
     public void updateMedicalCase(MedicalCase medicalCase) {
         medicalCaseService.updateMedicalCase(medicalCase);

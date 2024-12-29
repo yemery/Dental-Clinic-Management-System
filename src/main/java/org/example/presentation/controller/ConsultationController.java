@@ -18,7 +18,7 @@ public class ConsultationController {
         consultationService.updateConsultation(consultation);
     }
 
-    public void deleteConsultation(Consultation consultation){ consultationService.deleteConsultation(consultation);}
+    public void deleteConsultation(Long ID){ consultationService.deleteConsultation(ID);}
 
 //    public void removeIntervention(Consultation consultation, Intervention intervention){
 //        consultationService.getConsultation(consultation.getId()).removeIntervention(intervention);

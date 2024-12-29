@@ -39,9 +39,9 @@ public class MedicalCaseImpl implements MedicalCaseService {
     }
 
     @Override
-    public void deleteMedicalCase(MedicalCase medicalCase) {
+    public void deleteMedicalCase(Long ID) {
         try {
-            dao.delete(medicalCase);
+            dao.delete(ID);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new RuntimeException();

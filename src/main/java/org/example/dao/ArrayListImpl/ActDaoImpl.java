@@ -49,10 +49,9 @@ public class ActDaoImpl implements IDao<Act,Long> {
     }
 
     @Override
-    public void delete(Act act) throws Exception {
-            if (!acts.contains(act)){
-                throw new Exception("No Act found with ID: " + act.getId());
-            }
-            acts.remove(act);
+    public void delete(Long ID) throws Exception {
+            Act existingAct = this.getById(ID);
+
+            acts.remove(existingAct);
     }
 }

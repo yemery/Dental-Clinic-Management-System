@@ -35,9 +35,9 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     }
 
     @Override
-    public void deletePrescription(Prescription prescription) {
+    public void deletePrescription(Long ID) {
         try{
-            dao.delete(prescription);
+            dao.delete(ID);
             System.out.println("Prescription deleted");
         } catch (Exception e) {
             throw new RuntimeException(e);

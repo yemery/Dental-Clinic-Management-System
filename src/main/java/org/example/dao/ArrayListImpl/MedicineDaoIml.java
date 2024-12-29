@@ -44,8 +44,8 @@ public class MedicineDaoIml implements IDao<Medicine, Long> {
     }
 
     @Override
-    public void delete(Medicine medicine) throws Exception {
-        if (medicines.contains(medicine)) medicines.remove(medicine);
-        else throw new Exception("Medicine not found");
+    public void delete(Long ID) throws Exception {
+        Medicine existingMedicine = this.getById(ID);
+        medicines.remove(existingMedicine);
     }
 }

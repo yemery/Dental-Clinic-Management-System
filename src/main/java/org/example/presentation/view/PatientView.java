@@ -18,7 +18,7 @@ public class PatientView {
         patientController.addPatient(p2);
 
         patientController.displayPatient();
-        patientController.deletePatient(p1);
+//        patientController.deletePatient(p1);
 
         patientController.displayPatient();
 

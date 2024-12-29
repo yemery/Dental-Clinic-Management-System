@@ -10,7 +10,7 @@ public interface MedicalCaseService {
     MedicalCase addMedicalCase(MedicalCase medicalCase);
     MedicalCase updateMedicalCase(MedicalCase medicalCase);
     MedicalCase getMedicalCase(Long id);
-    void deleteMedicalCase(MedicalCase medicalCase);
+    void deleteMedicalCase(Long ID);
     List<MedicalCase> getAllMedicalCases();
 
     boolean removeAppointment(MedicalCase medicalCase, Appointment appointment);

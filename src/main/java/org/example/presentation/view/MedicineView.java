@@ -17,7 +17,7 @@ public class MedicineView {
         medC.getMedicine();
         m4.setPrice(50.0);
 //        medC.update(m4);
-        medC.delete(m4);
+//        medC.delete(m4);
 
         medC.getMedicine();
     }

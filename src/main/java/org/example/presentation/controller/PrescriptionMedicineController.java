@@ -15,8 +15,8 @@ public class PrescriptionMedicineController {
         prescriptionMedicineService.updateMedicinePrescription(pMedicine);
     }
 
-    public void deletePrescriptionMedicine(PrescriptionMedicine pMedicine) {
-        prescriptionMedicineService.deleteMedicinePrescription(pMedicine);
+    public void deletePrescriptionMedicine(Long ID) {
+        prescriptionMedicineService.deleteMedicinePrescription(ID);
     }
 
     public void displayAllPrescriptionMedicine() {

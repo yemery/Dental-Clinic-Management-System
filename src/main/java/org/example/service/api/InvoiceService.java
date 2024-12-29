@@ -9,6 +9,6 @@ public interface InvoiceService {
     Invoice addInvoice(Invoice act);
     Invoice getInvoice(Long id);
     Invoice updateInvoice(Invoice act);
-    void deleteInvoice(Invoice act);
+    void deleteInvoice(Long ID);
     List<Invoice> getAllInvoices();
 }

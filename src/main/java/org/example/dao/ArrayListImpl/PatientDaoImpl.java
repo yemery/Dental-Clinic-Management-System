@@ -55,10 +55,8 @@ public class PatientDaoImpl implements IDao<Patient,Long> {
     }
 
     @Override
-    public void delete(Patient patient) throws Exception {
-        if (!patients.contains(patient)) {
-            throw new Exception("No patient found with ID " + patient.getId());
-        }
-        patients.remove(patient);
+    public void delete(Long ID) throws Exception {
+        Patient existingPatient = this.getById(ID);
+        patients.remove(existingPatient);
     }
 }

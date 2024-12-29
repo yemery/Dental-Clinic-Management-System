@@ -9,7 +9,7 @@ public interface PrescriptionService {
     Prescription getPrescriptionById(Long ID);
     Prescription addPrescription(Prescription prescription);
     Prescription updatePrescription(Prescription prescription);
-    void deletePrescription(Prescription prescription);
+    void deletePrescription(Long ID);
     List<Prescription> getAllPrescriptions();
     public  boolean removePrescriptionMedicine(Prescription prescription, PrescriptionMedicine prescriptionMedicine);
 }

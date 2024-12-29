@@ -41,9 +41,9 @@ public class PatientServiceImpl implements PatientService {
 
 
     @Override
-    public void deletePatient(Patient Patient) {
+    public void deletePatient(Long ID) {
         try{
-            dao.delete(Patient);
+            dao.delete(ID);
         }
         catch(Exception e){
             throw new RuntimeException(e);

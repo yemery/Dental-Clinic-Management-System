@@ -1,3 +1,4 @@
+
 package org.example.presentation.view;
 
 import org.example.model.Act;
@@ -16,9 +17,16 @@ public class ActView {
         actC.addNewAct(a3);
         actC.addNewAct(a4);
         actC.displayAllActs();
-        a2.setCategory(ActCategory.DIAGNOSIS);
-        actC.displayAllActs();
+//        actC.deleteAct(123333L);
 
-//        actC.updateAct(a2);
+
+//        Act act = actC.getAct(123333L);
+//        act.setBasePrice(10990);
+//        actC.updateAct(act);
+//        System.out.println(actC.getAct(123333L));
+//        actC.displayAllActs();
+
+
+
     }
 }

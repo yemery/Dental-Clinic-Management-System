@@ -11,6 +11,6 @@ public interface ConsultationService {
     Consultation updateConsultation(Consultation consultation);
     Consultation getConsultation(Long ID);
     List<Consultation> getAllConsultations();
-    void deleteConsultation(Consultation consultation);
+    void deleteConsultation(Long ID);
     public boolean removeIntervention(Consultation consultation, Intervention intervention);
 }

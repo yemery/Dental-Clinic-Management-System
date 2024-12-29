@@ -16,8 +16,8 @@ public class PrescriptionController  {
         prescriptionService.getAllPrescriptions().forEach(System.out::println);
     }
 
-    public void deletePrescription(Prescription prescription) {
-            prescriptionService.deletePrescription(prescription);
+    public void deletePrescription(Long ID) {
+            prescriptionService.deletePrescription(ID);
     }
     public boolean removePrescriptionMedicine(Prescription prescription, PrescriptionMedicine prescriptionMedicine) {
         return prescriptionService.removePrescriptionMedicine(prescription, prescriptionMedicine);

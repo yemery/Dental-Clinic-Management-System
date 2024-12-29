@@ -46,10 +46,8 @@ public class PrescriptionMedicineDaoImpl implements IDao<PrescriptionMedicine, L
     }
 
     @Override
-    public void delete(PrescriptionMedicine PrescriptionMedicine) throws Exception {
-        if(!prescriptionMedicines.contains(PrescriptionMedicine)){
-            throw new Exception("Prescription Medicine does not exist");
-        }
-        prescriptionMedicines.remove(PrescriptionMedicine);
+    public void delete(Long ID) throws Exception {
+        PrescriptionMedicine existingPrescriptionMedicine = this.getById(ID);
+        prescriptionMedicines.remove(existingPrescriptionMedicine);
     }
 }

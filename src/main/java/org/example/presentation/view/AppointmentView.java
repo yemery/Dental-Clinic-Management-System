@@ -56,7 +56,7 @@ public class AppointmentView {
         appointmentController.addAppointment(ap1);
         appointmentController.addAppointment(ap2);
         appointmentController.displayAppointment();
-        appointmentController.deleteAppointment(ap2);
+//        appointmentController.deleteAppointment(ap2);
         appointmentController.displayAppointment();
     }
 }
