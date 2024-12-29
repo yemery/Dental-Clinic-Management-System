@@ -12,6 +12,7 @@ public class ActController  {
 
     public void addNewAct(Act act) {
         actService.addAct(act);
+
     }
     public void displayAllActs(){
         actService.getActs().forEach(System.out::println);
