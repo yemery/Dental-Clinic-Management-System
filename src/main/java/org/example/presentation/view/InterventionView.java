@@ -6,6 +6,8 @@ import org.example.model.enums.ActCategory;
 import org.example.presentation.controller.ActController;
 import org.example.presentation.controller.InterventionController;
 
+import java.util.List;
+
 public class InterventionView {
     public static void main(String[] args) {
         InterventionController interventionC = new InterventionController();
@@ -20,8 +22,12 @@ public class InterventionView {
 
         Intervention i1 = new Intervention(900);
         Intervention i2 = new Intervention(90);
-        i1.setActs(act);
-        i2.setActs(act);
+        List<Act> actList = List.of(
+                new Act("Act1", 2000, ActCategory.CARE_OF_CAVITIES),
+                new Act("Act2", 3000, ActCategory.DENTAL_PROSTHESES)
+        );
+        i1.setActs(actList);
+        i2.setActs(actList);
 //        i1.setActs(a1);
 //        i1.setActs(a2);
 //        i1.setActs(a3);
@@ -36,7 +42,7 @@ public class InterventionView {
         interventionC.addIntervention(i2);
 
 
-//        interventionC.displayAllInterventions();
+        interventionC.displayAllInterventions();
 //        System.out.println("******************************");
 //
 //        i1.setPrice(800);

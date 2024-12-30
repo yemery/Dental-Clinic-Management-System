@@ -19,15 +19,15 @@ public class ConsultationView {
 
         Intervention i1 = new Intervention(900);
         Intervention i2 = new Intervention(90);
-        i1.setActs(a1);
-        i1.setActs(a2);
-        i1.setActs(a3);
-        i1.setActs(a4);
-
-        i2.setActs(a1);
-        i2.setActs(a2);
-        i2.setActs(a3);
-        i2.setActs(a4);
+//        i1.setActs(a1);
+//        i1.setActs(a2);
+//        i1.setActs(a3);
+//        i1.setActs(a4);
+//
+//        i2.setActs(a1);
+//        i2.setActs(a2);
+//        i2.setActs(a3);
+//        i2.setActs(a4);
 
 
         Prescription p1 = new Prescription();

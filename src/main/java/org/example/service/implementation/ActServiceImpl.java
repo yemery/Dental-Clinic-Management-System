@@ -20,7 +20,7 @@ public class ActServiceImpl implements ActService {
             if (intervention.getActs().contains(act)) {
 //                intervention.removeAct(act);
                 interventionService.removeAct(intervention, act);
-                interventionService.addAct(intervention, act);
+//                interventionService.addAct(intervention, act);
                 return true;
             }
         }

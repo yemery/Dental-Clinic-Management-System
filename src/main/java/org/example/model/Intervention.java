@@ -1,5 +1,8 @@
 package org.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -11,6 +14,8 @@ public class Intervention {
 
     public Intervention()  {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
+        this.acts = new ArrayList<>();
+
     }
 
     public Intervention(double price) {
@@ -35,9 +40,22 @@ public class Intervention {
         return acts;
     }
 
-    public void setActs(Act act) {
-            this.acts.add(act);
+
+
+    public void setActs(List<Act> acts) {
+        if (this.acts == null) {
+            this.acts = new ArrayList<>();
+        }
+        this.acts.addAll(acts);
     }
+
+//    @JsonIgnore
+//    public void setActs(Act act) {
+//        this.acts.add(act);
+//    }
+
+
+
 
 
     public  boolean removeAct(Act act) {

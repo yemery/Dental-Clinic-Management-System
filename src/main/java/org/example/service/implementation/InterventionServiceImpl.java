@@ -11,7 +11,7 @@ import java.util.List;
 public class InterventionServiceImpl implements InterventionService {
 
 //    public final IDao<Intervention, Long> dao = new InterventionDaoImp();
-    public final IDao<Intervention, Long> dao = new JsonDaoImpl<>("Intervention.json" , Intervention.class);
+    public final IDao<Intervention, Long> dao = new JsonDaoImpl<>("Interventions.json" , Intervention.class);
 
 
     @Override
@@ -74,7 +74,7 @@ public class InterventionServiceImpl implements InterventionService {
     @Override
     public boolean addAct(Intervention intervention, Act act) {
         try{
-            intervention.setActs(act);
+//            intervention.setActs(act);
             return true;
         } catch (Exception e) {
 
