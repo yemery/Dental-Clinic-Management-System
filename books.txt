@@ -1,4 +1,0 @@
-2,Clean Code,Robert C. Martin,A handbook of agile software craftsmanship.
-3,Clean Code,Robert C. Martin,A handbook of agile software craftsmanship.
-2,Clean Code,Robert C. Martin,A handbook of agile software craftsmanship.
-3,Clean Code,Robert C. Martin,A handbook of agile software craftsmanship.
