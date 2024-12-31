@@ -20,10 +20,10 @@ public class ActView {
 //        actC.deleteAct(123333L);
 
 
-//        Act act = actC.getAct(10L);
+//        Act act = actC.getAct(17L);
 //        act.setBasePrice(2);
 //        actC.updateAct(act);
-        actC.deleteAct(10L);
+            actC.deleteAct(17L);
 //        System.out.println(actC.getAct(1735L));
 //        actC.displayAllActs();
 

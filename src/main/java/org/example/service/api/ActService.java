@@ -11,10 +11,7 @@ public interface ActService {
     void deleteAct(Long id);
     List<Act> getActs();
     boolean isExists(Act act);
-//    dao.getAllintervetions
-//    -interventions
-//        act
-//            id act
-//                    remove add
+    boolean deleteActInIntervention(Act act);
+
 
 }
