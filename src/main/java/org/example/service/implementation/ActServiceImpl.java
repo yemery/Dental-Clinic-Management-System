@@ -44,6 +44,54 @@ public class ActServiceImpl implements ActService {
 //        System.out.println(interventions);
 //        return updated;
 //    }
+//    public boolean isExists(Act act1) {
+//        //    1. target intervention
+////        2. update act
+////        3. update intervention
+//        boolean updated = false;
+//
+//        // Get all interventions
+//        List<Intervention> interventions = interventionService.getAllInterventions();
+//        // 1. search fr interventions containing act (working)
+//        // 2. update act in its file (working)
+//        // 3. updating the intervention acts list
+//            // a. we should update the methods add and remove to the list
+//        for (Intervention intervention : interventions) {
+//            // Check if the intervention contains the act
+//            if (intervention.getActs().contains(act1)) {
+//                System.out.println("Found in the intervention " + intervention.getId() + " * " + act1.getId());
+//
+//                // Find the existing act in the intervention
+//                Act oldRecord = intervention.getActs()
+//                        .stream()
+//                        .filter(act -> act.getId().equals(act1.getId()))
+//                        .findFirst()
+//                        .orElse(null);
+//
+//                if (oldRecord != null) {
+//                    // Attempt to remove the old act
+//                    if (interventionService.removeAct(intervention, oldRecord)) {
+//                        System.out.println("Successfully removed old act.");
+//
+//                        // Add the new act to the intervention
+////                        if (interventionService.addAct(intervention, act1)) {
+////                            System.out.println("Successfully added new act.");
+////                            updated = true;
+////                        } else {
+////                            System.out.println("Failed to add the new act.");
+////                        }
+//                    } else {
+//                        System.out.println("Failed to remove the old act.");
+//                    }
+//                } else {
+//                    System.out.println("No matching old act found.");
+//                }
+//            }
+//        }
+//        System.out.println(interventions);
+//        return updated;
+//    }
+
     public boolean isExists(Act act1) {
         boolean updated = false;
 
@@ -54,38 +102,19 @@ public class ActServiceImpl implements ActService {
             // Check if the intervention contains the act
             if (intervention.getActs().contains(act1)) {
                 System.out.println("Found in the intervention " + intervention.getId() + " * " + act1.getId());
+                System.out.println(intervention.getActs().size());
+                intervention.getActs().remove(act1);
+                System.out.println(intervention.getActs().size());
 
-                // Find the existing act in the intervention
-                Act oldRecord = intervention.getActs()
-                        .stream()
-                        .filter(act -> act.getId().equals(act1.getId()))
-                        .findFirs t()
-                        .orElse(null);
-
-                if (oldRecord != null) {
-                    // Attempt to remove the old act
-                    if (interventionService.removeAct(intervention, oldRecord)) {
-                        System.out.println("Successfully removed old act.");
-
-                        // Add the new act to the intervention
-                        if (interventionService.addAct(intervention, act1)) {
-                            System.out.println("Successfully added new act.");
-                            updated = true;
-                        } else {
-                            System.out.println("Failed to add the new act.");
-                        }
-                    } else {
-                        System.out.println("Failed to remove the old act.");
-                    }
-                } else {
-                    System.out.println("No matching old act found.");
-                }
+                System.out.println(interventions);
+                intervention.getActs().add(act1);
+                System.out.println(interventions);
+                System.out.println(intervention.getActs().size());
             }
         }
-        System.out.println(interventions);
+
         return updated;
     }
-
     @Override
     public Act addAct(Act act) {
         try{
@@ -120,6 +149,7 @@ public class ActServiceImpl implements ActService {
 
             System.out.println("Act Updated Successfully");
             // call a method inside the intervention to check where the act is and update it
+
             return act ;
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -149,5 +179,7 @@ public class ActServiceImpl implements ActService {
             throw new RuntimeException(e);
         }
     }
+
+
 
 }

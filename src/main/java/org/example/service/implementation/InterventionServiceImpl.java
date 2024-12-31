@@ -66,10 +66,14 @@ public class InterventionServiceImpl implements InterventionService {
 //            interventionActList.add(act);
 //            intervention.setActs(interventionActList);
             Intervention i = dao.getById(intervention.getId());
+
             List<Act> interventionActList=  i.getActs();
+            System.out.println(interventionActList.size());
             interventionActList.remove(act);
+            System.out.println(interventionActList.size());
             i.setActs(interventionActList);
 
+            this.updateIntervention(intervention);
 
             //
             System.out.println(i);
@@ -98,4 +102,5 @@ public class InterventionServiceImpl implements InterventionService {
             throw new RuntimeException(e);
         }
     }
+
 }
