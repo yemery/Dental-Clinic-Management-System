@@ -110,8 +110,13 @@ public class ActServiceImpl implements ActService {
                 intervention.getActs().add(act1);
                 System.out.println(interventions);
                 System.out.println(intervention.getActs().size());
+
+                interventionService.updateIntervention(intervention);
             }
         }
+//        for (Intervention intervention : interventions) {
+//            interventionService.updateIntervention(intervention);
+//        }
 
         return updated;
     }

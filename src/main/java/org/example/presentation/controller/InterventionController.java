@@ -29,6 +29,10 @@ public boolean removeAct(Intervention intervention, Act act){
     return interventionService.removeAct(intervention, act);
 }
 
+public Intervention getIntervention(Long ID){
+    return interventionService.getIntervention(ID);
+}
+
 }
 
 

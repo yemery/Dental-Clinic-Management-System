@@ -59,6 +59,7 @@ public class JsonDaoImpl<T, ID> implements IDao<T, ID> {
     }
 
     public void delete(ID ID) throws Exception {
+        System.out.println("Deleting ID: " + ID);
         List<T> currentData = getAll();
         T findObjectByID=getById(ID);
         currentData.remove(findObjectByID);
