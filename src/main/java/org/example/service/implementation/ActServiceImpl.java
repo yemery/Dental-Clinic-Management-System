@@ -14,17 +14,76 @@ public class ActServiceImpl implements ActService {
     private final InterventionService interventionService = new InterventionServiceImpl();
 
     @Override
-    public boolean isExists(Act act) {
-        interventionService.getAllInterventions();
-        for (Intervention intervention : interventionService.getAllInterventions()) {
-            if (intervention.getActs().contains(act)) {
-//                intervention.removeAct(act);
-                interventionService.removeAct(intervention, act);
-//                interventionService.addAct(intervention, act);
-                return true;
+//    public boolean isExists(Act act1) {
+//        boolean updated = false;
+//        List<Intervention> interventions = interventionService.getAllInterventions();
+//        for (Intervention intervention : interventions) {
+//            if (intervention.getActs().contains(act1)) {
+//
+//                // intervention.removeAct(act);
+//                System.out.println("found in the intervention" + intervention.getId() + " * " +act1.getId() );
+////                    System.out.println(intervention.getActs().size());
+//                Act oldRecord = intervention.getActs().stream().filter(act -> act.getId().equals(act1.getId())).findFirst().get();
+//
+////                System.out.println(oldRecord);
+////                System.out.println("new one");
+////                System.out.println(act1);
+//                if (interventionService.removeAct(intervention, oldRecord)){
+//                    interventionService.addAct(intervention, act1);
+//                    System.out.println("Removed Secc And Added Secc");
+////                    System.out.println(intervention.getActs().size());
+//                }else{
+//                    System.out.println("Failed to remove ");
+//                }
+////                System.out.println(intervention);
+//
+//            }
+//        }
+//
+//
+//        System.out.println(interventions);
+//        return updated;
+//    }
+    public boolean isExists(Act act1) {
+        boolean updated = false;
+
+        // Get all interventions
+        List<Intervention> interventions = interventionService.getAllInterventions();
+
+        for (Intervention intervention : interventions) {
+            // Check if the intervention contains the act
+            if (intervention.getActs().contains(act1)) {
+                System.out.println("Found in the intervention " + intervention.getId() + " * " + act1.getId());
+
+                // Find the existing act in the intervention
+                Act oldRecord = intervention.getActs()
+                        .stream()
+                        .filter(act -> act.getId().equals(act1.getId()))
+                        .findFirs t()
+                        .orElse(null);
+
+                if (oldRecord != null) {
+                    // Attempt to remove the old act
+                    if (interventionService.removeAct(intervention, oldRecord)) {
+                        System.out.println("Successfully removed old act.");
+
+                        // Add the new act to the intervention
+                        if (interventionService.addAct(intervention, act1)) {
+                            System.out.println("Successfully added new act.");
+                            updated = true;
+                        } else {
+                            System.out.println("Failed to add the new act.");
+                        }
+                    } else {
+                        System.out.println("Failed to remove the old act.");
+                    }
+                } else {
+                    System.out.println("No matching old act found.");
+                }
             }
         }
-        return false;
+        System.out.println(interventions);
+        return updated;
     }
 
     @Override
@@ -54,6 +113,7 @@ public class ActServiceImpl implements ActService {
         try{
             dao.update(act);
             if (this.isExists(act)) {
+
                 System.out.println("This Act is Found and Updated in Intervention db");
             }
             System.out.println("This Act is Found and Updated in Intervention db");

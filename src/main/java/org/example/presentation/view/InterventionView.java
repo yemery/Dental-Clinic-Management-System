@@ -13,21 +13,22 @@ public class InterventionView {
         InterventionController interventionC = new InterventionController();
 
         ActController actC = new ActController();
-        Act act = actC.getAct(123333L);
+        Act act1 = actC.getAct(1735L);
+        Act act2 = actC.getAct(123333L);
 
 //        Act a1 = new Act("Act1",2000, ActCategory.CARE_OF_CAVITIES);
 //        Act a2 = new Act("Act2",2000, ActCategory.DENTAL_PROSTHESES);
 //        Act a3 = new Act("Act3",2000, ActCategory.IMPLANTOLOGY);
 //        Act a4 = new Act("Act4",2000, ActCategory.DIAGNOSIS);
 
+
         Intervention i1 = new Intervention(900);
         Intervention i2 = new Intervention(90);
         List<Act> actList = List.of(
-                new Act("Act1", 2000, ActCategory.CARE_OF_CAVITIES),
-                new Act("Act2", 3000, ActCategory.DENTAL_PROSTHESES)
+               act1
         );
         i1.setActs(actList);
-        i2.setActs(actList);
+//        i2.setActs(actList);
 //        i1.setActs(a1);
 //        i1.setActs(a2);
 //        i1.setActs(a3);
@@ -39,10 +40,10 @@ public class InterventionView {
 //        i2.setActs(a4);
 
         interventionC.addIntervention(i1);
-        interventionC.addIntervention(i2);
+//        interventionC.addIntervention(i2);
 
 
-        interventionC.displayAllInterventions();
+//        interventionC.displayAllInterventions();
 //        System.out.println("******************************");
 //
 //        i1.setPrice(800);
