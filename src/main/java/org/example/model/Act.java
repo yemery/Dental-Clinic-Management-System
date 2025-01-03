@@ -1,5 +1,7 @@
 package org.example.model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.model.enums.ActCategory;
 
 import java.util.Objects;
@@ -58,13 +60,23 @@ public class Act {
         return Objects.equals(id, act.id) || Objects.equals(name, act.name); // we donno where and how to use it (might change the equals criteria)
     }
 
-    @Override
-    public String toString() {
-        return "Act{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", basePrice=" + basePrice +
-                ", category=" + category +
-                '}';
+//    @Override
+//    public String toString() {
+//        return "Act{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", basePrice=" + basePrice +
+//                ", category=" + category +
+//                '}';
+//    }
+@Override
+public String toString() {
+    ObjectMapper mapper = new ObjectMapper();
+    try {
+        return mapper.writeValueAsString(this);
+    } catch (JsonProcessingException e) {
+        e.printStackTrace();
+        return super.toString(); // fallback
     }
+}
 }

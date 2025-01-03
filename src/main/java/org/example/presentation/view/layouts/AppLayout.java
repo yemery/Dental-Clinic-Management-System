@@ -1,17 +1,27 @@
 package org.example.presentation.view.layouts;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.model.Act;
+import org.example.presentation.controller.ActController;
 import org.example.presentation.view.components.molecules.NavigationBar;
-import org.example.presentation.view.frames.Appointments;
+import org.example.presentation.view.frames.Acts.Acts;
+import org.example.presentation.view.frames.Appoitments.Appointments;
 import org.example.presentation.view.frames.Dashboard;
 import org.example.presentation.view.frames.Frame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AppLayout extends Frame {
     private NavigationBar navbar;
     private JPanel contentPanel; // content to be shown (pages)
+    private Object[][] data;
+
 
     public AppLayout(String... tabs) {
         navbar = new NavigationBar(tabs);
@@ -54,9 +64,21 @@ public class AppLayout extends Frame {
         });
 
         navbar.addTabListener("Acts", e -> {
-            JPanel actsPanel = new JPanel();
-            actsPanel.add(new JLabel("Acts"));
-            setContent(actsPanel);
+            ActController actController = new ActController();
+            List<Act> acts = actController.displayAllActs();
+            ObjectMapper mapper = new ObjectMapper();
+            List<List<? extends Serializable>> result = acts.stream()
+                    .map(act -> List.of(act.getId(), act.getName(), act.getBasePrice(), act.getCategory()))
+                    .collect(Collectors.toList());
+
+            // If you want a 2D array:
+            Object[][] array = result.stream()
+                    .map(l -> l.toArray(new Object[0]))
+                    .toArray(Object[][]::new);
+
+            System.out.println(Arrays.deepToString(array));
+
+            setContent(new Acts(array));
         });
 
         navbar.addTabListener("Consultations", e -> {
@@ -72,7 +94,9 @@ public class AppLayout extends Frame {
         contentPanel.revalidate();
         contentPanel.repaint();
     }
-
+    public NavigationBar getNavbar() {
+        return navbar;
+    }
     public static void main(String[] args) {
         new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts");
     }

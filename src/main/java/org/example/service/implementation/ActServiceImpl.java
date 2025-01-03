@@ -14,7 +14,6 @@ public class ActServiceImpl implements ActService {
     private final InterventionService interventionService = new InterventionServiceImpl();
 
     @Override
-
     public boolean isExists(Act act1) {
         boolean updated = false;
 

@@ -48,7 +48,7 @@ public class PatientDaoImpl implements IDao<Patient,Long> {
         existingPatient.setRegistration(patient.getRegistration());
         existingPatient.setCIN(patient.getCIN());
         existingPatient.setFirstName(patient.getFirstName());
-        existingPatient.setMedicalCase(patient.getMedicalCase());
+//        existingPatient.setMedicalCase(patient.getMedicalCase());
         return existingPatient;
 
 

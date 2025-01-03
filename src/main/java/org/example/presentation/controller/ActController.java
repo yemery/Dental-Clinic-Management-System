@@ -14,8 +14,9 @@ public class ActController  {
         actService.addAct(act);
 
     }
-    public void displayAllActs(){
-        actService.getActs().forEach(System.out::println);
+    public List<Act> displayAllActs(){
+
+        return actService.getActs();
     }
     public void updateAct(Act act) {
         actService.updateAct(act);

@@ -10,7 +10,7 @@ public class Patient extends Person {
     private String registration;
     private Mutuelle mutuelle;
     private String job;
-    private MedicalCase medicalCase;
+//    private MedicalCase medicalCase;
 
     public Patient(String registration, Mutuelle mutuelle, String job) {
         this.registration = registration;
@@ -56,13 +56,13 @@ public class Patient extends Person {
         this.job = job;
     }
 
-    public MedicalCase getMedicalCase() {
-        return medicalCase;
-    }
-
-    public void setMedicalCase(MedicalCase medicalCase) {
-        this.medicalCase = medicalCase;
-    }
+//    public MedicalCase getMedicalCase() {
+//        return medicalCase;
+//    }
+//
+//    public void setMedicalCase(MedicalCase medicalCase) {
+//        this.medicalCase = medicalCase;
+//    }
 
     @Override
     public String getType() {
@@ -74,7 +74,7 @@ public class Patient extends Person {
         return "Patient{" + super.toString()
                 + mutuelle +
                 ", job='" + job + '\'' +
-                ", medicalCase=" + medicalCase +
+//                ", medicalCase=" + medicalCase +
                 '}';
     }
 }

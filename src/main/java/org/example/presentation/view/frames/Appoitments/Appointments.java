@@ -1,4 +1,4 @@
-package org.example.presentation.view.frames;
+package org.example.presentation.view.frames.Appoitments;
 
 import org.example.presentation.view.components.atoms.Button;
 import org.example.presentation.view.components.molecules.Table;

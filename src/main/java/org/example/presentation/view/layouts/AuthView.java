@@ -20,15 +20,15 @@ public class AuthView extends Frame {
         gbc.gridy = GridBagConstraints.RELATIVE;
         gbc.insets = new Insets(10, 0, 10, 0); // gap
 
-        login = new Input("Login");
-        pwd = new Input("Password");
+        login = new Input<>("Login",String.class);
+        pwd = new Input<>("Password",String.class);
         this.add(login, gbc);
         this.add(pwd, gbc);
 
         JButton submitBtn = new Button("Submit");
         submitBtn.setPreferredSize(new Dimension(300, 40));
         submitBtn.addActionListener(e -> {
-            System.out.println(login.getText() + ":" + pwd.getText());
+            System.out.println(login.getValue() + ":" + pwd.getValue());
             // add auth controller logic later
         });
         this.add(submitBtn, gbc);
