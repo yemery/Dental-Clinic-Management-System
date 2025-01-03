@@ -6,19 +6,20 @@ import java.awt.event.*;
 
 public class NavigationBar extends JPanel {
     private JButton selectedButton = null;
-    private Color defaultBgColor = new Color(240, 240, 240);
-    private Color selectedBgColor = new Color(200, 200, 255);
-    private Color hoverBgColor = new Color(220, 220, 255);
+    private Color defaultBgColor = new Color(0x3730a3);
+    private Color selectedBgColor = new Color(143, 143, 246);
+    private Color hoverBgColor = new Color(0x9891F1);
 
-    public NavigationBar() {
+    public NavigationBar(String... tabs) {
         setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
-        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        setBackground(Color.WHITE);
+        setBorder(BorderFactory.createEmptyBorder(-10, -10, -10, -10));
+        setBackground(new Color(0x3730a3));
 
-        String[] tabs = {"Dashboard", "Patients", "Appointments", "Acts", "Consultations"};
+//        String[] tabs = {"Dashboard", "Patients", "Appointments", "Acts", "Consultations"};
 
         for (String tabName : tabs) {
             JButton tabButton = createTabButton(tabName);
+            tabButton.setForeground(Color.WHITE);
             add(tabButton);
 
             // Set Dashboard as default selected
@@ -35,7 +36,7 @@ public class NavigationBar extends JPanel {
         button.setFont(new Font("Arial", Font.PLAIN, 14));
         button.setFocusPainted(false);
         button.setBorderPainted(false);
-        button.setBackground(defaultBgColor);
+        button.setBackground(new Color(0x3730a3));
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         button.addMouseListener(new MouseAdapter() {

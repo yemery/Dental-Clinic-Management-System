@@ -12,8 +12,8 @@ public class AppLayout extends Frame {
     private NavigationBar navbar;
     private JPanel contentPanel; // content to be shown (pages)
 
-    public AppLayout() {
-        navbar = new NavigationBar();
+    public AppLayout(String... tabs) {
+        navbar = new NavigationBar(tabs);
         contentPanel = new JPanel();
 
         contentPanel.setLayout(new BorderLayout());
@@ -30,9 +30,14 @@ public class AppLayout extends Frame {
     private void setupNavigation() {
         // kinda routing logic
         navbar.addTabListener("Dashboard", e -> {
-//            JPanel dashboardPanel = new JPanel();  // to replace later with the dashboard panel (page)
-//            dashboardPanel.add(new JLabel("Dashboard"));
-            setContent(new Dashboard());
+            // get appointments (+user full name) and pass it to the dashboard
+            Object[][] data = {
+                    {"John Doe", "30", "New York", "r"},
+                    {"Jane Smith", "25", "Los Angeles", "r"},
+                    {"Bob Johnson", "35", "Chicago", "r"}
+            };
+
+            setContent(new Dashboard(data));
         });
 
         navbar.addTabListener("Patients", e -> {
@@ -68,6 +73,6 @@ public class AppLayout extends Frame {
     }
 
     public static void main(String[] args) {
-        new AppLayout();
+        new AppLayout("Dashboard", "Patients", "Appointments", "Consultations","Acts");
     }
 }
