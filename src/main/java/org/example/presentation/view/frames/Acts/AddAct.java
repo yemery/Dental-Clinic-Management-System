@@ -10,6 +10,8 @@ import org.example.presentation.view.layouts.AppLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class AddAct extends Frame {
     private Input name = new Input("Name", String.class);
@@ -17,8 +19,25 @@ public class AddAct extends Frame {
     ActCategory[] categories = ActCategory.values();
     private Input category = new Input<>("Category Type", categories);
 
-    public AddAct() {
+    private AppLayout appLayout;
+
+    public AddAct(AppLayout appLayout) {
         super();
+        this.appLayout = appLayout;
+
+        // window listener to detect closing
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                for (Component comp : appLayout.getNavbar().getComponents()) {
+                    if (comp instanceof JButton && ((JButton) comp).getText().equals("Acts")) {
+                        ((JButton) comp).doClick();
+                        break;
+                    }
+                }
+            }
+        });
+
         // Set layout
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -31,7 +50,7 @@ public class AddAct extends Frame {
         this.add(basePrice, gbc);
         this.add(category, gbc);
 
-        // Add submit button
+
         Button submitBtn = new Button("Submit");
         submitBtn.setPreferredSize(new Dimension(300, 40));
         submitBtn.addActionListener(e -> {
@@ -43,8 +62,7 @@ public class AddAct extends Frame {
                     (ActCategory) category.getValue()
             ));
 
-            // Close the AddAct frame
-            dispose();
+            dispose(); // close the frame
         });
 
         this.add(submitBtn, gbc);

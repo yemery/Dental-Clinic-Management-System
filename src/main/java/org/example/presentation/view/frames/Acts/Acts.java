@@ -2,6 +2,7 @@ package org.example.presentation.view.frames.Acts;
 
 import org.example.presentation.view.components.atoms.Button;
 import org.example.presentation.view.components.molecules.Table;
+import org.example.presentation.view.layouts.AppLayout;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,14 +14,18 @@ public class Acts extends JPanel{
     Button addActBtn;
     Table actsTable;
 
-    public Acts(Object[][] data){
+    private AppLayout appLayout;
+
+    public Acts(Object[][] data, AppLayout appLayout){
         super();
+        this.appLayout = appLayout;
+
         this.setLayout(new BorderLayout());
         this.container = new JPanel();
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 
         this.addActBtn = new Button("Add New Act");
-        addActBtn.addActionListener(e -> new AddAct());
+        addActBtn.addActionListener(e -> new AddAct(appLayout));
         this.add(this.addActBtn);
 
         this.addContainer = new JPanel() {
@@ -34,9 +39,6 @@ public class Acts extends JPanel{
 
         this.addContainer.add(this.addActBtn, BorderLayout.WEST);
         this.container.add(this.addContainer);
-
-
-
 
         JPanel tableContainer = new JPanel(new BorderLayout());
         tableContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
