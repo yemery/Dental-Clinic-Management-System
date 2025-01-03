@@ -21,7 +21,7 @@ public class Dashboard extends JPanel {
         mainContainer = new JPanel();
         mainContainer.setLayout(new BoxLayout(mainContainer, BoxLayout.Y_AXIS));
 
-        JPanel statsContainer = new JPanel() {
+        this.statsContainer = new JPanel() {
             @Override
             public Dimension getPreferredSize() {
                 Dimension dim = super.getPreferredSize();

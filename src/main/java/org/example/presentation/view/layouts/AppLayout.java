@@ -2,6 +2,7 @@ package org.example.presentation.view.layouts;
 
 
 import org.example.presentation.view.components.molecules.NavigationBar;
+import org.example.presentation.view.frames.Appointments;
 import org.example.presentation.view.frames.Dashboard;
 import org.example.presentation.view.frames.Frame;
 
@@ -47,9 +48,9 @@ public class AppLayout extends Frame {
         });
 
         navbar.addTabListener("Appointments", e -> {
-            JPanel appointmentsPanel = new JPanel();
-            appointmentsPanel.add(new JLabel("Appointments"));
-            setContent(appointmentsPanel);
+//            JPanel appointmentsPanel = new JPanel();
+//            appointmentsPanel.add(new JLabel("Appointments"));
+            setContent(new Appointments());
         });
 
         navbar.addTabListener("Acts", e -> {
@@ -73,6 +74,6 @@ public class AppLayout extends Frame {
     }
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Patients", "Appointments", "Consultations","Acts");
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts");
     }
 }
