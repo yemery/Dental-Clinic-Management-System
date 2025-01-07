@@ -27,26 +27,26 @@ public class InterventionView {
 
         Intervention i1 = new Intervention(900);
         Intervention i2 = new Intervention(90);
-        List<Act> actList1 = List.of(
-               a1,a2
+        List<Long> actList1 = List.of(
+               a1.getId(),a2.getId()
         );
-        List<Act> actList2 = List.of(
-               a3,a4
+        List<Long> actList2 = List.of(
+               a3.getId(),a4.getId()
         );
         i1.setActs(actList1);
         i2.setActs(actList2);
 
         interventionC.addIntervention(i1);
         interventionC.addIntervention(i2);
+//        Intervention i1 = interventionC.getIntervention(10L);
 //        interventionC.deleteIntervention(i1.getId());
-
-
-//        interventionC.displayAllInterventions();
-//        System.out.println("******************************");
-//
-//        Intervention i1 = interventionC.getIntervention(1L);
 //        i1.setPrice(800);
 //        interventionC.updateIntervention(i1);
+
+        interventionC.displayAllInterventions();
+//        System.out.println("******************************");
+//
+
 
 //        System.out.println(i1.getActs().size());
 //        interventionC.removeAct(i1,a1);

@@ -8,10 +8,7 @@ import org.example.presentation.view.components.molecules.Input;
 import org.example.presentation.view.frames.Frame;
 import org.example.presentation.view.layouts.AppLayout;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class EditAct extends Frame {
 
@@ -33,21 +30,6 @@ public class EditAct extends Frame {
         this.basePrice.setValue(editableAct.getBasePrice());
         this.category.setValue(editableAct.getCategory());
 
-
-
-    // window listener to detect closing
-    addWindowListener(new WindowAdapter() {
-        @Override
-        public void windowClosed(WindowEvent e) {
-            for (Component comp : appLayout.getNavbar().getComponents()) {
-                if (comp instanceof JButton && ((JButton) comp).getText().equals("Acts")) {
-                    ((JButton) comp).doClick();
-                    break;
-                }
-            }
-        }
-    });
-
         // Set layout
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -61,7 +43,7 @@ public class EditAct extends Frame {
         this.add(category, gbc);
 
 
-        org.example.presentation.view.components.atoms.Button submitBtn = new Button("Submit");
+        Button submitBtn = new Button("Submit");
         submitBtn.setPreferredSize(new Dimension(300, 40));
         submitBtn.addActionListener(e -> {
             editableAct.setName((String) name.getValue());
@@ -69,7 +51,7 @@ public class EditAct extends Frame {
             editableAct.setCategory((ActCategory) category.getValue());
 
             actController.updateAct(editableAct);
-
+            appLayout.getNavbar().simulateTabClick("Acts");
             dispose(); // close the frame
         });
         this.add(submitBtn, gbc);

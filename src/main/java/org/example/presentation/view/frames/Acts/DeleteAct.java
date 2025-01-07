@@ -8,6 +8,6 @@ public class DeleteAct {
         ActController actController = new ActController();
         actController.deleteAct(id);
 
-        // need to trigger the tab click to fetch updated data from file
+        appLayout.getNavbar().simulateTabClick("Acts");
     }
 }

@@ -10,8 +10,8 @@ public interface ActService {
     Act updateAct(Act act);
     void deleteAct(Long id);
     List<Act> getActs();
-    boolean isExists(Act act);
-    boolean deleteActInIntervention(Act act);
+//    boolean isExists(Act act);
+    boolean deleteActInIntervention(Long ID);
 
 
 }

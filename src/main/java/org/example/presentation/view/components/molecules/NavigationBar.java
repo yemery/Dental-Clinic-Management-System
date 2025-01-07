@@ -3,6 +3,7 @@ package org.example.presentation.view.components.molecules;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 
 public class NavigationBar extends JPanel {
     private JButton selectedButton = null;
@@ -66,11 +67,24 @@ public class NavigationBar extends JPanel {
         return button;
     }
 
-    // Method to add action listeners from outside
     public void addTabListener(String tabName, ActionListener listener) {
-        for (Component comp : getComponents()) {
-            if (comp instanceof JButton && ((JButton) comp).getText().equals(tabName)) {
-                ((JButton) comp).addActionListener(listener);
+        Arrays.stream(getComponents())
+                .filter(comp -> comp instanceof JButton && tabName.equals(((JButton) comp).getText()))
+                .map(comp -> (JButton) comp)
+                .forEach(button -> button.addActionListener(listener));
+    }
+    public void simulateTabClick(String tabName) {
+        // Find the tab button by name and simulate a click
+        for (Component component : this.getComponents()) {
+            if (component instanceof JButton) {
+                JButton button = (JButton) component;
+                if (button.getText().equals(tabName)) {
+                    // Simulate click
+                    for (ActionListener listener : button.getActionListeners()) {
+                        listener.actionPerformed(new ActionEvent(button, ActionEvent.ACTION_PERFORMED, null));
+                    }
+                    break;
+                }
             }
         }
     }

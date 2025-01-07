@@ -60,26 +60,21 @@ public class InterventionServiceImpl implements InterventionService {
     }
 
     @Override
-    public boolean removeAct(Intervention intervention, Act act) {
+    public boolean removeAct(Intervention intervention, Long actId) {
         try{
-//            List<Act> interventionActList=  intervention.getActs();
-//            interventionActList.add(act);
-//            intervention.setActs(interventionActList);
+
             Intervention i = dao.getById(intervention.getId());
 
-            List<Act> interventionActList=  i.getActs();
+            List<Long> interventionActList=  i.getActs();
             System.out.println(interventionActList.size());
-            interventionActList.remove(act);
+            interventionActList.remove(actId);
             System.out.println(interventionActList.size());
             i.setActs(interventionActList);
 
             this.updateIntervention(intervention);
 
-            //
             System.out.println(i);
-            // this.updateIntervention(i);
 
-//            intervention.removeAct(act);
             return true;
         } catch (Exception e) {
 
@@ -89,10 +84,10 @@ public class InterventionServiceImpl implements InterventionService {
     }
 
     @Override
-    public boolean addAct(Intervention intervention, Act act) {
+    public boolean addAct(Intervention intervention, Long actId) {
         try{
-            List<Act> interventionActList=  intervention.getActs();
-            interventionActList.add(act);
+            List<Long> interventionActList=  intervention.getActs();
+            interventionActList.add(actId);
             intervention.setActs(interventionActList);
 
             System.out.println(getAllInterventions().size());
