@@ -4,10 +4,12 @@ import org.example.model.Intervention;
 import org.example.service.api.InterventionService;
 import org.example.service.implementation.InterventionServiceImpl;
 
+import java.util.List;
+
 public class InterventionController  {
 private final InterventionService interventionService = new InterventionServiceImpl();
-public void displayAllInterventions(){
-    interventionService.getAllInterventions().forEach(System.out::println);
+public List<Intervention> displayAllInterventions(){
+    return interventionService.getAllInterventions();
 }
 
 public void addIntervention(Intervention intervention){

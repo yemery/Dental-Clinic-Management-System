@@ -3,15 +3,22 @@ package org.example.presentation.view.layouts;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.model.Act;
+import org.example.model.Intervention;
 import org.example.presentation.controller.ActController;
+import org.example.presentation.controller.InterventionController;
 import org.example.presentation.view.components.molecules.NavigationBar;
 import org.example.presentation.view.frames.Acts.Acts;
+import org.example.presentation.view.frames.Acts.AddAct;
 import org.example.presentation.view.frames.Appoitments.Appointments;
 import org.example.presentation.view.frames.Dashboard;
 import org.example.presentation.view.frames.Frame;
+import org.example.presentation.view.frames.Interventions.Interventions;
+import org.example.utils.ConvertArray;
+import org.example.utils.ConvertArray.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -59,20 +66,50 @@ public class AppLayout extends Frame {
         navbar.addTabListener("Appointments", e -> {
             setContent(new Appointments());
         });
+        navbar.addTabListener("Interventions", e -> {
+            InterventionController interventionC = new InterventionController();
+            List<Intervention> interventions = interventionC.displayAllInterventions();
+            Object[][] interventionsArray = ConvertArray.convertTo2DArray(
+                    interventions,
+                    intervention -> List.of(intervention.getId(),intervention.getPrice(), intervention.getActs().size()
 
+//                            ,intervention.getActs().stream()
+//                            .map(Object::toString)
+//                            .collect(Collectors.joining("; "))
+                    )
+            );
+//            System.out.println(interventionsArray);
+
+            String columns[] ={"ID", "Price", "Number of Acts", "Actions"};
+            setContent(new Interventions(
+                    interventionsArray,
+                    this,
+                    "Add new Intervention",
+                    columns,
+                    a -> System.out.println("add intervention")
+            ));
+        });
         navbar.addTabListener("Acts", e -> {
             ActController actController = new ActController();
             List<Act> acts = actController.displayAllActs();
+//
+//            List<List<? extends Serializable>> result = acts.stream()
+//                    .map(act -> List.of(act.getId(), act.getName(), act.getBasePrice(), act.getCategory()))
+//                    .collect(Collectors.toList());
+//
+//            Object[][] array = result.stream()
+//                    .map(l -> l.toArray(new Object[0]))
+//                    .toArray(Object[][]::new);
 
-            List<List<? extends Serializable>> result = acts.stream()
-                    .map(act -> List.of(act.getId(), act.getName(), act.getBasePrice(), act.getCategory()))
-                    .collect(Collectors.toList());
+            Object[][] actsArray = ConvertArray.convertTo2DArray(
+                    acts,
+                    act -> List.of(act.getId(),act.getName(),act.getBasePrice(),act.getCategory())
+            );
+            String columns[] ={"ID","Name", "Base price", "Category", "Actions"};
 
-            Object[][] array = result.stream()
-                    .map(l -> l.toArray(new Object[0]))
-                    .toArray(Object[][]::new);
-
-            setContent(new Acts(array, this));
+            setContent(new Acts(actsArray, this, "Add new Act", columns ,
+                    a -> new AddAct(this)
+                    ));
         });
 
         navbar.addTabListener("Consultations", e -> {
@@ -94,6 +131,6 @@ public class AppLayout extends Frame {
     }
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts");
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts","Interventions");
     }
 }

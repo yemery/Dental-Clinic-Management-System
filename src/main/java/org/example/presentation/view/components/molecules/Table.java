@@ -13,10 +13,6 @@ import java.awt.event.ActionListener;
 import java.util.function.Consumer;
 
 public class Table extends JTable {
-//    public Table(Object[][] data, String[] columnNames, Consumer<Long> editCallback, Consumer<Long> deleteCallback) {
-//        super(new DefaultTableModel(data, columnNames));
-//        setupTable(editCallback, deleteCallback);
-//    }
 
     public Table(Object[][] data, String[] columnNames, Consumer<Long> editCallback, Consumer<Long> deleteCallback) {
         super(new DefaultTableModel(data, columnNames));
@@ -88,66 +84,6 @@ public class Table extends JTable {
             return panel; // Return the panel as renderer
         }
     }
-
-    // Custom TableCellEditor to handle button clicks inside a JPanel
-//    static public class ButtonPanelEditor extends AbstractCellEditor implements TableCellEditor, ActionListener {
-//        private JPanel panel;
-//        private org.example.presentation.view.components.atoms.Button editBtn;
-//        private org.example.presentation.view.components.atoms.Button deleteBtn;
-//        private JTable table; // Reference to the JTable
-//        private Long ID; // ID from the row
-//
-//        public ButtonPanelEditor() {
-//            // Initialize the panel and buttons
-//            panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-//            editBtn = new org.example.presentation.view.components.atoms.Button("Edit");
-//            deleteBtn = new Button("Delete");
-//
-//            // Add action listeners to the buttons
-//            editBtn.addActionListener(this);
-//            deleteBtn.addActionListener(this);
-//
-//            // Add buttons to the panel
-//            panel.add(editBtn);
-//            panel.add(deleteBtn);
-//        }
-//
-//        @Override
-//        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-//            this.table = table; // Store reference to the JTable
-//
-//            // Retrieve ID value from the first column (assuming the ID is in column index 0)
-//            Object idValue = table.getValueAt(row, 0);
-//            if (idValue instanceof Long) {
-//                ID = (Long) idValue; // Parse as Long
-//            } else if (idValue instanceof Integer) {
-//                ID = ((Integer) idValue).longValue(); // If it's an Integer, cast it to Long
-//            } else {
-//                ID = null; // Fallback for invalid or null IDs
-//            }
-//
-//            return panel; // Return the interactive panel
-//        }
-//
-//        @Override
-//        public Object getCellEditorValue() {
-//            return null; // Not applicable for button actions
-//        }
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            if (e.getSource() == editBtn) {
-//                if (ID != null) {
-//                    System.out.println("Edit action triggered for ID: " + ID);
-//                }
-//            } else if (e.getSource() == deleteBtn) {
-//                if (ID != null) {
-//                    System.out.println("Delete action triggered for ID: " + ID);
-//                }
-//            }
-//            fireEditingStopped(); // Notify table that editing is finished
-//        }
-//    }
 
     public static class ButtonPanelEditor extends AbstractCellEditor implements TableCellEditor, ActionListener {
         private JPanel panel;
