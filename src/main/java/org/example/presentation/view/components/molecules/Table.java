@@ -14,9 +14,9 @@ import java.util.function.Consumer;
 
 public class Table extends JTable {
 
-    public Table(Object[][] data, String[] columnNames, Consumer<Long> editCallback, Consumer<Long> deleteCallback) {
+    public Table(Object[][] data, String[] columnNames, Consumer<Long> editCallback, Consumer<Long> deleteCallback, Consumer<Long> showCallback) {
         super(new DefaultTableModel(data, columnNames));
-        setupTable(editCallback, deleteCallback);
+        setupTable(editCallback, deleteCallback, showCallback );
     }
 
     //    public Table(Object[][] data, String[] columnNames, Consumer<Long> editCallback) {}
@@ -46,7 +46,7 @@ public class Table extends JTable {
         }
     }
 
-    private void setupTable(Consumer<Long> editCallback, Consumer<Long> deleteCallback) {
+    private void setupTable(Consumer<Long> editCallback, Consumer<Long> deleteCallback, Consumer<Long> showCallback) {
         this.setDefaultEditor(Object.class, null);
         this.setRowHeight(50);
         this.setShowGrid(true);
@@ -65,7 +65,7 @@ public class Table extends JTable {
         // Set custom renderer and editor for the "Actions" column
         if (this.getColumn("Actions") != null) {
             this.getColumn("Actions").setCellRenderer(new ButtonPanelRenderer());
-            this.getColumn("Actions").setCellEditor(new ButtonPanelEditor(editCallback, deleteCallback));
+            this.getColumn("Actions").setCellEditor(new ButtonPanelEditor(editCallback, deleteCallback, showCallback));
         }
     }
 
@@ -74,12 +74,14 @@ public class Table extends JTable {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            org.example.presentation.view.components.atoms.Button editBtn = new org.example.presentation.view.components.atoms.Button("Edit");
-            org.example.presentation.view.components.atoms.Button deleteBtn = new org.example.presentation.view.components.atoms.Button("Delete");
+            Button editBtn = new Button("Edit");
+            Button deleteBtn = new Button("Delete");
+            Button showBtn = new Button("Show");
 
             // Add buttons to the panel
             panel.add(editBtn);
             panel.add(deleteBtn);
+            panel.add(showBtn);
 
             return panel; // Return the panel as renderer
         }
@@ -89,40 +91,32 @@ public class Table extends JTable {
         private JPanel panel;
         private Button editBtn;
         private Button deleteBtn;
+        private Button showBtn;
         private JTable table;
         private Long ID;
 
         private Consumer<Long> editCallback; // Callback for edit action
         private Consumer<Long> deleteCallback; // Callback for delete action
+        private Consumer<Long> showCallback;
 
-        public ButtonPanelEditor() {
-            // Initialize the panel and buttons
-            panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            editBtn = new org.example.presentation.view.components.atoms.Button("Edit");
-            deleteBtn = new Button("Delete");
-
-            // Add action listeners to the buttons
-            editBtn.addActionListener(this);
-            deleteBtn.addActionListener(this);
-
-            // Add buttons to the panel
-            panel.add(editBtn);
-            panel.add(deleteBtn);
-        }
-
-        public ButtonPanelEditor(Consumer<Long> editCallback, Consumer<Long> deleteCallback) {
+        public ButtonPanelEditor(Consumer<Long> editCallback, Consumer<Long> deleteCallback, Consumer<Long> showCallback) {
             this.editCallback = editCallback;
             this.deleteCallback = deleteCallback;
+            this.showCallback = showCallback;
+
 
             panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             editBtn = new Button("Edit");
             deleteBtn = new Button("Delete");
+            showBtn = new Button("Show");
 
             editBtn.addActionListener(this);
             deleteBtn.addActionListener(this);
+            showBtn.addActionListener(this);
 
             panel.add(editBtn);
             panel.add(deleteBtn);
+            panel.add(showBtn);
         }
 
         @Override
@@ -162,6 +156,8 @@ public class Table extends JTable {
                         deleteCallback.accept(ID);
                     }
                 }
+            } else if (e.getSource() == showBtn) {
+                showCallback.accept(ID);
             }
             fireEditingStopped();
         }

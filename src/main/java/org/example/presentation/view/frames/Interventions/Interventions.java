@@ -29,4 +29,9 @@ public class Interventions extends JPanelContainer {
     protected void onDelete(Long id , AppLayout appLayout) {
         System.out.println(id);
     }
+
+    @Override
+    protected void onShow(Long id) {
+        System.out.println(id);
+    }
 }

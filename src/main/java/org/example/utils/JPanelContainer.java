@@ -50,7 +50,8 @@ public abstract class JPanelContainer extends JPanel {
         Object[][] dataWithActions = new Object[data.length][columnNames.length];
         this.dataTable = new Table(data, columnNames,
                 id -> onEdit(id , appLayout), // Pass Long to onEdit
-                id -> onDelete(id , appLayout) // Pass Long to onDelete
+                id -> onDelete(id , appLayout), // Pass Long to onDelete
+                id -> onShow(id)
         );
 
         this.dataTable.getColumn("Actions").setCellRenderer(new Table.ButtonPanelRenderer());
@@ -63,6 +64,6 @@ public abstract class JPanelContainer extends JPanel {
 
     // Update methods to accept Long
     protected abstract void onEdit(Long id , AppLayout appLayout);
-
     protected abstract void onDelete(Long id , AppLayout appLayout);
+    protected abstract void onShow(Long id);
 }

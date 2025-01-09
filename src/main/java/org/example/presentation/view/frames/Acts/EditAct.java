@@ -8,6 +8,7 @@ import org.example.presentation.view.components.molecules.Input;
 import org.example.presentation.view.frames.Frame;
 import org.example.presentation.view.layouts.AppLayout;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class EditAct extends Frame {
@@ -21,6 +22,7 @@ public class EditAct extends Frame {
 
     public EditAct(Long actId, AppLayout appLayout){
         super();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.appLayout = appLayout;
 
         ActController actController = new ActController();

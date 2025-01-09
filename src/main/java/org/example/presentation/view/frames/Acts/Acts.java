@@ -13,9 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Acts extends JPanelContainer {
-//    public Acts(Object[][] data, AppLayout appLayout, String addBtnLabel, String[] colNames, ) {
-//        super(data, appLayout, addBtnLabel, colNames, add);
-//    }
 
     public Acts(Object[][] data, AppLayout appLayout, String addBtnLabel, String[] colNames, ActionListener add) {
         super(data, appLayout, addBtnLabel, colNames, add);
@@ -29,5 +26,10 @@ public class Acts extends JPanelContainer {
     @Override
     protected void onDelete(Long id, AppLayout appLayout) {
     new DeleteAct(id, appLayout);
+    }
+
+    @Override
+    protected void onShow(Long id) {
+        new ShowAct(id);
     }
 }
