@@ -12,6 +12,7 @@ import org.example.presentation.view.frames.Acts.AddAct;
 import org.example.presentation.view.frames.Appoitments.Appointments;
 import org.example.presentation.view.frames.Dashboard;
 import org.example.presentation.view.frames.Frame;
+import org.example.presentation.view.frames.Interventions.AddIntervention;
 import org.example.presentation.view.frames.Interventions.Interventions;
 import org.example.utils.ConvertArray;
 import org.example.utils.ConvertArray.*;
@@ -73,12 +74,8 @@ public class AppLayout extends Frame {
                     interventions,
                     intervention -> List.of(intervention.getId(),intervention.getPrice(), intervention.getActs().size()
 
-//                            ,intervention.getActs().stream()
-//                            .map(Object::toString)
-//                            .collect(Collectors.joining("; "))
                     )
             );
-//            System.out.println(interventionsArray);
 
             String columns[] ={"ID", "Price", "Number of Acts", "Actions"};
             setContent(new Interventions(
@@ -86,20 +83,13 @@ public class AppLayout extends Frame {
                     this,
                     "Add new Intervention",
                     columns,
-                    a -> System.out.println("add intervention")
+                    a -> new AddIntervention(this )
             ));
         });
         navbar.addTabListener("Acts", e -> {
             ActController actController = new ActController();
             List<Act> acts = actController.displayAllActs();
-//
-//            List<List<? extends Serializable>> result = acts.stream()
-//                    .map(act -> List.of(act.getId(), act.getName(), act.getBasePrice(), act.getCategory()))
-//                    .collect(Collectors.toList());
-//
-//            Object[][] array = result.stream()
-//                    .map(l -> l.toArray(new Object[0]))
-//                    .toArray(Object[][]::new);
+
 
             Object[][] actsArray = ConvertArray.convertTo2DArray(
                     acts,

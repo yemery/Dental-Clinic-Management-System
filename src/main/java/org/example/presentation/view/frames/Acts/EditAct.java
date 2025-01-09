@@ -53,8 +53,11 @@ public class EditAct extends Frame {
             editableAct.setCategory((ActCategory) category.getValue());
 
             actController.updateAct(editableAct);
-            appLayout.getNavbar().simulateTabClick("Acts");
+            JOptionPane.showMessageDialog(this, "Intervention saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
             dispose(); // close the frame
+            appLayout.getNavbar().simulateTabClick("Acts");
+
         });
         this.add(submitBtn, gbc);
         this.setVisible(true);

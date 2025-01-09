@@ -61,6 +61,7 @@ public class AddAct extends Frame {
                     (Double) basePrice.getValue(),
                     (ActCategory) category.getValue()
             ));
+            JOptionPane.showMessageDialog(this, "Intervention saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
             dispose(); // close the frame
         });

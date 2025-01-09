@@ -3,6 +3,7 @@ package org.example.presentation.view.frames.Interventions;
 import org.example.presentation.view.components.atoms.Button;
 import org.example.presentation.view.components.molecules.Table;
 import org.example.presentation.view.frames.Acts.AddAct;
+import org.example.presentation.view.frames.Acts.DeleteAct;
 import org.example.presentation.view.layouts.AppLayout;
 import org.example.utils.JPanelContainer;
 
@@ -27,7 +28,7 @@ public class Interventions extends JPanelContainer {
 
     @Override
     protected void onDelete(Long id , AppLayout appLayout) {
-        System.out.println(id);
+        new DeleteIntervention(id, appLayout);
     }
 
     @Override
