@@ -16,15 +16,15 @@ public class Table extends JTable {
 
     public Table(Object[][] data, String[] columnNames, Consumer<Long> editCallback, Consumer<Long> deleteCallback, Consumer<Long> showCallback) {
         super(new DefaultTableModel(data, columnNames));
-        setupTable(editCallback, deleteCallback, showCallback );
+        setupTable(editCallback, deleteCallback, showCallback);
+        adjustTableHeight(data.length);
     }
 
-    //    public Table(Object[][] data, String[] columnNames, Consumer<Long> editCallback) {}
     public Table(Object[][] data, String[] columnNames) {
         super(new DefaultTableModel(data, columnNames));
         setupTable();
+        adjustTableHeight(data.length);
     }
-
 
     private void setupTable() {
         // Prevent cell editing by clicking
@@ -47,26 +47,20 @@ public class Table extends JTable {
     }
 
     private void setupTable(Consumer<Long> editCallback, Consumer<Long> deleteCallback, Consumer<Long> showCallback) {
-        this.setDefaultEditor(Object.class, null);
-        this.setRowHeight(50);
-        this.setShowGrid(true);
-        this.setGridColor(Color.LIGHT_GRAY);
-        this.getTableHeader().setBackground(new Color(0x3730a3));
-        this.getTableHeader().setForeground(Color.WHITE);
-        this.getTableHeader().setFont(new Font("Arial", Font.BOLD, 12));
-        this.setFont(new Font("Arial", Font.PLAIN, 12));
-
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        for (int i = 0; i < this.getColumnCount(); i++) {
-            this.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-        }
+        setupTable();
 
         // Set custom renderer and editor for the "Actions" column
         if (this.getColumn("Actions") != null) {
             this.getColumn("Actions").setCellRenderer(new ButtonPanelRenderer());
             this.getColumn("Actions").setCellEditor(new ButtonPanelEditor(editCallback, deleteCallback, showCallback));
         }
+    }
+
+    private void adjustTableHeight(int rowCount) {
+        // Dynamically adjust the table's preferred height based on the number of rows
+        int tableHeight = this.getRowHeight() * rowCount + this.getTableHeader().getHeight();
+        this.setPreferredScrollableViewportSize(new Dimension(this.getPreferredScrollableViewportSize().width, tableHeight));
+        this.revalidate();
     }
 
     // Custom TableCellRenderer to display buttons in a JPanel
@@ -103,7 +97,6 @@ public class Table extends JTable {
             this.editCallback = editCallback;
             this.deleteCallback = deleteCallback;
             this.showCallback = showCallback;
-
 
             panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             editBtn = new Button("Edit");

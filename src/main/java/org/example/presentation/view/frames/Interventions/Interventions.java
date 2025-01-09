@@ -4,6 +4,7 @@ import org.example.presentation.view.components.atoms.Button;
 import org.example.presentation.view.components.molecules.Table;
 import org.example.presentation.view.frames.Acts.AddAct;
 import org.example.presentation.view.frames.Acts.DeleteAct;
+import org.example.presentation.view.frames.Acts.EditAct;
 import org.example.presentation.view.layouts.AppLayout;
 import org.example.utils.JPanelContainer;
 
@@ -23,7 +24,7 @@ public class Interventions extends JPanelContainer {
 
     @Override
     protected void onEdit(Long id ,AppLayout appLayout) {
-        System.out.println(id);
+        new EditIntervention(id,appLayout);
     }
 
     @Override
@@ -33,6 +34,7 @@ public class Interventions extends JPanelContainer {
 
     @Override
     protected void onShow(Long id) {
-        System.out.println(id);
+
+        new ShowIntervention(id);
     }
 }
