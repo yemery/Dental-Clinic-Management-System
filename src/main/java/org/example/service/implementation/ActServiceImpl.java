@@ -13,9 +13,6 @@ public class ActServiceImpl implements ActService {
     private final IDao<Act,Long > dao = new JsonDaoImpl<>("Acts.json" , Act.class);
     private final InterventionService interventionService = new InterventionServiceImpl();
 
-
-
-
     @Override
     public Act addAct(Act act) {
         try{

@@ -11,5 +11,6 @@ public interface PrescriptionService {
     Prescription updatePrescription(Prescription prescription);
     void deletePrescription(Long ID);
     List<Prescription> getAllPrescriptions();
-    public  boolean removePrescriptionMedicine(Prescription prescription, PrescriptionMedicine prescriptionMedicine);
+//    boolean removePrescriptionMedicine(Long ID);
+    boolean deleteFromConsultation(Long ID);
 }

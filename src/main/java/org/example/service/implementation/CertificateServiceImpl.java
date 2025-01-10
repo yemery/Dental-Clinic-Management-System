@@ -75,7 +75,8 @@ public class CertificateServiceImpl implements CertificateService {
         AtomicBoolean updated = new AtomicBoolean(false);
         consultations.stream().filter(consultation -> consultation.getCertificate().equals(ID))
                 .forEach(consultation -> {
-                    consultation.setCertificate(null);
+                    consultation.setCertificate(0L);
+                    consultationsService.updateConsultation(consultation);
                     updated.set(true);
                 });
 

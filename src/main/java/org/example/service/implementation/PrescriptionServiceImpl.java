@@ -2,14 +2,19 @@ package org.example.service.implementation;
 
 import org.example.dao.IDao;
 import org.example.dao.ArrayListImpl.PrescriptionDaoImpl;
+import org.example.dao.JsonFileImpl.JsonDaoImpl;
+import org.example.model.Consultation;
 import org.example.model.Prescription;
 import org.example.model.PrescriptionMedicine;
+import org.example.service.api.ConsultationService;
 import org.example.service.api.PrescriptionService;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PrescriptionServiceImpl implements PrescriptionService {
-    public final IDao<Prescription, Long> dao = new PrescriptionDaoImpl();
+//    public final IDao<Prescription, Long> dao = new PrescriptionDaoImpl();
+    public final IDao<Prescription, Long> dao = new JsonDaoImpl<>("Prescriptions.json", Prescription.class);
 
     @Override
     public Prescription getPrescriptionById(Long ID) {
@@ -31,13 +36,18 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
     @Override
     public Prescription updatePrescription(Prescription prescription) {
-        return null;
+        try{
+            return dao.update(prescription);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void deletePrescription(Long ID) {
         try{
             dao.delete(ID);
+            this.deleteFromConsultation(ID);
             System.out.println("Prescription deleted");
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -54,12 +64,20 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     }
 
     @Override
-    public boolean removePrescriptionMedicine(Prescription prescription,PrescriptionMedicine prescriptionMedicine) {
-        try{
-            prescription.removePrescriptionMedicine(prescriptionMedicine);
-            return true;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public boolean deleteFromConsultation(Long ID) {
+        ConsultationService consultationsService = new ConsultationServiceImpl();
+        List<Consultation> consultations = consultationsService.getAllConsultations();
+
+        AtomicBoolean updated = new AtomicBoolean(false);
+        consultations.stream().filter(consultation -> consultation.getPrescription().equals(ID))
+                .forEach(consultation -> {
+                    System.out.println(consultation);
+                    consultation.setPrescription(0L);
+                    System.out.println(consultation);
+                    consultationsService.updateConsultation(consultation);
+                    updated.set(true);
+                });
+
+        return updated.get();
     }
 }

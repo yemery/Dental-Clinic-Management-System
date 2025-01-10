@@ -11,5 +11,5 @@ public interface PrescriptionMedicineService {
     void deleteMedicinePrescription(Long ID);
     List<PrescriptionMedicine> getAllMedicinePrescription();
 
-    // getting the medicine data method to be added later
+    boolean removeFromPrescription(Long ID);
 }

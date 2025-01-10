@@ -22,6 +22,7 @@ public class Appointment {
     private LocalDate date;
     private AppoitmentType type;
     private AppointementStatus status;
+    // return bck to id Long
     private Consultation consultation;
 
     public Appointment() {

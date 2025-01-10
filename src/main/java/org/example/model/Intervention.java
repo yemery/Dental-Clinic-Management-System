@@ -11,18 +11,16 @@ import java.util.UUID;
 public class Intervention {
     private final Long id;
     private double price;
-//    private List<Act> acts = new ArrayList<Act>();
     private List<Long> acts = new ArrayList<>();
+
     public Intervention()  {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
         this.acts = new ArrayList<>();
-
     }
 
     public Intervention(double price) {
         this();
         this.price = price;
-
     }
 
     public Long getId() {
@@ -37,11 +35,6 @@ public class Intervention {
         this.price = price;
     }
 
-//    public List<Act> getActs() {
-//        return acts;
-//    }
-
-
     public List<Long> getActs() {
         return acts;
     }
@@ -49,25 +42,7 @@ public class Intervention {
     public void setActs(List<Long> acts) {
         this.acts = acts;
     }
-//    public void setActs(List<Act> acts) {
-//        if (this.acts == null) {
-//            this.acts = new ArrayList<>();
-//        }
-//        this.acts.addAll(acts);
-//    }
 
-//    @JsonIgnore
-//    public void setActs(Act act) {
-//        this.acts.add(act);
-//    }
-
-
-
-
-
-    public  boolean removeAct(Act act) {
-        return this.acts.remove(act);
-    }
     @Override
     public String toString() {
         return "Intervention{" +

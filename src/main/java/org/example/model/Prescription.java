@@ -8,20 +8,19 @@ import org.example.utils.LocalDateDeserializer;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Prescription
 {
 
     private final Long id;
-
     private final LocalDate date = LocalDate.now();
-    private List<PrescriptionMedicine> prescriptionsMedicine = new ArrayList<>();
+    private List<Long> prescriptionsMedicine = new ArrayList<>();
 
     public Prescription() {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
-
 
     public Long getId() {
         return id;
@@ -31,16 +30,14 @@ public class Prescription
         return date;
     }
 
-    public List<PrescriptionMedicine> getPrescriptionsMedicine() {
+    public List<Long> getPrescriptionsMedicine() {
         return prescriptionsMedicine;
     }
 
-    public void setPrescriptionsMedicine(PrescriptionMedicine pm) {
-        prescriptionsMedicine.add(pm);
+    public void setPrescriptionsMedicine(List<Long> prescriptionsMedicine) {
+        this.prescriptionsMedicine = prescriptionsMedicine;
     }
-    public boolean removePrescriptionMedicine(PrescriptionMedicine pm) {
-        return prescriptionsMedicine.remove(pm);
-    }
+
     @Override
     public String toString() {
         return "Prescription{" +
@@ -48,4 +45,13 @@ public class Prescription
                 ", date=" + date +
                 ", prescriptionsMedicine=" + prescriptionsMedicine +
                 '}';
-    }}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Prescription that = (Prescription) o;
+        return Objects.equals(id, that.id);
+    }
+}
