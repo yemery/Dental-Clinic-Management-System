@@ -13,12 +13,12 @@ public class MedicineView {
 
 //        Medicine m4 = new Medicine(40.0, "med 4", "desc 4");
 //        medC.add(m4);
-        Medicine m1= medC.getMedicine(82L);
-        System.out.println(m1);
-        m1.setName("updated Medicine");
-        medC.updateMedicine(m1);
+//        Medicine m1= medC.getMedicine(82L);
+//        System.out.println(m1);
+//        m1.setName("updated Medicine");
+//        medC.updateMedicine(m1);
 //        System.out.println(medC.getAllMedicine().size());
-//        medC.deleteMedicine(64L);
+        medC.deleteMedicine(64L);
         System.out.println(medC.getAllMedicine().size());
 
 //        System.out.println(medC.getMedicine(64L));
