@@ -10,4 +10,5 @@ public interface MedicslHistoryService {
     MedicalHistory updateMedicsHistory(MedicalHistory mh);
     void deleteMedicsHistory(Long ID);
     List<MedicalHistory> getAllMedicsHistory();
+    public boolean removeMHFromMedicalCase(Long ID);
 }

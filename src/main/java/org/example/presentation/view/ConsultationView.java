@@ -24,6 +24,8 @@ public class ConsultationView {
         prescriptionMedicineC.addPrescriptionMedicine(pm1);
         prescriptionMedicineC.addPrescriptionMedicine(pm2);
 //
+
+        consultationC.addConsultation(new Consultation(ConsultationType.GENERAL_CONSULTATION,"note1"));
 //        Prescription p1 = new Prescription();
 //        p1.setPrescriptionsMedicine(List.of(pm1.getId(), pm2.getId()));
 //        prescriptionC.addPrescription(p1);
@@ -42,7 +44,7 @@ public class ConsultationView {
 //        c1.setPrescription(p1.getId());
 //        consultationC.updateConsultation(c1);
 
-        prescriptionC.deletePrescription(2L);
+//        prescriptionC.deletePrescription(2L);
 
 //        Consultation c1 = new Consultation(ConsultationType.GENERAL_CONSULTATION, "note1");
 //

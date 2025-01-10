@@ -36,9 +36,6 @@ public class Invoice {
         this.type = type;
     }
 
-    public Double getRemainigAmount() {
-        return totalAmount - payedAmount;
-    }
 
     public Long getId() {
         return id;

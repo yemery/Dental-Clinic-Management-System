@@ -13,23 +13,23 @@ import java.util.UUID;
 
 public class MedicalCase {
     private Long id;
-    private Patient patient; // remove medical case attr within patient when you re conviced
+    private Long patient; // remove medical case attr within patient when you re conviced
 
     private LocalDate creationDate = LocalDate.now();
-    private List<Appointment> appointments = new ArrayList<>();
-    private List<MedicalHistory> medicalHistories = new ArrayList<>();
+    private List<Long> appointments = new ArrayList<>();
+    private List<Long> medicalHistories = new ArrayList<>();
 
     public MedicalCase() {
         this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
-    public MedicalCase(Patient patient, List<Appointment> appointments, List<MedicalHistory> medicalHistories) {
-        this();
+    public MedicalCase(Long patient, List<Long> appointments, List<Long> medicalHistories) {
         this.patient = patient;
         this.appointments = appointments;
         this.medicalHistories = medicalHistories;
     }
-    public MedicalCase(Patient patient) {
+
+    public MedicalCase(Long patient) {
         this();
         this.patient = patient;
     }
@@ -38,14 +38,7 @@ public class MedicalCase {
         return id;
     }
 
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
 
-    public void setAppointments(Appointment appointment) {
-
-        this.appointments.add(appointment);
-    }
 
 //    to get consultations map over appointment we should use this method in the medialCase service
 //    public ArrayList<Consultation> getConsultations() {
@@ -62,11 +55,15 @@ public class MedicalCase {
         return Objects.equals(id, that.id);
     }
 
-    public Patient getPatient() {
-        return this.patient;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setPatient(Patient patient) {
+    public Long getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Long patient) {
         this.patient = patient;
     }
 
@@ -78,12 +75,20 @@ public class MedicalCase {
         this.creationDate = creationDate;
     }
 
-    public List<MedicalHistory> getMedicalHistories() {
+    public List<Long> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Long> appointments) {
+        this.appointments = appointments;
+    }
+
+    public List<Long> getMedicalHistories() {
         return medicalHistories;
     }
 
-    public void setMedicalHistories(MedicalHistory md) {
-        medicalHistories.add(md);
+    public void setMedicalHistories(List<Long> medicalHistories) {
+        this.medicalHistories = medicalHistories;
     }
 
     @Override

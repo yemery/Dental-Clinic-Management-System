@@ -11,4 +11,5 @@ public interface InvoiceService {
     Invoice updateInvoice(Invoice act);
     void deleteInvoice(Long ID);
     List<Invoice> getAllInvoices();
+    public boolean removeInvoiceFromConsultation(Long id);
 }

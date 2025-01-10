@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class MedicineServiceImp implements MedicineService {
 
 //    private  final IDao<Medicine,Long> dao = new MedicineDaoIml();
-    private  final IDao<Medicine,Long> dao = new JsonDaoImpl<>("medicines.json", Medicine.class);
+    private  final IDao<Medicine,Long> dao = new JsonDaoImpl<>("Medicines.json", Medicine.class);
 
     @Override
     public Medicine addMedicine(Medicine medicine) {
