@@ -26,4 +26,6 @@ public interface ConsultationService {
 
     boolean addPrescription(Consultation consultation, Long prescriptionID);
     boolean removePrescription(Consultation consultation);
+
+    boolean removeConsultationFromAppointment (Long ID);
 }

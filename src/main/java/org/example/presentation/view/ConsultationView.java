@@ -18,14 +18,16 @@ public class ConsultationView {
 
         PrescriptionMedicineController prescriptionMedicineC = new PrescriptionMedicineController();
 
-        PrescriptionMedicine pm1 = new PrescriptionMedicine(1, 2, "description 1", null);
-        PrescriptionMedicine pm2 = new PrescriptionMedicine(0, 6, "description 1", null);
 
-        prescriptionMedicineC.addPrescriptionMedicine(pm1);
-        prescriptionMedicineC.addPrescriptionMedicine(pm2);
+        consultationC.deleteConsultation(17L);
+//        PrescriptionMedicine pm1 = new PrescriptionMedicine(1, 2, "description 1", null);
+//        PrescriptionMedicine pm2 = new PrescriptionMedicine(0, 6, "description 1", null);
 //
-
-        consultationC.addConsultation(new Consultation(ConsultationType.GENERAL_CONSULTATION,"note1"));
+//        prescriptionMedicineC.addPrescriptionMedicine(pm1);
+//        prescriptionMedicineC.addPrescriptionMedicine(pm2);
+////
+//
+//        consultationC.addConsultation(new Consultation(ConsultationType.GENERAL_CONSULTATION,"note1"));
 //        Prescription p1 = new Prescription();
 //        p1.setPrescriptionsMedicine(List.of(pm1.getId(), pm2.getId()));
 //        prescriptionC.addPrescription(p1);

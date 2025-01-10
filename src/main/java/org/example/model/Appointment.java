@@ -22,19 +22,20 @@ public class Appointment {
     private LocalDate date;
     private AppoitmentType type;
     private AppointementStatus status;
-    // return bck to id Long
-    private Consultation consultation;
+
+    private Long consultation;
 
     public Appointment() {
         this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
-    public Appointment(LocalTime time, LocalDate date, AppoitmentType type, AppointementStatus status) {
+    public Appointment(LocalTime time, LocalDate date, AppoitmentType type, AppointementStatus status , Long consultation) {
         this();
         this.time = time;
         this.date = date;
         this.type = type;
         this.status = status;
+        this.consultation = consultation;
     }
 
     public Long getId() {
@@ -73,11 +74,11 @@ public class Appointment {
         this.status = status;
     }
 
-    public Consultation getConsultation() {
+    public Long getConsultation() {
         return this.consultation;
     }
 
-    public void setConsultations(Consultation consultation) {
+    public void setConsultations(Long consultation) {
         this.consultation= consultation;
     }
 

@@ -3,11 +3,16 @@ package org.example.service.implementation;
 import org.example.dao.IDao;
 import org.example.dao.ArrayListImpl.ConsultationDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
+import org.example.model.Appointment;
 import org.example.model.Consultation;
 import org.example.model.Intervention;
+import org.example.model.PrescriptionMedicine;
+import org.example.service.api.AppointmentService;
 import org.example.service.api.ConsultationService;
+import org.example.service.api.PrescriptionMedicineService;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ConsultationServiceImpl implements ConsultationService {
 //    private final IDao<Consultation, Long> dao = new ConsultationDaoImpl();
@@ -54,6 +59,7 @@ public class ConsultationServiceImpl implements ConsultationService {
     public void deleteConsultation(Long ID) {
         try{
             dao.delete(ID);
+            this.removeConsultationFromAppointment(ID);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -147,5 +153,20 @@ public class ConsultationServiceImpl implements ConsultationService {
         }
     }
 
+    @Override
+    public boolean removeConsultationFromAppointment(Long ID) {
+        AppointmentService appointmentService = new AppointmentServiceImpl();
+        List<Appointment> appointmentList = appointmentService.getAppointments();
 
+        AtomicBoolean updated = new AtomicBoolean(false);
+        appointmentList.stream().filter(ap -> ap.getConsultation().equals(ID))
+                .forEach(a -> {
+
+                    a.setConsultations(0L);
+                    appointmentService.updateAppointment(a);
+                    updated.set(true);
+                });
+
+        return updated.get();
+    }
 }
