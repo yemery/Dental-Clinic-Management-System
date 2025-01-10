@@ -4,9 +4,12 @@ import org.example.dao.IDao;
 import org.example.dao.ArrayListImpl.AppointmentDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Appointment;
+import org.example.model.MedicalCase;
 import org.example.service.api.AppointmentService;
+import org.example.service.api.MedicalCaseService;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AppointmentServiceImpl implements AppointmentService {
 //    private final IDao<Appointment, Long> dao = new AppointmentDaoImpl();
@@ -43,6 +46,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     public void deleteAppointment(Long ID) {
         try {
             dao.delete(ID);
+            this.removeAppointmentFromMc(ID);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -57,4 +61,20 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
     }
 
+    @Override
+    public boolean removeAppointmentFromMc(Long ID) {
+        MedicalCaseService medicalCaseService= new MedicalCaseImpl();
+        List<MedicalCase> medicalCaseList= medicalCaseService.getAllMedicalCases();
+
+        AtomicBoolean updated = new AtomicBoolean(false);
+        medicalCaseList.stream().filter(mc -> mc.getAppointments().contains(ID))
+                .forEach(pm -> {
+// LATER TEST
+                    pm.getAppointments().remove(ID);
+                    medicalCaseService.updateMedicalCase(pm);
+                    updated.set(true);
+                });
+
+        return updated.get();
+    }
 }

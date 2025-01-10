@@ -14,7 +14,6 @@ import java.util.UUID;
 public class MedicalCase {
     private Long id;
     private Long patient; // remove medical case attr within patient when you re conviced
-
     private LocalDate creationDate = LocalDate.now();
     private List<Long> appointments = new ArrayList<>();
     private List<Long> medicalHistories = new ArrayList<>();
@@ -24,6 +23,8 @@ public class MedicalCase {
     }
 
     public MedicalCase(Long patient, List<Long> appointments, List<Long> medicalHistories) {
+
+        this();
         this.patient = patient;
         this.appointments = appointments;
         this.medicalHistories = medicalHistories;

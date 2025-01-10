@@ -4,6 +4,8 @@ import org.example.model.*;
 import org.example.service.api.MedicalCaseService;
 import org.example.service.implementation.MedicalCaseImpl;
 
+import java.util.List;
+
 public class MedicalCaseController {
     private final MedicalCaseService medicalCaseService = new MedicalCaseImpl();
 
@@ -16,11 +18,11 @@ public class MedicalCaseController {
     public void updateMedicalCase(MedicalCase medicalCase) {
         medicalCaseService.updateMedicalCase(medicalCase);
     }
-    public void getAllMedicalCase() {
-            medicalCaseService.getAllMedicalCases().forEach(System.out::println);
+    public List<MedicalCase> getAllMedicalCase() {
+            return medicalCaseService.getAllMedicalCases();
     }
-    public void getMedicalCaseById(Long id) {
-        medicalCaseService.getMedicalCase(id);
+    public MedicalCase getMedicalCaseById(Long id) {
+        return medicalCaseService.getMedicalCase(id);
     }
 
     public boolean removeAppointment(MedicalCase medicalCase,Appointment appointment) {

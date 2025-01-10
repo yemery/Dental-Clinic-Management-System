@@ -31,6 +31,7 @@ public class MedicsHistoryServiceImpl implements MedicslHistoryService {
     public void deleteMedicsHistory(Long ID) {
         try{
             dao.delete(ID);
+            this.removeMHFromMedicalCase(ID);
         }
         catch(Exception e){
             throw new RuntimeException(e);
