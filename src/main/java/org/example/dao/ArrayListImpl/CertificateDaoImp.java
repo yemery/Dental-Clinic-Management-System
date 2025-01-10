@@ -21,7 +21,7 @@ public class CertificateDaoImp implements IDao<Certificate,Long> {
     @Override
     public Certificate getById(Long ID) throws Exception {
         return certificates.stream()
-                .filter(certificate -> ID.equals(certificate.getID()) )
+                .filter(certificate -> ID.equals(certificate.getId()) )
                 .findFirst()
                 .orElseThrow(()-> new Exception("No Certificate found with ID: " + ID));
     }
@@ -37,7 +37,7 @@ public class CertificateDaoImp implements IDao<Certificate,Long> {
 
     @Override
     public Certificate update(Certificate certificate) throws Exception {
-        Certificate existingCertificate = getById(certificate.getID());
+        Certificate existingCertificate = getById(certificate.getId());
         if (existingCertificate != null) {
             existingCertificate.setEndDate(certificate.getEndDate());
             existingCertificate.setReason(certificate.getReason());

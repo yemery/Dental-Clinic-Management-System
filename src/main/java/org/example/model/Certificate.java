@@ -12,11 +12,8 @@ import java.util.UUID;
 public class Certificate {
     private final Long id;
     private String reason;
-
     private LocalDate startDate;
-
     private LocalDate endDate;
-
 
     public Certificate() {
         this.id = System.currentTimeMillis();
@@ -62,12 +59,7 @@ public class Certificate {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Certificate that = (Certificate) o;
-        return Objects.equals(id, that.id) && Objects.equals(reason, that.reason) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, reason, startDate, endDate);
+        return Objects.equals(id, that.id);
     }
 
     @Override
@@ -79,10 +71,4 @@ public class Certificate {
                 ", endDate=" + endDate +
                 '}';
     }
-
-    public Long getID() {
-        return id;
-    }
-
-
 }

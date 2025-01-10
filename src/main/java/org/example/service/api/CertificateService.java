@@ -11,5 +11,6 @@ public interface CertificateService{
    Certificate getCertificate(Long certificateId);
    List<Certificate> getAllCertificates();
    void deleteCertificate(Long ID);
+   boolean removeFromConsultation(Long ID);
 
 }
