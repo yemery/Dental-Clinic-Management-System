@@ -1,6 +1,10 @@
 package org.example.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.example.model.enums.ConsultationType;
+import org.example.utils.LocalDateDeserializer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,11 +15,12 @@ public class Consultation {
     private final Long id;
     private ConsultationType type;
     private String note;
+
     private LocalDate date;
     private Invoice invoice = null;
     private Prescription prescription = null;
     private Certificate certificate = null;
-    private List<Intervention> interventions = new ArrayList<>();
+    private List<Long> interventions = new ArrayList<>();
 
     public Consultation() {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
@@ -30,8 +35,12 @@ public class Consultation {
         this.prescription=prescription;
     }
 
-    public void setInterventions(Intervention intervention) {
-        this.interventions.add(intervention);
+    public List<Long> getInterventions() {
+        return interventions;
+    }
+
+    public void setInterventions(List<Long> interventions) {
+        this.interventions = interventions;
     }
 
     public Long getId() {
@@ -80,10 +89,6 @@ public class Consultation {
 
     public Certificate getCertificate() {
         return certificate;
-    }
-
-    public List<Intervention> getInterventions() {
-        return interventions;
     }
 
     public void setPrescription(Prescription prescription) {

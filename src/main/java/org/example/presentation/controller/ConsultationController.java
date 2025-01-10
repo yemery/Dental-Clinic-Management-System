@@ -6,9 +6,10 @@ import org.example.service.api.ConsultationService;
 import org.example.service.implementation.ConsultationServiceImpl;
 
 public class ConsultationController {
+    //    private final ConsultationService consultationService= new ConsultationServiceImpl();
     private final ConsultationService consultationService= new ConsultationServiceImpl();
-
     public void displayAllConsultations(){
+
         consultationService.getAllConsultations().forEach(System.out::println);
     }
 
@@ -23,7 +24,7 @@ public class ConsultationController {
 //    public void removeIntervention(Consultation consultation, Intervention intervention){
 //        consultationService.getConsultation(consultation.getId()).removeIntervention(intervention);
 //    }
-    public boolean removeIntervention(Consultation consultation,Intervention intervention){
-        return consultationService.removeIntervention(consultation,intervention);
+    public boolean removeIntervention(Consultation consultation,Long ID){
+        return consultationService.removeIntervention(consultation,ID);
     }
 }

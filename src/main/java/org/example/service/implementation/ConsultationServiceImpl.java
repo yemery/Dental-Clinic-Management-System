@@ -2,6 +2,7 @@ package org.example.service.implementation;
 
 import org.example.dao.IDao;
 import org.example.dao.ArrayListImpl.ConsultationDaoImpl;
+import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Consultation;
 import org.example.model.Intervention;
 import org.example.service.api.ConsultationService;
@@ -9,7 +10,8 @@ import org.example.service.api.ConsultationService;
 import java.util.List;
 
 public class ConsultationServiceImpl implements ConsultationService {
-    private final IDao<Consultation, Long> dao = new ConsultationDaoImpl();
+//    private final IDao<Consultation, Long> dao = new ConsultationDaoImpl();
+    private final IDao<Consultation, Long> dao = new JsonDaoImpl<>("consultations",Consultation.class);
 
     @Override
     public Consultation addConsultation(Consultation consultation) {
@@ -58,9 +60,9 @@ public class ConsultationServiceImpl implements ConsultationService {
     }
 
     @Override
-    public boolean removeIntervention(Consultation consultation, Intervention intervention) {
+    public boolean removeIntervention(Consultation consultation, Long ID) {
         try{
-            consultation.removeIntervention(intervention);
+            consultation.getInterventions().remove(ID);
             return true;
         } catch (Exception e) {
             throw new RuntimeException(e);

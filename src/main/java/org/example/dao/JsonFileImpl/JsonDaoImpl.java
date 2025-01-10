@@ -3,6 +3,7 @@ package org.example.dao.JsonFileImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.example.dao.IDao;
+import com.fasterxml.jackson.databind.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,8 +16,10 @@ public class JsonDaoImpl<T, ID> implements IDao<T, ID> {
     private final Class<T> type;
 
     public JsonDaoImpl(String fileName, Class<T> type) {
+
         this.file = new File(DIRECTORY_PATH,fileName);
         this.type = type;
+//        objectMapper.registerModule(new JavaTimeModule());
 
     }
 

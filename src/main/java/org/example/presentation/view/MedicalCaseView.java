@@ -42,8 +42,8 @@ public class MedicalCaseView {
         Consultation c1= new Consultation(ConsultationType.GENERAL_CONSULTATION,"note1", LocalDate.now(), inv1,p1);
         Consultation c2= new Consultation(ConsultationType.EMERGENCY,"note2", LocalDate.now(), inv2,p1);
 
-        c1.setInterventions(i1);
-        c2.setInterventions(i2);
+//        c1.setInterventions(i1);
+//        c2.setInterventions(i2);
 
         Appointment ap1= new Appointment(LocalTime.now(), LocalDate.now(), AppoitmentType.Control,AppointementStatus.CONFIRMED);
         Appointment ap2= new Appointment(LocalTime.now(), LocalDate.now(), AppoitmentType.Control,AppointementStatus.CONFIRMED);
