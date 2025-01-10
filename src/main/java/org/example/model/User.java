@@ -24,11 +24,7 @@ public abstract class User extends Person {
         this.password = password;
     }
 
-    public User(Person person, String username, String password) {
-        super(person);
-        this.username = username;
-        this.password = password;
-    }
+
 
     public final String getUsername() {
         return username;

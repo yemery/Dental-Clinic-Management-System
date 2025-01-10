@@ -30,10 +30,7 @@ public abstract class Staff extends User {
         this.salary = salary;
     }
 
-    public Staff(Person person, String username, String password, double salary, Status status) {
-        super(person, username, password);
-        this.salary = salary;
-    }
+
 
     public final double getSalary() {
         return salary;

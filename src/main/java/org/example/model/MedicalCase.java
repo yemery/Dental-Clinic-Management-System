@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class MedicalCase {
     private Long id;
-    private Long patient; // remove medical case attr within patient when you re conviced
+    private Long patient;
     private LocalDate creationDate = LocalDate.now();
     private List<Long> appointments = new ArrayList<>();
     private List<Long> medicalHistories = new ArrayList<>();

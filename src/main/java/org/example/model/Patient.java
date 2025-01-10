@@ -1,9 +1,11 @@
 package org.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.example.model.enums.Gender;
 import org.example.model.enums.Mutuelle;
 
 import java.time.LocalDate;
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Patient extends Person {
 
@@ -12,10 +14,8 @@ public class Patient extends Person {
     private String job;
 //    private MedicalCase medicalCase;
 
-    public Patient(String registration, Mutuelle mutuelle, String job) {
-        this.registration = registration;
-        this.mutuelle = mutuelle;
-        this.job = job;
+    public Patient() {
+        super(); // Call the default constructor of Person
     }
 
     public Patient(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender, String registration, Mutuelle mutuelle, String job) {
@@ -25,12 +25,7 @@ public class Patient extends Person {
         this.job = job;
     }
 
-    public Patient(Person person, String registration, Mutuelle mutuelle, String job) {
-        super(person);
-        this.registration = registration;
-        this.mutuelle = mutuelle;
-        this.job = job;
-    }
+
 
     public String getRegistration() {
         return registration;

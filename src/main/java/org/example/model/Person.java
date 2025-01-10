@@ -33,25 +33,10 @@ public abstract class Person {
         this.email = email;
         this.gender = gender;
     }
-    public Person(Person person) {
-        this.id = person.id;
-        this.firstName = person.firstName;
-        this.lastName = person.lastName;
-        this.CIN = person.CIN;
-        this.birthDate = person.birthDate;
-        this.Address = person.Address;
-        this.phone = person.phone;
-        this.email = person.email;
-        this.gender = person.gender;
 
-    }
     public Long getId() {
         return id;
     }
-
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 
     public final String getFirstName() {
         return firstName;
@@ -142,10 +127,6 @@ public abstract class Person {
 
     }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, firstName, lastName, CIN, birthDate, Address, phone, email, gender);
-//    }
 
     public abstract String getType();
 }

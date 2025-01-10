@@ -27,7 +27,7 @@ public class AppointmentView {
 //        ap.setConsultations(12L);
 //        appointmentController.updateAppointment(ap);
 //        System.out.println(appointmentController.getAppointment(83L));
-        appointmentController.deleteAppointment(17L);
+        appointmentController.deleteAppointment(16L);
 
 
 

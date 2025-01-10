@@ -27,10 +27,7 @@ public class Doctor extends Staff {
         this.speciality = speciality;
     }
 
-    public Doctor(Person person, String username, String password, double salary, Status status, String speciality) {
-        super(person, username, password, salary, status);
-        this.speciality = speciality;
-    }
+
 
     @Override
     public String getType() {
