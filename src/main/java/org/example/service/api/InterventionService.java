@@ -13,6 +13,5 @@ public interface InterventionService {
     void deleteIntervention(Long ID);
     boolean removeAct(Intervention intervention, Long ID);
     boolean addAct(Intervention intervention, Long ID);
-//
-//    void updateActsList(Act act);
+    boolean deleteFromConsultation(Long ID);
 }

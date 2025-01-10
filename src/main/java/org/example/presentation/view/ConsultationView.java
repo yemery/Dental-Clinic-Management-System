@@ -15,31 +15,33 @@ public class ConsultationView {
     public static void main(String[] args) {
         ConsultationController consultationC = new ConsultationController();
 
+        Consultation c1= new Consultation(ConsultationType.GENERAL_CONSULTATION,"note1");
 
-        List<Long> interventionList = List.of(
-                11L,65L
-        );
-        Invoice inv1 = new Invoice(LocalDate.now(), 14000.0, 8000.4, PaymentType.CASH);
+//        List<Long> interventionList = List.of(
+//                11L,65L
+//        );
+//        c1.setInterventions(interventionList);
+//
+//
+//        Invoice inv1 = new Invoice(LocalDate.now(), 14000.0, 8000.4, PaymentType.CASH);
+//        c1.setInvoice(inv1.getId());
+//        Prescription p1 = new Prescription();
+//        c1.setPrescription(p1.getId());
+//
+////        PrescriptionMedicine prescrMed = new PrescriptionMedicine(12,12,"desc", new Medicine(82.0, "med 1", "desc 1"));
+////        p1.setPrescriptionsMedicine(prescrMed);
+//
+//        consultationC.addConsultation(c1);
+//
+//
+//        consultationC.displayAllConsultations();
 
-        Prescription p1 = new Prescription();
-        Consultation c1= new Consultation(ConsultationType.GENERAL_CONSULTATION,"note1", LocalDate.now(), inv1,p1);
-        c1.setInterventions(interventionList);
-
-        PrescriptionMedicine prescrMed = new PrescriptionMedicine(12,12,"desc", new Medicine(82.0, "med 1", "desc 1"));
-        p1.setPrescriptionsMedicine(prescrMed);
-        c1.setInvoice(inv1);
-
-
-
-
-
-        consultationC.addConsultation(c1);
-
-
-        consultationC.displayAllConsultations();
-        System.out.println(c1.getInterventions().size());
-
-        System.out.println(c1.getInterventions().size());
+//        System.out.println(c1.getInterventions().size());
+//
+        InterventionController interventionC = new InterventionController();
+        interventionC.deleteIntervention(11L);
+//
+//        System.out.println(c1.getInterventions().size());
 
     }
 }

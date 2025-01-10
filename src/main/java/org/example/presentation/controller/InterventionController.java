@@ -24,9 +24,9 @@ public void deleteIntervention(Long ID){
     interventionService.deleteIntervention(ID);
 }
 
-    public boolean removeAct(Intervention intervention, Long ID){
-        return interventionService.removeAct(intervention, ID);
-    }
+//    public boolean removeAct(Intervention intervention, Long ID){
+//        return interventionService.removeAct(intervention, ID);
+//    }
 
 public Intervention getIntervention(Long ID){
     return interventionService.getIntervention(ID);

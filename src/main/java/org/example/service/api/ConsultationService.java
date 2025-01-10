@@ -12,6 +12,18 @@ public interface ConsultationService {
     Consultation getConsultation(Long ID);
     List<Consultation> getAllConsultations();
     void deleteConsultation(Long ID);
-    public boolean removeIntervention(Consultation consultation, Long ID);
 
+    boolean addIntervention(Consultation consultation, Long interventionID);
+    boolean removeIntervention(Consultation consultation, Long interventionID);
+
+    boolean addCertificate(Consultation consultation, Long certificateID);
+    boolean removeCertificate(Consultation consultation);
+
+    boolean addInvoice(Consultation consultation, Long invoiceID);
+
+//    would we use remove invoice??
+//    boolean removeInvoice(Consultation consultation);
+
+    boolean addPrescription(Consultation consultation, Long prescriptionID);
+    boolean removePrescription(Consultation consultation);
 }

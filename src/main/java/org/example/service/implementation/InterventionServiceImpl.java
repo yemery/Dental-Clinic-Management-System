@@ -4,10 +4,14 @@ import org.example.dao.IDao;
 import org.example.dao.ArrayListImpl.InterventionDaoImp;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Act;
+import org.example.model.Consultation;
 import org.example.model.Intervention;
+import org.example.service.api.ConsultationService;
 import org.example.service.api.InterventionService;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class InterventionServiceImpl implements InterventionService {
 
 //    public final IDao<Intervention, Long> dao = new InterventionDaoImp();
@@ -54,6 +58,7 @@ public class InterventionServiceImpl implements InterventionService {
     public void deleteIntervention(Long ID) {
         try{
             dao.delete(ID);
+            this.deleteFromConsultation(ID);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -86,7 +91,7 @@ public class InterventionServiceImpl implements InterventionService {
     @Override
     public boolean addAct(Intervention intervention, Long actId) {
         try{
-            List<Long> interventionActList=  intervention.getActs();
+            List<Long> interventionActList = intervention.getActs();
             interventionActList.add(actId);
             intervention.setActs(interventionActList);
 
@@ -98,4 +103,21 @@ public class InterventionServiceImpl implements InterventionService {
         }
     }
 
+    @Override
+    public boolean deleteFromConsultation(Long ID) {
+        ConsultationService consultationsService = new ConsultationServiceImpl();
+        List<Consultation> consultations = consultationsService.getAllConsultations();
+
+        AtomicBoolean updated = new AtomicBoolean(false); // used to allow boolean values modification within lambdas
+        consultations.stream().filter(consultation -> consultation.getInterventions().contains(ID))
+                .forEach(consultation -> {
+                    consultation.getInterventions().remove(ID);
+
+                    // not updating the file content but the update is shown using sout
+                    consultationsService.updateConsultation(consultation);
+                    updated.set(true);
+                });
+
+        return updated.get();
+    }
 }

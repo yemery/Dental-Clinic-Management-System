@@ -29,34 +29,34 @@ public class AppointmentView {
 //        i2.setActs(a4);
 
 
-        Prescription p1 = new Prescription();
-        // then we made a prescriptionMedicine to fill the list
-        PrescriptionMedicine prescrMed = new PrescriptionMedicine(12,12,"desc", new Medicine(82.0, "med 1", "desc 1"));
-        // we added it
-        p1.setPrescriptionsMedicine(prescrMed);
-
-        Invoice inv1 = new Invoice(LocalDate.now(), 14000.0, 8000.4, PaymentType.CASH);
-        Invoice inv2 = new Invoice(LocalDate.now(), 1500.0, 900.0, PaymentType.CHEQUE);
-
-        Consultation c1= new Consultation(ConsultationType.GENERAL_CONSULTATION,"note1", LocalDate.now(), inv1,p1);
-        Consultation c2= new Consultation(ConsultationType.EMERGENCY,"note2", LocalDate.now(), inv2,p1);
-
-//        c1.setInterventions(i1);
-//        c2.setInterventions(i2);
+//        Prescription p1 = new Prescription();
+//        // then we made a prescriptionMedicine to fill the list
+//        PrescriptionMedicine prescrMed = new PrescriptionMedicine(12,12,"desc", new Medicine(82.0, "med 1", "desc 1"));
+//        // we added it
+//        p1.setPrescriptionsMedicine(prescrMed);
 //
-        Appointment ap1= new Appointment(LocalTime.now(), LocalDate.now(), AppoitmentType.Control,AppointementStatus.CONFIRMED);
-        Appointment ap2= new Appointment(LocalTime.now(), LocalDate.now(), AppoitmentType.Control,AppointementStatus.CONFIRMED);
-
-        ap1.setConsultations(c1);
-        ap1.setConsultations(c2);
-
-        ap2.setConsultations(c1);
-        ap2.setConsultations(c2);
-
-        appointmentController.addAppointment(ap1);
-        appointmentController.addAppointment(ap2);
-        appointmentController.displayAppointment();
-//        appointmentController.deleteAppointment(ap2);
-        appointmentController.displayAppointment();
+//        Invoice inv1 = new Invoice(LocalDate.now(), 14000.0, 8000.4, PaymentType.CASH);
+//        Invoice inv2 = new Invoice(LocalDate.now(), 1500.0, 900.0, PaymentType.CHEQUE);
+//
+//        Consultation c1= new Consultation(ConsultationType.GENERAL_CONSULTATION,"note1", LocalDate.now(), inv1,p1);
+//        Consultation c2= new Consultation(ConsultationType.EMERGENCY,"note2", LocalDate.now(), inv2,p1);
+//
+////        c1.setInterventions(i1);
+////        c2.setInterventions(i2);
+////
+//        Appointment ap1= new Appointment(LocalTime.now(), LocalDate.now(), AppoitmentType.Control,AppointementStatus.CONFIRMED);
+//        Appointment ap2= new Appointment(LocalTime.now(), LocalDate.now(), AppoitmentType.Control,AppointementStatus.CONFIRMED);
+//
+//        ap1.setConsultations(c1);
+//        ap1.setConsultations(c2);
+//
+//        ap2.setConsultations(c1);
+//        ap2.setConsultations(c2);
+//
+//        appointmentController.addAppointment(ap1);
+//        appointmentController.addAppointment(ap2);
+//        appointmentController.displayAppointment();
+////        appointmentController.deleteAppointment(ap2);
+//        appointmentController.displayAppointment();
     }
 }

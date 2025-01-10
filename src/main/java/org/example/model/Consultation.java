@@ -17,22 +17,23 @@ public class Consultation {
     private String note;
 
     private LocalDate date;
-    private Invoice invoice = null;
-    private Prescription prescription = null;
-    private Certificate certificate = null;
+
     private List<Long> interventions = new ArrayList<>();
+    private Long certificate;
+    private Long invoice;
+    private Long prescription;
 
     public Consultation() {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
-    public Consultation(ConsultationType type, String note, LocalDate date, Invoice invoice,Prescription prescription) {
+    public Consultation(ConsultationType type, String note) {
         this();
         this.type = type;
         this.note = note;
-        this.date = date;
-        this.invoice=invoice;
-        this.prescription=prescription;
+        this.date = LocalDate.now();
+//        this.invoice=invoice;
+//        this.prescription=prescription;
     }
 
     public List<Long> getInterventions() {
@@ -71,28 +72,28 @@ public class Consultation {
         this.date = date;
     }
 
-    public Invoice getInvoice() {
+    public Long getInvoice() {
         return invoice;
     }
 
-    public void setInvoice(Invoice invoice) {
+    public void setInvoice(Long invoice) {
         this.invoice = invoice;
     }
 
-    public void setCertificate(Certificate certificate) {
-        this.certificate = certificate;
-    }
-
-    public Prescription getPrescription() {
+    public Long getPrescription() {
         return prescription;
     }
 
-    public Certificate getCertificate() {
+    public void setPrescription(Long prescription) {
+        this.prescription = prescription;
+    }
+
+    public Long getCertificate() {
         return certificate;
     }
 
-    public void setPrescription(Prescription prescription) {
-        this.prescription = prescription;
+    public void setCertificate(Long certificate) {
+        this.certificate = certificate;
     }
 
     @Override
