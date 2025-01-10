@@ -9,5 +9,5 @@ public interface MedicineService {
     Medicine getMedicine(Long id);
     Medicine updateMedicine(Medicine medicine);
     void deleteMedicine(Long ID);
-    List<Medicine> getMedicine();
+    List<Medicine> getMedicines();
 }

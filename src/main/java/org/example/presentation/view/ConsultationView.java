@@ -17,12 +17,12 @@ public class ConsultationView {
         PrescriptionController prescriptionC = new PrescriptionController();
 
         PrescriptionMedicineController prescriptionMedicineC = new PrescriptionMedicineController();
-//
-//        PrescriptionMedicine pm1 = new PrescriptionMedicine(1, 2, "description 1", null);
-//        PrescriptionMedicine pm2 = new PrescriptionMedicine(0, 6, "description 1", null);
-//
-//        prescriptionMedicineC.addPrescriptionMedicine(pm1);
-//        prescriptionMedicineC.addPrescriptionMedicine(pm2);
+
+        PrescriptionMedicine pm1 = new PrescriptionMedicine(1, 2, "description 1", null);
+        PrescriptionMedicine pm2 = new PrescriptionMedicine(0, 6, "description 1", null);
+
+        prescriptionMedicineC.addPrescriptionMedicine(pm1);
+        prescriptionMedicineC.addPrescriptionMedicine(pm2);
 //
 //        Prescription p1 = new Prescription();
 //        p1.setPrescriptionsMedicine(List.of(pm1.getId(), pm2.getId()));
@@ -33,7 +33,7 @@ public class ConsultationView {
 //        up.setDescription("updated description");
 //        prescriptionMedicineC.updatePrescriptionMedicine(up);
 
-prescriptionMedicineC.deletePrescriptionMedicine(1L);
+//prescriptionMedicineC.deletePrescriptionMedicine(1L);
 
 //        prescriptionC.addPrescription(new Prescription());
 //        prescriptionC.addPrescription(new Prescription());

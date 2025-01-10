@@ -1,9 +1,10 @@
 package org.example.model;
 
 
+import java.util.Objects;
 import java.util.UUID;
 public class Medicine {
-    private final Long id;
+    private  Long id;
     private Double price;
     private String name;
     private String description;
@@ -47,6 +48,16 @@ public class Medicine {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Medicine medicine = (Medicine) o;
+        return Objects.equals(id, medicine.id);
+    }
+
+
 
     @Override
     public String toString() {

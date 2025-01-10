@@ -2,6 +2,7 @@ package org.example.service.implementation;
 
 import org.example.dao.IDao;
 import org.example.dao.ArrayListImpl.MedicineDaoIml;
+import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Medicine;
 import org.example.service.api.MedicineService;
 
@@ -9,7 +10,8 @@ import java.util.List;
 
 public class MedicineServiceImp implements MedicineService {
 
-    private  final IDao<Medicine,Long> dao = new MedicineDaoIml();
+//    private  final IDao<Medicine,Long> dao = new MedicineDaoIml();
+    private  final IDao<Medicine,Long> dao = new JsonDaoImpl<>("medicines.json", Medicine.class);
 
     @Override
     public Medicine addMedicine(Medicine medicine) {
@@ -59,7 +61,7 @@ public class MedicineServiceImp implements MedicineService {
     }
 
     @Override
-    public List<Medicine> getMedicine() {
+    public List<Medicine> getMedicines() {
         try{
             return dao.getAll();
         } catch (Exception e) {
