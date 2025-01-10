@@ -71,9 +71,7 @@ public class InterventionServiceImpl implements InterventionService {
             Intervention i = dao.getById(intervention.getId());
 
             List<Long> interventionActList=  i.getActs();
-            System.out.println(interventionActList.size());
             interventionActList.remove(actId);
-            System.out.println(interventionActList.size());
             i.setActs(interventionActList);
 
             this.updateIntervention(intervention);
@@ -112,8 +110,6 @@ public class InterventionServiceImpl implements InterventionService {
         consultations.stream().filter(consultation -> consultation.getInterventions().contains(ID))
                 .forEach(consultation -> {
                     consultation.getInterventions().remove(ID);
-
-                    // not updating the file content but the update is shown using sout
                     consultationsService.updateConsultation(consultation);
                     updated.set(true);
                 });

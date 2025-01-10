@@ -74,7 +74,11 @@ public class ConsultationServiceImpl implements ConsultationService {
     @Override
     public boolean removeIntervention(Consultation consultation, Long ID) {
         try{
-            consultation.getInterventions().remove(ID);
+            Consultation c = dao.getById(consultation.getId());
+            List<Long> interventions = c.getInterventions();
+            c.getInterventions().remove(ID);
+            c.setInterventions(interventions);
+            this.updateConsultation(consultation);
             return true;
         } catch (Exception e) {
             throw new RuntimeException(e);

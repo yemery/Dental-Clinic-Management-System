@@ -1,11 +1,8 @@
 package org.example.dao.JsonFileImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.example.dao.IDao;
-import com.fasterxml.jackson.databind.*;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +41,8 @@ public class JsonDaoImpl<T, ID> implements IDao<T, ID> {
     public T getById(ID id) throws Exception {
         List<T> currentData = getAll();
         for (T item : currentData) {
-            if (item.toString().contains(id.toString())) {
+            Long itemId = (Long) item.getClass().getMethod("getId").invoke(item);
+            if (itemId.equals(id)) {
                 return item;
             }
         }

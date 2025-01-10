@@ -5,12 +5,14 @@ import org.example.model.Intervention;
 import org.example.service.api.ConsultationService;
 import org.example.service.implementation.ConsultationServiceImpl;
 
+import java.util.List;
+
 public class ConsultationController {
     //    private final ConsultationService consultationService= new ConsultationServiceImpl();
     private final ConsultationService consultationService= new ConsultationServiceImpl();
 
-    public void displayAllConsultations(){
-        consultationService.getAllConsultations().forEach(System.out::println);
+    public List<Consultation> displayAllConsultations(){
+        return consultationService.getAllConsultations();
     }
 
     public void addConsultation(Consultation consultation){ consultationService.addConsultation(consultation);}
