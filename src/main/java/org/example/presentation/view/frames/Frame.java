@@ -1,11 +1,15 @@
 package org.example.presentation.view.frames;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Frame extends JFrame {
-    public Frame(){
+    public Frame() {
         this.setTitle("Dental App");
-        this.setSize(1200, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Get the screen dimensions
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(screenSize.width, screenSize.height); // Set frame to full screen
     }
 }

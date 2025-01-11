@@ -27,7 +27,6 @@ public class Appointments extends JPanelContainer {
 
     @Override
     protected void onShow(Long id) {
-        System.out.println("show appointment");
-
+       new ShowAppointment(id);
     }
 }

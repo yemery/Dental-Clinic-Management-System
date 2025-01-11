@@ -128,15 +128,28 @@ public class AppLayout extends Frame {
         AppointmentController controller = new AppointmentController();
         List<Appointment> appointments = controller.displayAppointments();
 
+        // Convert appointments to a 2D array
         Object[][] appointmentsArray = ConvertArray.convertTo2DArray(
                 appointments,
-                appointment -> List.of(appointment.getId(), appointment.getDate(), appointment.getTime(), appointment.getType(), appointment.getStatus())
+                appointment -> List.of(
+                        appointment.getId(),
+                        appointment.getDate(),
+                        appointment.getTime(),
+                        appointment.getType(),
+                        appointment.getStatus(),
+                        appointment.getConsultation() == null || appointment.getConsultation() == 0 ? "No Consultation found" : appointment.getConsultation().toString()
+                )
         );
-        String columns[] = {"ID", "Date", "Time", "Type", "Status", "Actions"};
 
-        setContent(new Appointments(appointmentsArray, this, "Add new Appointment", columns,
-                a -> new AddAppointment(this)
-        ));
+        // Define columns
+        String[] columns = {"ID", "Date", "Time", "Type", "Status", "Appointment ID", "Actions"};
+
+        // Set content with the appointments table
+        setContent(
+                new Appointments(appointmentsArray, this, "Add new Appointment", columns,
+                        a -> new AddAppointment(this)
+                )
+        );
     }
 
     private void actsNavigation() {
