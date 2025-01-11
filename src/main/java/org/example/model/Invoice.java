@@ -22,7 +22,7 @@ public class Invoice {
         this.id = System.currentTimeMillis();
     }
 
-    public Invoice(LocalDate date, Double totalAmount, Double payedAmount, PaymentType type) {
+    public Invoice(Double totalAmount, Double payedAmount, PaymentType type) {
         this();
         /**
          * Why use this()?
@@ -30,7 +30,7 @@ public class Invoice {
          * Instead of writing the logic to generate a UUID in both constructors, the no-argument constructor centralizes it.
          * The second constructor can simply call it to reuse that logic.
          **/
-        this.date = date;
+        this.date = LocalDate.now();
         this.totalAmount = totalAmount;
         this.payedAmount = payedAmount;
         this.type = type;

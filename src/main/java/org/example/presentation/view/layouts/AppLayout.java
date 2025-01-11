@@ -50,78 +50,24 @@ public class AppLayout extends Frame {
     }
 
     private void setupNavigation() {
-        // kinda routing logic
+        // routing
         navbar.addTabListener("Dashboard", e -> {
-            // get appointments (+user full name) and pass it to the dashboard
-            Object[][] data = {
-                    {"John Doe", "30", "New York", "r"},
-                    {"Jane Smith", "25", "Los Angeles", "r"},
-                    {"Bob Johnson", "35", "Chicago", "r"}
-            };
-
-            setContent(new Dashboard(data));
+            dashboardNavigation();
         });
-
         navbar.addTabListener("Patients", e -> {
-            PatientController patientController = new PatientController();
-            List<Patient> patients = patientController.displayPatients();
-            Object[][] patientsArray = ConvertArray.convertTo2DArray(
-                    patients,
-                    patient-> List.of(patient.getId(),patient.getFirstName(), patient.getLastName(), patient.getPhone(), patient.getCIN()
-                    )
-            );
-            String columns[] ={"ID", "First Name", "Last Name" , "Phone Number","Cin","Actions"};
-            setContent(new Patients(
-                    patientsArray,
-                    this,
-                    "Add new Patient",
-                    columns,
-                    a -> new AddPatient(this)
-            ));
+            patientsNavigation();
         });
-
         navbar.addTabListener("Appointments", e -> {
-            setContent(new Appointments());
+            appointmentsNavigation();
         });
         navbar.addTabListener("Interventions", e -> {
-            InterventionController interventionC = new InterventionController();
-            List<Intervention> interventions = interventionC.displayAllInterventions();
-            Object[][] interventionsArray = ConvertArray.convertTo2DArray(
-                    interventions,
-                    intervention -> List.of(intervention.getId(),intervention.getPrice(), intervention.getActs().size()
-
-                    )
-            );
-
-            String columns[] ={"ID", "Price", "Number of Acts", "Actions"};
-            setContent(new Interventions(
-                    interventionsArray,
-                    this,
-                    "Add new Intervention",
-                    columns,
-                    a -> new AddIntervention(this )
-            ));
+            interventionsNavigation();
         });
         navbar.addTabListener("Acts", e -> {
-            ActController actController = new ActController();
-            List<Act> acts = actController.displayAllActs();
-
-
-            Object[][] actsArray = ConvertArray.convertTo2DArray(
-                    acts,
-                    act -> List.of(act.getId(),act.getName(),act.getBasePrice(),act.getCategory())
-            );
-            String columns[] ={"ID","Name", "Base price", "Category", "Actions"};
-
-            setContent(new Acts(actsArray, this, "Add new Act", columns ,
-                    a -> new AddAct(this)
-                    ));
+            actsNavigation();
         });
-
         navbar.addTabListener("Consultations", e -> {
-            JPanel consultationsPanel = new JPanel();
-            consultationsPanel.add(new JLabel("Consultations"));
-            setContent(consultationsPanel);
+            consultationsNavigation();
         });
     }
 
@@ -137,6 +83,83 @@ public class AppLayout extends Frame {
     }
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts","Interventions");
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions");
+    }
+
+    private void dashboardNavigation() {
+        // get appointments (+user full name) and pass it to the dashboard
+        Object[][] data = {
+                {"John Doe", "30", "New York", "r"},
+                {"Jane Smith", "25", "Los Angeles", "r"},
+                {"Bob Johnson", "35", "Chicago", "r"}
+        };
+
+        setContent(new Dashboard(data));
+    }
+
+    private void patientsNavigation() {
+        PatientController patientController = new PatientController();
+        List<Patient> patients = patientController.displayPatients();
+        Object[][] patientsArray = ConvertArray.convertTo2DArray(
+                patients,
+                patient -> List.of(patient.getId(), patient.getFirstName(), patient.getLastName(), patient.getPhone(), patient.getCIN()
+                )
+        );
+        String columns[] = {"ID", "First Name", "Last Name", "Phone Number", "Cin", "Actions"};
+        setContent(new Patients(
+                patientsArray,
+                this,
+                "Add new Patient",
+                columns,
+                a -> new AddPatient(this)
+        ));
+    }
+
+    private void consultationsNavigation() {
+        JPanel consultationsPanel = new JPanel();
+        consultationsPanel.add(new JLabel("Consultations"));
+        setContent(consultationsPanel);
+    }
+
+    private void appointmentsNavigation() {
+        JPanel consultationsPanel = new JPanel();
+        consultationsPanel.add(new JLabel("Consultations"));
+        setContent(consultationsPanel);
+    }
+
+    private void actsNavigation() {
+        ActController actController = new ActController();
+        List<Act> acts = actController.displayAllActs();
+
+
+        Object[][] actsArray = ConvertArray.convertTo2DArray(
+                acts,
+                act -> List.of(act.getId(), act.getName(), act.getBasePrice(), act.getCategory())
+        );
+        String columns[] = {"ID", "Name", "Base price", "Category", "Actions"};
+
+        setContent(new Acts(actsArray, this, "Add new Act", columns,
+                a -> new AddAct(this)
+        ));
+    }
+
+    private void interventionsNavigation() {
+        InterventionController interventionC = new InterventionController();
+        List<Intervention> interventions = interventionC.displayAllInterventions();
+        Object[][] interventionsArray = ConvertArray.convertTo2DArray(
+                interventions,
+                intervention -> List.of(intervention.getId(), intervention.getPrice(), intervention.getActs().size()
+
+                )
+        );
+
+        String columns[] = {"ID", "Price", "Number of Acts", "Actions"};
+        setContent(new Interventions(
+                interventionsArray,
+                this,
+                "Add new Intervention",
+                columns,
+                a -> new AddIntervention(this)
+        ));
     }
 }

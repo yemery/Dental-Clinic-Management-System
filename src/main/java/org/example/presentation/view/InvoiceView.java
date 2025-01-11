@@ -10,11 +10,11 @@ public class InvoiceView {
     public static void main(String[] args) {
         InvoiceController invC = new InvoiceController();
 //
-//        Invoice i1 = new Invoice(LocalDate.now(), 14000.0, 8000.4, PaymentType.CASH);
-//        Invoice i2 = new Invoice(LocalDate.now(), 1500.0, 900.0, PaymentType.CHEQUE);
+        Invoice i1 = new Invoice(14000.0, 8000.4, PaymentType.CASH);
+        Invoice i2 = new Invoice(1500.0, 900.0, PaymentType.CHEQUE);
 //
-//        invC.addInvoice(i1);
-//        invC.addInvoice(i2);
+        invC.addInvoice(i1);
+        invC.addInvoice(i2);
 
 
 //        System.out.println(invC.displayAllInvoices()    );
