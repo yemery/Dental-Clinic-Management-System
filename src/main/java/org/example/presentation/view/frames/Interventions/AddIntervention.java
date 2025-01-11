@@ -10,7 +10,6 @@ import org.example.presentation.view.frames.Frame;
 import org.example.presentation.view.layouts.AppLayout;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.List;
 

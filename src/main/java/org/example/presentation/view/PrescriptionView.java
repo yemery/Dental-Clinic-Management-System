@@ -5,6 +5,8 @@ import org.example.model.Prescription;
 import org.example.model.PrescriptionMedicine;
 import org.example.presentation.controller.PrescriptionController;
 
+import java.util.List;
+
 public class PrescriptionView {
 
     public static void main(String[] args) {
@@ -12,9 +14,11 @@ public class PrescriptionView {
 
 
 //        Prescription p1 = new Prescription();
-//        PrescriptionMedicine prescrMed = new PrescriptionMedicine(12,12,"desc", new Medicine(82.0, "med 1", "desc 1"));
-//        p1.setPrescriptionsMedicine(prescrMed);
-//        prescriptionC.addPrescription(p1);
+
+
+//        p1.setPrescriptionsMedicine(prescrMed.getId());
+        prescriptionC.addPrescription(new Prescription());
+        prescriptionC.addPrescription(new Prescription());
 //
 //        prescriptionC.displayPrescriptions();
 //        System.out.println(p1.getPrescriptionsMedicine().size());

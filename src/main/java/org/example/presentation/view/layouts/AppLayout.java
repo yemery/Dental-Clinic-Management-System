@@ -15,6 +15,8 @@ import org.example.presentation.view.frames.Interventions.AddIntervention;
 import org.example.presentation.view.frames.Interventions.Interventions;
 import org.example.presentation.view.frames.Invoice.AddInvoice;
 import org.example.presentation.view.frames.Invoice.Invoices;
+import org.example.presentation.view.frames.Medicines.AddMedicine;
+import org.example.presentation.view.frames.Medicines.Medicines;
 import org.example.presentation.view.frames.Patient.AddPatient;
 import org.example.presentation.view.frames.Patient.Patients;
 import org.example.utils.ConvertArray;
@@ -72,6 +74,9 @@ public class AppLayout extends Frame {
         navbar.addTabListener("Invoices", e -> {
             invoicesNavigation();
         });
+        navbar.addTabListener("Medicines", e -> {
+            medicinesNavigation();
+        });
     }
 
     private void setContent(JPanel panel) {
@@ -86,7 +91,7 @@ public class AppLayout extends Frame {
     }
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices");
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines");
     }
 
     private void dashboardNavigation() {
@@ -216,6 +221,20 @@ public class AppLayout extends Frame {
 
         setContent(new Invoices(invoicesArray, this, "Add new Invoice", columns,
                 a -> new AddInvoice(this)
+        ));
+    }
+    private void medicinesNavigation() {
+        MedicineController medicineController = new MedicineController();
+        List<Medicine> medicines = medicineController.getAllMedicine();
+
+
+        Object[][] medicinesArray = ConvertArray.convertTo2DArray(
+                medicines,
+                m -> List.of(m.getId(),m.getName(),m.getDescription(),m.getPrice())
+        );
+        String columns[] = {"ID", "Name","Description","Price","Actions"};
+        setContent(new Medicines(medicinesArray, this, "Add new Medicine", columns,
+                a -> new AddMedicine(this)
         ));
     }
 }

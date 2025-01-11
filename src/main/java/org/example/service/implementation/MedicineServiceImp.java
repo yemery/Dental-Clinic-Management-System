@@ -78,21 +78,24 @@ public class MedicineServiceImp implements MedicineService {
     }
 
     @Override
-    public boolean removeMedicineFromPrescriptionMedicine( Long ID) {
-        PrescriptionMedicineService prescriptionMedicineService= new PrescriptionMedicineServiceImpl();
+    public boolean removeMedicineFromPrescriptionMedicine(Long ID) {
+        PrescriptionMedicineService prescriptionMedicineService = new PrescriptionMedicineServiceImpl();
         List<PrescriptionMedicine> prescriptionMedicineList = prescriptionMedicineService.getAllMedicinePrescription();
 
         AtomicBoolean updated = new AtomicBoolean(false);
-        prescriptionMedicineList.stream().filter(pm -> pm.getMedicine().equals(ID))
-                .forEach(pm -> {
-
-                   pm.setMedicine(0L);
-                    prescriptionMedicineService.updateMedicinePrescription(pm);
-                    updated.set(true);
-                });
+        if (prescriptionMedicineList != null) {
+            prescriptionMedicineList.stream()
+                    .filter(pm -> pm.getMedicine() != null && pm.getMedicine().equals(ID))
+                    .forEach(pm -> {
+                        pm.setMedicine(0L); // Assuming 0L means "removed" or "unset"
+                        prescriptionMedicineService.updateMedicinePrescription(pm);
+                        updated.set(true);
+                    });
+        }
 
         return updated.get();
-
     }
+
+
 
 }
