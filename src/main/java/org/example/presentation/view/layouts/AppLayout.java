@@ -19,6 +19,8 @@ import org.example.presentation.view.frames.Medicines.AddMedicine;
 import org.example.presentation.view.frames.Medicines.Medicines;
 import org.example.presentation.view.frames.Patient.AddPatient;
 import org.example.presentation.view.frames.Patient.Patients;
+import org.example.presentation.view.frames.Prescriptions.AddPrescription;
+import org.example.presentation.view.frames.Prescriptions.Prescriptions;
 import org.example.utils.ConvertArray;
 
 import javax.swing.*;
@@ -77,6 +79,9 @@ public class AppLayout extends Frame {
         navbar.addTabListener("Medicines", e -> {
             medicinesNavigation();
         });
+        navbar.addTabListener("Prescriptions", e -> {
+            prescriptionsNavigation();
+        });
     }
 
     private void setContent(JPanel panel) {
@@ -91,7 +96,7 @@ public class AppLayout extends Frame {
     }
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines");
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions");
     }
 
     private void dashboardNavigation() {
@@ -235,6 +240,20 @@ public class AppLayout extends Frame {
         String columns[] = {"ID", "Name","Description","Price","Actions"};
         setContent(new Medicines(medicinesArray, this, "Add new Medicine", columns,
                 a -> new AddMedicine(this)
+        ));
+    }
+    private void prescriptionsNavigation() {
+        PrescriptionController prescriptionController = new PrescriptionController();
+        List<Prescription> prescriptions = prescriptionController.displayPrescriptions();
+
+
+        Object[][] prescriptionsArray = ConvertArray.convertTo2DArray(
+                prescriptions,
+                p -> List.of(p.getId(),p.getDate(),p.getPrescriptionsMedicine().size())
+        );
+        String columns[] = {"ID", "Date","Medicine Prescriptions", "Actions"};
+        setContent(new Prescriptions(prescriptionsArray, this, "Add new Medicine", columns,
+                a -> new AddPrescription(this)
         ));
     }
 }

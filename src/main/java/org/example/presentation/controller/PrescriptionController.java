@@ -5,6 +5,8 @@ import org.example.model.PrescriptionMedicine;
 import org.example.service.api.PrescriptionService;
 import org.example.service.implementation.PrescriptionServiceImpl;
 
+import java.util.List;
+
 public class PrescriptionController  {
     private final PrescriptionService prescriptionService = new PrescriptionServiceImpl();
 
@@ -12,8 +14,8 @@ public class PrescriptionController  {
         prescriptionService.addPrescription(prescription);
     }
 
-    public void displayPrescriptions() {
-        prescriptionService.getAllPrescriptions().forEach(System.out::println);
+    public List<Prescription> displayPrescriptions() {
+        return prescriptionService.getAllPrescriptions();
     }
 
     public void deletePrescription(Long ID) {
