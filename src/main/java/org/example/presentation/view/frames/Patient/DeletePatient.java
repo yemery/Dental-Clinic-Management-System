@@ -1,6 +1,5 @@
 package org.example.presentation.view.frames.Patient;
 
-import org.example.presentation.controller.InterventionController;
 import org.example.presentation.controller.PatientController;
 import org.example.presentation.view.layouts.AppLayout;
 
