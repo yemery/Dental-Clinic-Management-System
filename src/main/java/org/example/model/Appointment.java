@@ -29,13 +29,12 @@ public class Appointment {
         this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
-    public Appointment(LocalTime time, LocalDate date, AppoitmentType type, AppointementStatus status , Long consultation) {
+    public Appointment(LocalTime time, LocalDate date, AppoitmentType type, AppointementStatus status) {
         this();
         this.time = time;
         this.date = date;
         this.type = type;
         this.status = status;
-        this.consultation = consultation;
     }
 
     public Long getId() {

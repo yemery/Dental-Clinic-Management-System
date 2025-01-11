@@ -2,48 +2,33 @@ package org.example.presentation.view.frames.Appoitments;
 
 import org.example.presentation.view.components.atoms.Button;
 import org.example.presentation.view.components.molecules.Table;
+import org.example.presentation.view.layouts.AppLayout;
+import org.example.utils.JPanelContainer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class Appointments extends JPanel {
-    private JPanel container;
-    private JPanel addContainer;
+public class Appointments extends JPanelContainer {
 
-    Button addAppointmentBtn;
-    Table appointmentsTable;
+    public Appointments(Object[][] data, AppLayout appLayout, String addBtnLabel, String[] colNames, ActionListener add) {
+        super(data, appLayout, addBtnLabel, colNames, add);
+    }
 
-    public Appointments() {
-        super();
-        this.setLayout(new BorderLayout());
-        this.container = new JPanel();
-        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+    @Override
+    protected void onEdit(Long id, AppLayout appLayout) {
+//        new EditAppointment(id,appLayout);
+    }
 
-        this.addAppointmentBtn = new Button("Add Appointment");
-//        this.addAppointmentBtn.addActionListener(); // action to have a new frame to add appointment
+    @Override
+    protected void onDelete(Long id, AppLayout appLayout) {
+        System.out.println("delete appointment");
 
-        this.add(this.addAppointmentBtn);
-        this.addContainer = new JPanel() {
-            @Override
-            public Dimension getPreferredSize() {
-                Dimension dim = super.getPreferredSize();
-                dim.width = getParent().getWidth();
-                return dim;
-            }
-        };
+    }
 
-        this.addContainer.add(this.addAppointmentBtn, BorderLayout.WEST);
-        this.container.add(this.addContainer);
+    @Override
+    protected void onShow(Long id) {
+        System.out.println("show appointment");
 
-        JPanel tableContainer = new JPanel(new BorderLayout());
-        tableContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-        String[] cols = {"patient", "date", "time", "purpose", "status", "action"};
-        this.appointmentsTable = new Table(null, cols);
-        tableContainer.add(new JScrollPane(appointmentsTable), BorderLayout.CENTER);
-        this.container.add(tableContainer);
-
-        this.add(this.container, BorderLayout.CENTER);
-        this.setVisible(true);
     }
 }

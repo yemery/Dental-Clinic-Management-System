@@ -3,14 +3,17 @@ package org.example.presentation.view.layouts;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.model.Act;
+import org.example.model.Appointment;
 import org.example.model.Intervention;
 import org.example.model.Patient;
 import org.example.presentation.controller.ActController;
+import org.example.presentation.controller.AppointmentController;
 import org.example.presentation.controller.InterventionController;
 import org.example.presentation.controller.PatientController;
 import org.example.presentation.view.components.molecules.NavigationBar;
 import org.example.presentation.view.frames.Acts.Acts;
 import org.example.presentation.view.frames.Acts.AddAct;
+import org.example.presentation.view.frames.Appoitments.AddAppointment;
 import org.example.presentation.view.frames.Appoitments.Appointments;
 import org.example.presentation.view.frames.Dashboard;
 import org.example.presentation.view.frames.Frame;
@@ -122,9 +125,18 @@ public class AppLayout extends Frame {
     }
 
     private void appointmentsNavigation() {
-        JPanel consultationsPanel = new JPanel();
-        consultationsPanel.add(new JLabel("Consultations"));
-        setContent(consultationsPanel);
+        AppointmentController controller = new AppointmentController();
+        List<Appointment> appointments = controller.displayAppointments();
+
+        Object[][] appointmentsArray = ConvertArray.convertTo2DArray(
+                appointments,
+                appointment -> List.of(appointment.getId(), appointment.getDate(), appointment.getTime(), appointment.getType(), appointment.getStatus())
+        );
+        String columns[] = {"ID", "Date", "Time", "Type", "Status", "Actions"};
+
+        setContent(new Acts(appointmentsArray, this, "Add new Appointment", columns,
+                a -> new AddAppointment(this)
+        ));
     }
 
     private void actsNavigation() {

@@ -2,9 +2,8 @@ package org.example.presentation.view.components.molecules;
 
 import javax.swing.*;
 import java.awt.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 public class Input<T> extends JPanel {
@@ -34,6 +33,10 @@ public class Input<T> extends JPanel {
             dateSpinner.setEditor(dateEditor);
             dateSpinner.setPreferredSize(new Dimension(300, 40));
             this.add(dateSpinner, gbc);
+        } else if (type == LocalTime.class) {
+            textField = new JTextField();
+            textField.setPreferredSize(new Dimension(300, 40));
+            this.add(textField, gbc);
         } else {
             textField = new JTextField();
             textField.setPreferredSize(new Dimension(300, 40));
@@ -82,15 +85,16 @@ public class Input<T> extends JPanel {
                 return type.cast(Integer.parseInt(text));
             } else if (type == Double.class) {
                 return type.cast(Double.parseDouble(text));
+            } else if (type == LocalTime.class) {
+                return type.cast(LocalTime.parse(text)); // Parse LocalTime
             } else {
                 throw new IllegalArgumentException("Unsupported type: " + type.getName());
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("Invalid input for type " + type.getName() + ": " + text, e);
         }
     }
 
-    // Set value in text field, combo box, or spinner
     public void setValue(T value) {
         if (comboBox != null) {
             comboBox.setSelectedItem(value);
@@ -99,6 +103,8 @@ public class Input<T> extends JPanel {
         } else if (dateSpinner != null && value instanceof LocalDate) {
             Date date = java.sql.Date.valueOf((LocalDate) value);
             dateSpinner.setValue(date);
+        } else if (value instanceof LocalTime) {
+            textField.setText(((LocalTime) value).toString());
         } else {
             textField.setText(value.toString());
         }

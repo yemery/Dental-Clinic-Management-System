@@ -12,11 +12,11 @@ public class AppointmentView {
         AppointmentController appointmentController = new AppointmentController();
 
 
-        Appointment ap1 = new Appointment(LocalTime.now(),LocalDate.now(),AppoitmentType.Control,AppointementStatus.CONFIRMED,17L);
-        Appointment ap2 = new Appointment(LocalTime.now(),LocalDate.now(),AppoitmentType.Advice,AppointementStatus.CANCELLED,16L);
+//        Appointment ap1 = new Appointment(LocalTime.now(),LocalDate.now(),AppoitmentType.Control,AppointementStatus.CONFIRMED);
+//        Appointment ap2 = new Appointment(LocalTime.now(),LocalDate.now(),AppoitmentType.Advice,AppointementStatus.CANCELLED);
 
-        appointmentController.addAppointment(ap1);
-        appointmentController.addAppointment(ap2);
+//        appointmentController.addAppointment(ap1);
+//        appointmentController.addAppointment(ap2);
 //
 //        appointmentController.displayAppointments();
 
