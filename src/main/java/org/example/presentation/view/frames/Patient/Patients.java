@@ -15,12 +15,12 @@ public class Patients extends JPanelContainer{
 
     @Override
     protected void onEdit(Long id, AppLayout appLayout) {
-//        new EditPatient(id, appLayout);
+        new EditPatient(id, appLayout);
     }
 
     @Override
     protected void onDelete(Long id, AppLayout appLayout) {
-//        new DeletePatient(id, appLayout);
+        new DeletePatient(id, appLayout);
     }
 
     @Override
