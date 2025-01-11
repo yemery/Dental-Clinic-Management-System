@@ -13,6 +13,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class AddPatient extends Frame {
     private Input<String> firstName = new Input<>("First Name", String.class);
@@ -34,93 +35,76 @@ public class AddPatient extends Frame {
     public AddPatient(AppLayout appLayout) {
         super();
         this.appLayout = appLayout;
-
-        // Frame setup
-        setTitle("Add Patient");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 600); // Adjust size to accommodate larger inputs
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
 
-        // Main content panel with GridBagLayout
         JPanel contentPanel = new JPanel(new GridBagLayout());
         contentPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(10, 0, 10, 0);
 
-        // Set preferred size for inputs
-        Dimension inputSize = new Dimension(400, 40);
+        // adding 2 inputs per row
+        int row = 0;
+        addInputField(contentPanel, gbc, firstName, 0, row);
+        addInputField(contentPanel, gbc, lastName, 1, row++);
+        addInputField(contentPanel, gbc, email, 0, row);
+        addInputField(contentPanel, gbc, cin, 1, row++);
+        addInputField(contentPanel, gbc, phone, 0, row);
+        addInputField(contentPanel, gbc, address, 1, row++);
+        addInputField(contentPanel, gbc, job, 0, row);
+        addInputField(contentPanel, gbc, registration, 1, row++);
+        addInputField(contentPanel, gbc, birthDate, 0, row);
+        addDropdownField(contentPanel, gbc, gender, 1, row++);
+        addDropdownField(contentPanel, gbc, mutuelleJComboBox, 0, row++);
 
-        // Add input fields with labels above them
-        addInputField(contentPanel, gbc, firstName, inputSize);
-        addInputField(contentPanel, gbc, lastName, inputSize);
-        addInputField(contentPanel, gbc, email, inputSize);
-        addInputField(contentPanel, gbc, cin, inputSize);
-        addInputField(contentPanel, gbc, phone, inputSize);
-        addInputField(contentPanel, gbc, address, inputSize);
-        addInputField(contentPanel, gbc, job, inputSize);
-        addInputField(contentPanel, gbc, registration, inputSize);
-        addInputField(contentPanel, gbc, birthDate, inputSize);
-
-        // Add dropdowns for gender and mutuelle
-        addDropdownField(contentPanel, gbc, "Gender", gender, inputSize);
-        addDropdownField(contentPanel, gbc, "Mutuelle", mutuelleJComboBox, inputSize);
-
-        // Save button
-        gbc.gridy++;
+        saveButton = new Button("Save");
+        saveButton.setPreferredSize(new Dimension(150, 40));
+        saveButton.addActionListener(e -> savePatient());
+        gbc.gridx = 0;
+        gbc.gridy = row;
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
-        saveButton = new Button("Save");
-        saveButton.setPreferredSize(new Dimension(200, 50)); // Larger button for better UX
-        saveButton.addActionListener(e -> savePatient());
         contentPanel.add(saveButton, gbc);
 
-        add(contentPanel, BorderLayout.CENTER);
+        add(contentPanel);
         setVisible(true);
     }
 
-    private void addInputField(JPanel panel, GridBagConstraints gbc, Input<?> inputField, Dimension size) {
-        gbc.gridy++;
-        inputField.setPreferredSize(size); // Apply larger size to the input
-        panel.add(inputField, gbc);
+    private void addInputField(JPanel panel, GridBagConstraints gbc, Input<?> inputField, int col, int row) {
+        gbc.gridx = col;
+        gbc.gridy = row;
+
+        JPanel fieldPanel = new JPanel(new BorderLayout());
+        fieldPanel.add(inputField, BorderLayout.CENTER);
+        panel.add(fieldPanel, gbc);
     }
 
-    private void addDropdownField(JPanel panel, GridBagConstraints gbc, String labelText, JComboBox<?> comboBox, Dimension size) {
-        gbc.gridy++;
-        JLabel label = new JLabel(labelText);
-        label.setHorizontalAlignment(SwingConstants.LEFT);
-        label.setFont(new Font("Arial", Font.BOLD, 14));
-        panel.add(label, gbc);
+    private void addDropdownField(JPanel panel, GridBagConstraints gbc, JComboBox<?> comboBox, int col, int row) {
+        gbc.gridx = col;
+        gbc.gridy = row;
 
-        gbc.gridy++;
-        comboBox.setPreferredSize(size); // Apply larger size to the combo box
-        panel.add(comboBox, gbc);
+        JPanel fieldPanel = new JPanel(new BorderLayout());
+        fieldPanel.add(comboBox, BorderLayout.CENTER);
+        panel.add(fieldPanel, gbc);
     }
 
     private void savePatient() {
         try {
-            // Fetch input values
-            String firstNameValue = firstName.getValue();
-            String lastNameValue = lastName.getValue();
-            String emailValue = email.getValue();
-            String cinValue = cin.getValue();
-            String phoneValue = phone.getValue();
-            String addressValue = address.getValue();
-            String jobValue = job.getValue();
-            String registrationValue = registration.getValue();
-            LocalDate birthDateValue = birthDate.getValue();
-            Gender genderValue = (Gender) gender.getSelectedItem();
-            Mutuelle mutuelleValue = (Mutuelle) mutuelleJComboBox.getSelectedItem();
+            String firstNameValue = Objects.requireNonNullElse(firstName.getValue(), "");
+            String lastNameValue = Objects.requireNonNullElse(lastName.getValue(), "");
+            String emailValue = Objects.requireNonNullElse(email.getValue(), "");
+            String cinValue = Objects.requireNonNullElse(cin.getValue(), "");
+            String phoneValue = Objects.requireNonNullElse(phone.getValue(), "");
+            String addressValue = Objects.requireNonNullElse(address.getValue(), "");
+            String jobValue = Objects.requireNonNullElse(job.getValue(), "");
+            String registrationValue = Objects.requireNonNullElse(registration.getValue(), "");
+            LocalDate birthDateValue = Objects.requireNonNullElse(birthDate.getValue(), LocalDate.now());
+            Gender genderValue = Objects.requireNonNullElse((Gender) gender.getSelectedItem(), null);
+            Mutuelle mutuelleValue = Objects.requireNonNullElse((Mutuelle) mutuelleJComboBox.getSelectedItem(), null);
 
-            if (firstNameValue == null || lastNameValue == null || emailValue == null || cinValue == null) {
-                throw new IllegalArgumentException("First Name, Last Name, Email, and CIN are required fields.");
-            }
-
-            // Save patient
+            validateRequiredFields(firstNameValue, lastNameValue, emailValue, cinValue,
+                    birthDateValue, phoneValue, genderValue, registrationValue);
             Patient patient = new Patient(
                     firstNameValue,
                     lastNameValue,
@@ -145,4 +129,45 @@ public class AddPatient extends Frame {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    private void validateRequiredFields(
+            String firstNameValue,
+            String lastNameValue,
+            String emailValue,
+            String cinValue,
+            LocalDate birthDateValue,
+            String phoneValue,
+            Gender genderValue,
+            String registrationValue) {
+
+        if (isNullOrEmpty(firstNameValue)) {
+            throw new IllegalArgumentException("First Name is a required field.");
+        }
+        if (isNullOrEmpty(lastNameValue)) {
+            throw new IllegalArgumentException("Last Name is a required field.");
+        }
+        if (isNullOrEmpty(emailValue)) {
+            throw new IllegalArgumentException("Email is a required field.");
+        }
+        if (isNullOrEmpty(cinValue)) {
+            throw new IllegalArgumentException("CIN is a required field.");
+        }
+        if (birthDateValue == null) {
+            throw new IllegalArgumentException("Birth Date is a required field.");
+        }
+        if (isNullOrEmpty(phoneValue)) {
+            throw new IllegalArgumentException("Phone is a required field.");
+        }
+        if (genderValue == null) {
+            throw new IllegalArgumentException("Gender is a required field.");
+        }
+        if (isNullOrEmpty(registrationValue)) {
+            throw new IllegalArgumentException("Registration is a required field.");
+        }
+    }
+
+    private boolean isNullOrEmpty(String value) {
+        return value == null || value.trim().isEmpty();
+    }
+
 }
