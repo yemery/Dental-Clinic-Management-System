@@ -17,13 +17,12 @@ public class Appointments extends JPanelContainer {
 
     @Override
     protected void onEdit(Long id, AppLayout appLayout) {
-//        new EditAppointment(id,appLayout);
+        new EditAppointment(id, appLayout);
     }
 
     @Override
     protected void onDelete(Long id, AppLayout appLayout) {
-        System.out.println("delete appointment");
-
+        new DeleteAppointment(id, appLayout);
     }
 
     @Override

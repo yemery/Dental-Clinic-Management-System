@@ -134,7 +134,7 @@ public class AppLayout extends Frame {
         );
         String columns[] = {"ID", "Date", "Time", "Type", "Status", "Actions"};
 
-        setContent(new Acts(appointmentsArray, this, "Add new Appointment", columns,
+        setContent(new Appointments(appointmentsArray, this, "Add new Appointment", columns,
                 a -> new AddAppointment(this)
         ));
     }
