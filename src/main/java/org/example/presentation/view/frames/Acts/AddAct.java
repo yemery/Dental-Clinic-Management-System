@@ -25,16 +25,15 @@ public class AddAct extends Frame {
         super();
         this.appLayout = appLayout;
 
-        // window listener to detect closing
+        // Set the close operation for this frame only
+
+
+        // Window listener to handle cleanup on close
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                for (Component comp : appLayout.getNavbar().getComponents()) {
-                    if (comp instanceof JButton && ((JButton) comp).getText().equals("Acts")) {
-                        ((JButton) comp).doClick();
-                        break;
-                    }
-                }
+                // Trigger the "Acts" tab on the parent navigation bar
+                appLayout.getNavbar().simulateTabClick("Acts");
             }
         });
 
@@ -50,23 +49,27 @@ public class AddAct extends Frame {
         this.add(basePrice, gbc);
         this.add(category, gbc);
 
-
+        // Submit button
         Button submitBtn = new Button("Submit");
         submitBtn.setPreferredSize(new Dimension(300, 40));
         submitBtn.addActionListener(e -> {
             // Add the new act using ActController
-            ActController actController = new ActController();
-            actController.addNewAct(new Act(
-                    (String) name.getValue(),
-                    (Double) basePrice.getValue(),
-                    (ActCategory) category.getValue()
-            ));
-            JOptionPane.showMessageDialog(this, "Intervention saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-
-            dispose(); // close the frame
+            try {
+                ActController actController = new ActController();
+                actController.addNewAct(new Act(
+                        (String) name.getValue(),
+                        (Double) basePrice.getValue(),
+                        (ActCategory) category.getValue()
+                ));
+                JOptionPane.showMessageDialog(this, "Act added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                dispose(); // Close the frame
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         this.add(submitBtn, gbc);
+        this.setLocationRelativeTo(null); // Center the frame
         this.setVisible(true);
     }
 }

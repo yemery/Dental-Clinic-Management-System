@@ -6,7 +6,7 @@ import java.awt.*;
 public class Frame extends JFrame {
     public Frame() {
         this.setTitle("Dental App");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // Get the screen dimensions
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

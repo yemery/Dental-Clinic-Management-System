@@ -1,35 +1,27 @@
 package org.example.presentation.view.layouts;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.model.Act;
-import org.example.model.Appointment;
-import org.example.model.Intervention;
-import org.example.model.Patient;
-import org.example.presentation.controller.ActController;
-import org.example.presentation.controller.AppointmentController;
-import org.example.presentation.controller.InterventionController;
-import org.example.presentation.controller.PatientController;
+import org.example.model.*;
+import org.example.presentation.controller.*;
 import org.example.presentation.view.components.molecules.NavigationBar;
 import org.example.presentation.view.frames.Acts.Acts;
 import org.example.presentation.view.frames.Acts.AddAct;
 import org.example.presentation.view.frames.Appoitments.AddAppointment;
 import org.example.presentation.view.frames.Appoitments.Appointments;
+import org.example.presentation.view.frames.Certificates.AddCertificate;
+import org.example.presentation.view.frames.Certificates.Certificates;
 import org.example.presentation.view.frames.Dashboard;
 import org.example.presentation.view.frames.Frame;
 import org.example.presentation.view.frames.Interventions.AddIntervention;
 import org.example.presentation.view.frames.Interventions.Interventions;
+import org.example.presentation.view.frames.Invoice.AddInvoice;
+import org.example.presentation.view.frames.Invoice.Invoices;
 import org.example.presentation.view.frames.Patient.AddPatient;
 import org.example.presentation.view.frames.Patient.Patients;
 import org.example.utils.ConvertArray;
-import org.example.utils.ConvertArray.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.io.Serializable;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AppLayout extends Frame {
     private NavigationBar navbar;
@@ -49,6 +41,8 @@ public class AppLayout extends Frame {
         add(contentPanel, BorderLayout.CENTER);
 
         setupNavigation();
+        navbar.simulateTabClick("Dashboard");
+
         setVisible(true);
     }
 
@@ -72,6 +66,12 @@ public class AppLayout extends Frame {
         navbar.addTabListener("Consultations", e -> {
             consultationsNavigation();
         });
+        navbar.addTabListener("Certificates", e -> {
+            certificatesNavigation();
+        });
+        navbar.addTabListener("Invoices", e -> {
+            invoicesNavigation();
+        });
     }
 
     private void setContent(JPanel panel) {
@@ -86,7 +86,7 @@ public class AppLayout extends Frame {
     }
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions");
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices");
     }
 
     private void dashboardNavigation() {
@@ -185,6 +185,37 @@ public class AppLayout extends Frame {
                 "Add new Intervention",
                 columns,
                 a -> new AddIntervention(this)
+        ));
+    }
+
+    private void certificatesNavigation() {
+        CertificateController certificateController = new CertificateController();
+        List<Certificate> certificatesList = certificateController.displayAllCertificates();
+
+
+        Object[][] certificatesArray = ConvertArray.convertTo2DArray(
+                certificatesList,
+                cer -> List.of(cer.getId(),cer.getReason(),cer.getStartDate(),cer.getEndDate())
+        );
+        String columns[] = {"ID", "Reasan" ,"Start Date","End Date","Actions"};
+
+        setContent(new Certificates(certificatesArray, this, "Add new Certificate", columns,
+                a -> new AddCertificate(this)
+        ));
+    }
+    private void invoicesNavigation() {
+        InvoiceController  invoiceController = new InvoiceController();
+        List<Invoice> invoices = invoiceController.displayAllInvoices();
+
+
+        Object[][] invoicesArray = ConvertArray.convertTo2DArray(
+                invoices,
+                inv -> List.of(inv.getId(),inv.getDate(),inv.getPayedAmount(),inv.getTotalAmount(),inv.getType())
+        );
+        String columns[] = {"ID", "Date","Total Amount","Payed Amount" , "Type" , "Actions"};
+
+        setContent(new Invoices(invoicesArray, this, "Add new Invoice", columns,
+                a -> new AddInvoice(this)
         ));
     }
 }
