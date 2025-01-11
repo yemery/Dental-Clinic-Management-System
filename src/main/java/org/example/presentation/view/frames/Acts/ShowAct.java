@@ -1,64 +1,56 @@
 package org.example.presentation.view.frames.Acts;
 
 import org.example.model.Act;
-import org.example.model.enums.ActCategory;
 import org.example.presentation.controller.ActController;
 import org.example.presentation.view.frames.Frame;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class ShowAct extends Frame {
     public ShowAct(Long id) {
-        // Set up the frame
+        super();
+
+        // Fetch act details
         ActController controller = new ActController();
         Act act = controller.getAct(id);
 
-        setTitle("Act Details Viewer");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Dispose this frame only
+        // Frame setup
+        setTitle("Show Act Details");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close this frame only
+        setSize(500, 300); // Initial size
+        setLocationRelativeTo(null); // Center on screen
+        setLayout(new BorderLayout());
 
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 300);
-        setLocationRelativeTo(null); // Center the frame on the screen
+        // Main content panel with GridLayout
+        JPanel contentPanel = new JPanel(new GridLayout(0, 1, 5, 5)); // Flexible rows, 1 column
+        contentPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-        // Create a panel for the table
-        JPanel tablePanel = new JPanel(new GridLayout(2, 4, 0, 0)); // 2 rows, 4 columns
+        // Add rows for each field
+        contentPanel.add(createRow("ID:", String.valueOf(act.getId())));
+        contentPanel.add(createRow("Name:", act.getName()));
+        contentPanel.add(createRow("Base Price:", String.format("%.2f", act.getBasePrice())));
+        contentPanel.add(createRow("Category:", act.getCategory() != null ? act.getCategory().name() : "N/A"));
 
-        // Add header row (field names)
-        tablePanel.add(createCell("ID", true));
-        tablePanel.add(createCell("Name", true));
-        tablePanel.add(createCell("Base Price", true));
-        tablePanel.add(createCell("Category", true));
-
-        // Add value row (field values)
-        tablePanel.add(createCell(String.valueOf(act.getId()), false));
-        tablePanel.add(createCell(act.getName(), false));
-        tablePanel.add(createCell(String.format("%.2f", act.getBasePrice()), false));
-        tablePanel.add(createCell(act.getCategory().name(), false));
-
-        // Add the table panel to the frame
-        add(tablePanel, BorderLayout.CENTER);
+        // Add content panel to frame
+        add(contentPanel, BorderLayout.CENTER);
 
         // Make the frame visible
         setVisible(true);
     }
 
-    // Helper method to create a cell with borders and optional styling
-    private JPanel createCell(String text, boolean isHeader) {
-        JPanel cell = new JPanel(new BorderLayout());
-        JLabel label = new JLabel(text, SwingConstants.CENTER);
-        label.setFont(isHeader ? label.getFont().deriveFont(Font.BOLD, 14f) : label.getFont().deriveFont(Font.PLAIN, 12f));
+    // Helper method to create a styled row with label and data
+    private JPanel createRow(String label, String value) {
+        JPanel row = new JPanel(new GridLayout(1, 2, 10, 0)); // 1 row, 2 columns
+        JLabel labelComponent = new JLabel(label, SwingConstants.LEFT);
+        labelComponent.setFont(new Font("Arial", Font.BOLD, 14));
+        JLabel valueComponent = new JLabel(value, SwingConstants.LEFT);
+        valueComponent.setFont(new Font("Arial", Font.PLAIN, 14));
 
-        // Set cell border for visual separation
-        Border lineBorder = new LineBorder(Color.BLACK, 1); // Black line border
-        Border paddingBorder = new EmptyBorder(5, 5, 5, 5); // Padding inside the cell
-        cell.setBorder(new CompoundBorder(lineBorder, paddingBorder));
+        row.add(labelComponent);
+        row.add(valueComponent);
 
-        cell.add(label, BorderLayout.CENTER);
-        return cell;
+        return row;
     }
 }

@@ -20,69 +20,6 @@ public class AddIntervention extends Frame {
     private JButton saveButton;
     private AppLayout appLayout;
 
-//    public AddIntervention(AppLayout appLayout) {
-//        super();
-//        this.appLayout = appLayout;
-//
-//        // Controller to fetch available acts
-//        ActController actController = new ActController();
-//        List<Act> availableActs = actController.displayAllActs();
-//
-//        // Frame setup
-//        setTitle("Add Intervention");
-//        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close this frame only
-//        setSize(600, 400);
-//        setLocationRelativeTo(null); // Center on screen
-//        setLayout(new BorderLayout());
-//
-//        // Main content panel
-//        JPanel contentPanel = new JPanel();
-//        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-//        contentPanel.setBorder(new EmptyBorder(20, 20, 20, 20)); // Add padding
-//
-//        // Add price input field
-//        contentPanel.add(price);
-//
-//        // Add label for act selection
-//        JLabel actLabel = new JLabel("Select Acts:");
-//        actLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-//        contentPanel.add(actLabel);
-//
-//        // Create and add multi-select list for acts
-//        actList = new JList<>(availableActs.toArray(new Act[0]));
-//        actList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-//        actList.setVisibleRowCount(5); // Limit visible rows
-//
-//        // Custom renderer to display only the name in the JList
-//        actList.setCellRenderer(new DefaultListCellRenderer() {
-//            @Override
-//            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-//                JLabel renderer = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-//                if (value instanceof Act) {
-//                    renderer.setText(((Act) value).getName()); // Display the name of the Act
-//                }
-//                return renderer;
-//            }
-//        });
-//
-//        JScrollPane scrollPane = new JScrollPane(actList); // Add scroll pane
-//        scrollPane.setAlignmentX(Component.LEFT_ALIGNMENT);
-//        contentPanel.add(scrollPane);
-//
-//        // Add save button
-//        saveButton = new JButton("Save");
-//        saveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        saveButton.addActionListener(e -> saveIntervention());
-//
-//        contentPanel.add(Box.createRigidArea(new Dimension(0, 20))); // Spacer
-//        contentPanel.add(saveButton);
-//
-//        // Add content panel to frame
-//        add(contentPanel, BorderLayout.CENTER);
-//
-//        // Make the frame visible
-//        setVisible(true);
-//    }
     public AddIntervention(AppLayout appLayout) {
         super();
         this.appLayout = appLayout;
