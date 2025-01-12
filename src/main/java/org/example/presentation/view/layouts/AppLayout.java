@@ -21,6 +21,8 @@ import org.example.presentation.view.frames.Patient.AddPatient;
 import org.example.presentation.view.frames.Patient.Patients;
 import org.example.presentation.view.frames.Prescriptions.AddPrescription;
 import org.example.presentation.view.frames.Prescriptions.Prescriptions;
+import org.example.presentation.view.frames.PrescriptionsMedicines.AddPM;
+import org.example.presentation.view.frames.PrescriptionsMedicines.PrescriptionMedicines;
 import org.example.utils.ConvertArray;
 
 import javax.swing.*;
@@ -31,6 +33,11 @@ public class AppLayout extends Frame {
     private NavigationBar navbar;
     private JPanel contentPanel; // content to be shown (pages)
     private Object[][] data;
+
+
+    public static void main(String[] args) {
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines" );
+    }
 
 
     public AppLayout(String... tabs) {
@@ -82,6 +89,9 @@ public class AppLayout extends Frame {
         navbar.addTabListener("Prescriptions", e -> {
             prescriptionsNavigation();
         });
+        navbar.addTabListener("PrescriptionMedicines", e -> {
+            prescriptionMedicinesNavigation();
+        });
     }
 
     private void setContent(JPanel panel) {
@@ -93,10 +103,6 @@ public class AppLayout extends Frame {
 
     public NavigationBar getNavbar() {
         return navbar;
-    }
-
-    public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions");
     }
 
     private void dashboardNavigation() {
@@ -256,4 +262,45 @@ public class AppLayout extends Frame {
                 a -> new AddPrescription(this)
         ));
     }
+//    private void prescriptionMedicinesNavigation() {
+//        PrescriptionMedicineController prescriptionMedicineController = new PrescriptionMedicineController();
+//        List<PrescriptionMedicine> prescriptions = prescriptionMedicineController.displayAllPrescriptionMedicine();
+//        MedicineController medicineController = new MedicineController();
+//
+//        Object[][] prescriptionsArray = ConvertArray.convertTo2DArray(
+//                prescriptions,
+//                p -> List.of(p.getId(),p.getDescription(),p.getMin(),p.getMax(), medicineController.getMedicine(p.getMedicine()))
+//        );
+//        String columns[] = {"ID", "Description","Min","Max","Medicine ID","Actions"};
+//        setContent(new Prescriptions(prescriptionsArray, this, "Add new Medicine", columns,
+//                a -> new AddPrescription(this)
+//        ));
+//    }
+private void prescriptionMedicinesNavigation() {
+    PrescriptionMedicineController prescriptionMedicineController = new PrescriptionMedicineController();
+    List<PrescriptionMedicine> prescriptions = prescriptionMedicineController.displayAllPrescriptionMedicine();
+
+    Object[][] prescriptionsArray = ConvertArray.convertTo2DArray(
+            prescriptions,
+            p ->
+                List.of(
+                        p.getId(),
+                        p.getDescription() ,
+                        p.getMin(),
+                        p.getMax(),
+
+                        p.getMedicine().equals(0L) ? "No Medicine" : p.getMedicine()
+                )
+    );
+
+    String[] columns = {"ID", "Description", "Min", "Max", "Medicine ID", "Actions"};
+    setContent(new PrescriptionMedicines(
+            prescriptionsArray,
+            this,
+            "Add new Prescription Medicine",
+            columns,
+            a -> new AddPM(this)
+    ));
+}
+
 }
