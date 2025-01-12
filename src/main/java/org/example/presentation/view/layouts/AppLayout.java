@@ -9,6 +9,8 @@ import org.example.presentation.view.frames.Appoitments.AddAppointment;
 import org.example.presentation.view.frames.Appoitments.Appointments;
 import org.example.presentation.view.frames.Certificates.AddCertificate;
 import org.example.presentation.view.frames.Certificates.Certificates;
+import org.example.presentation.view.frames.Consultations.AddConsultation;
+import org.example.presentation.view.frames.Consultations.Consultations;
 import org.example.presentation.view.frames.Dashboard;
 import org.example.presentation.view.frames.Frame;
 import org.example.presentation.view.frames.Interventions.AddIntervention;
@@ -135,9 +137,22 @@ public class AppLayout extends Frame {
     }
 
     private void consultationsNavigation() {
-        JPanel consultationsPanel = new JPanel();
-        consultationsPanel.add(new JLabel("Consultations"));
-        setContent(consultationsPanel);
+
+        ConsultationController consultationController = new ConsultationController();
+        List<Consultation> consultations = consultationController.displayAllConsultations();
+        Object[][] consultationsArray = ConvertArray.convertTo2DArray(
+                consultations,
+                c -> List.of(c.getId(), c.getDate(), c.getNote(), c.getType()
+                )
+        );
+        String columns[] = {"ID", "Date", "Note", "Type", "Actions"};
+        setContent(new Consultations(
+                consultationsArray,
+                this,
+                "Add new Consultation",
+                columns,
+                a -> new AddConsultation(this)
+        ));
     }
 
     private void appointmentsNavigation() {

@@ -22,15 +22,13 @@ public class Consultation {
 
     public Consultation() {
         this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
+        this.date = LocalDate.now();
     }
 
     public Consultation(ConsultationType type, String note) {
         this();
         this.type = type;
         this.note = note;
-        this.date = LocalDate.now();
-//        this.invoice=invoice;
-//        this.prescription=prescription;
     }
 
     public List<Long> getInterventions() {

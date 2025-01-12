@@ -161,7 +161,6 @@ public class ConsultationServiceImpl implements ConsultationService {
         AtomicBoolean updated = new AtomicBoolean(false);
         appointmentList.stream().filter(ap -> ap.getConsultation().equals(ID))
                 .forEach(a -> {
-
                     a.setConsultations(0L);
                     appointmentService.updateAppointment(a);
                     updated.set(true);
