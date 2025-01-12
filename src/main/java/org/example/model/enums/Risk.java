@@ -1,9 +1,8 @@
 package org.example.model.enums;
 
 public enum Risk {
-   Risk,
-   MEDIUM,
+    MEDIUM,
     HIGH,
-   UNKNOWN,
+    UNKNOWN,
     LOW,
 }

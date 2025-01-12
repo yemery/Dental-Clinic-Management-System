@@ -17,6 +17,8 @@ import org.example.presentation.view.frames.Interventions.AddIntervention;
 import org.example.presentation.view.frames.Interventions.Interventions;
 import org.example.presentation.view.frames.Invoice.AddInvoice;
 import org.example.presentation.view.frames.Invoice.Invoices;
+import org.example.presentation.view.frames.MedicalHistory.AddMedicalHistory;
+import org.example.presentation.view.frames.MedicalHistory.MedicalHistories;
 import org.example.presentation.view.frames.Medicines.AddMedicine;
 import org.example.presentation.view.frames.Medicines.Medicines;
 import org.example.presentation.view.frames.Patient.AddPatient;
@@ -38,7 +40,7 @@ public class AppLayout extends Frame {
 
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines" );
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines", "MedicalHistories", "MedicalCases");
     }
 
 
@@ -93,6 +95,9 @@ public class AppLayout extends Frame {
         });
         navbar.addTabListener("PrescriptionMedicines", e -> {
             prescriptionMedicinesNavigation();
+        });
+        navbar.addTabListener("MedicalHistories", e -> {
+            medicalHistoriesNavigation();
         });
     }
 
@@ -277,20 +282,7 @@ public class AppLayout extends Frame {
                 a -> new AddPrescription(this)
         ));
     }
-//    private void prescriptionMedicinesNavigation() {
-//        PrescriptionMedicineController prescriptionMedicineController = new PrescriptionMedicineController();
-//        List<PrescriptionMedicine> prescriptions = prescriptionMedicineController.displayAllPrescriptionMedicine();
-//        MedicineController medicineController = new MedicineController();
-//
-//        Object[][] prescriptionsArray = ConvertArray.convertTo2DArray(
-//                prescriptions,
-//                p -> List.of(p.getId(),p.getDescription(),p.getMin(),p.getMax(), medicineController.getMedicine(p.getMedicine()))
-//        );
-//        String columns[] = {"ID", "Description","Min","Max","Medicine ID","Actions"};
-//        setContent(new Prescriptions(prescriptionsArray, this, "Add new Medicine", columns,
-//                a -> new AddPrescription(this)
-//        ));
-//    }
+
 private void prescriptionMedicinesNavigation() {
     PrescriptionMedicineController prescriptionMedicineController = new PrescriptionMedicineController();
     List<PrescriptionMedicine> prescriptions = prescriptionMedicineController.displayAllPrescriptionMedicine();
@@ -318,4 +310,19 @@ private void prescriptionMedicinesNavigation() {
     ));
 }
 
+
+    private void medicalHistoriesNavigation() {
+        MedicsHistoryController controller = new MedicsHistoryController();
+        List<MedicalHistory> medicalHistories = controller.showAllMHistories();
+
+        Object[][] medicalHistoriesArray = ConvertArray.convertTo2DArray(
+                medicalHistories,
+                mh -> List.of(mh.getId(), mh.getLabel(), mh.getCategory(), mh.getDescription(), mh.getRisk())
+        );
+        String columns[] = {"ID", "Label", "Category", "Description", "Risk",  "Actions"};
+
+        setContent(new MedicalHistories(medicalHistoriesArray, this, "Add new Act", columns,
+                a -> new AddMedicalHistory(this)
+        ));
+    }
 }
