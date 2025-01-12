@@ -17,6 +17,8 @@ import org.example.presentation.view.frames.Interventions.AddIntervention;
 import org.example.presentation.view.frames.Interventions.Interventions;
 import org.example.presentation.view.frames.Invoice.AddInvoice;
 import org.example.presentation.view.frames.Invoice.Invoices;
+import org.example.presentation.view.frames.MedicalCases.AddMedicalCase;
+import org.example.presentation.view.frames.MedicalCases.MedicalCases;
 import org.example.presentation.view.frames.MedicalHistory.AddMedicalHistory;
 import org.example.presentation.view.frames.MedicalHistory.MedicalHistories;
 import org.example.presentation.view.frames.Medicines.AddMedicine;
@@ -31,6 +33,8 @@ import org.example.utils.ConvertArray;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AppLayout extends Frame {
@@ -98,6 +102,9 @@ public class AppLayout extends Frame {
         });
         navbar.addTabListener("MedicalHistories", e -> {
             medicalHistoriesNavigation();
+        });
+        navbar.addTabListener("MedicalCases", e -> {
+            medicalCasesNavigation();
         });
     }
 
@@ -321,8 +328,23 @@ private void prescriptionMedicinesNavigation() {
         );
         String columns[] = {"ID", "Label", "Category", "Description", "Risk",  "Actions"};
 
-        setContent(new MedicalHistories(medicalHistoriesArray, this, "Add new Act", columns,
+        setContent(new MedicalHistories(medicalHistoriesArray, this, "Add new Medical History", columns,
                 a -> new AddMedicalHistory(this)
+        ));
+    }
+
+    private void medicalCasesNavigation() {
+        MedicalCaseController controller = new MedicalCaseController();
+        List<MedicalCase> medicalCases = controller.getAllMedicalCase();
+
+        Object[][] medicalCasesArray = ConvertArray.convertTo2DArray(
+                medicalCases,
+                m -> List.of(m.getId(), m.getPatient(), m.getCreationDate(), m.getAppointments().size(), m.getMedicalHistories().size())
+        );
+        String columns[] = {"ID", "Patient ID", "Creation Date", "Appointments Count", "Medics Histories Count",  "Actions"};
+
+        setContent(new MedicalCases(medicalCasesArray, this, "Add new Medical Case", columns,
+                a -> new AddMedicalCase(this)
         ));
     }
 }

@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class NavigationBar extends JPanel {
@@ -13,7 +12,7 @@ public class NavigationBar extends JPanel {
     private Color selectedBgColor = new Color(143, 143, 246);
     private Color hoverBgColor = new Color(0x9891F1);
 
-    private int maxVisibleTabs = 10; 
+    private int maxVisibleTabs = 10;
     private List<JButton> tabButtons = new ArrayList<>();
     private JMenu overflowMenu;
 

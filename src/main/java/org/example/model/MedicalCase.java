@@ -23,7 +23,6 @@ public class MedicalCase {
     }
 
     public MedicalCase(Long patient, List<Long> appointments, List<Long> medicalHistories) {
-
         this();
         this.patient = patient;
         this.appointments = appointments;
