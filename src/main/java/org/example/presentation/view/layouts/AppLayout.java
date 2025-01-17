@@ -44,7 +44,7 @@ public class AppLayout extends Frame {
 
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines", "MedicalHistories", "MedicalCases");
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines", "MedicalHistories", "MedicalCases","Users");
     }
 
 
@@ -105,6 +105,9 @@ public class AppLayout extends Frame {
         });
         navbar.addTabListener("MedicalCases", e -> {
             medicalCasesNavigation();
+        });
+        navbar.addTabListener("Users", e -> {
+            usersNavigation();
         });
     }
 
@@ -334,6 +337,20 @@ private void prescriptionMedicinesNavigation() {
     }
 
     private void medicalCasesNavigation() {
+        MedicalCaseController controller = new MedicalCaseController();
+        List<MedicalCase> medicalCases = controller.getAllMedicalCase();
+
+        Object[][] medicalCasesArray = ConvertArray.convertTo2DArray(
+                medicalCases,
+                m -> List.of(m.getId(), m.getPatient(), m.getCreationDate(), m.getAppointments().size(), m.getMedicalHistories().size())
+        );
+        String columns[] = {"ID", "Patient ID", "Creation Date", "Appointments Count", "Medics Histories Count",  "Actions"};
+
+        setContent(new MedicalCases(medicalCasesArray, this, "Add new Medical Case", columns,
+                a -> new AddMedicalCase(this)
+        ));
+    }
+    private void usersNavigation() {
         MedicalCaseController controller = new MedicalCaseController();
         List<MedicalCase> medicalCases = controller.getAllMedicalCase();
 

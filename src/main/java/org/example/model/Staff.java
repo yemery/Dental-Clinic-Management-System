@@ -2,10 +2,11 @@ package org.example.model;
 
 import org.example.model.enums.Gender;
 import org.example.model.enums.Status;
+import org.example.model.enums.UserType;
 
 import java.time.LocalDate;
 
-public abstract class Staff extends User {
+public  class Staff extends User {
     protected double salary;
     protected Status status = Status.ACTIVE;
 
@@ -18,15 +19,15 @@ public abstract class Staff extends User {
         this.salary = salary;
     }
 
-    public Staff(String username, String password, double salary) {
+    public Staff(String username, String password, double salary , UserType userType) {
 
-        super(username, password);
+        super(username, password , userType);
         this.salary = salary;
 
     }
 
-    public Staff(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender, String username, String password, double salary, Status status) {
-        super(firstName, lastName, CIN, birthDate, address, phone, email, gender, username, password);
+    public Staff(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender, String username, String password, double salary, UserType userType) {
+        super(firstName, lastName, CIN, birthDate, address, phone, email, gender, username, password , userType);
         this.salary = salary;
     }
 
@@ -50,11 +51,11 @@ public abstract class Staff extends User {
 
     @Override
     public String toString() {
-        return "Staff{"
-                + super.toString()
-                +
-                "salary=" + salary +
-                ", status=" + status +
-                '}';
+        return super.toString() +
+                ", salary=" + salary +
+                ", status=" + status;
     }
+
+
+
 }

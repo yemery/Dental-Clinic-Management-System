@@ -59,10 +59,10 @@ public class Patient extends Person {
 //        this.medicalCase = medicalCase;
 //    }
 
-    @Override
-    public String getType() {
-        return "Patient";
-    }
+//    @Override
+//    public String getType() {
+//        return "Patient";
+//    }
 
     @Override
     public String toString() {
