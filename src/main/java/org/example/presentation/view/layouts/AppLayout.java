@@ -29,12 +29,11 @@ import org.example.presentation.view.frames.Prescriptions.AddPrescription;
 import org.example.presentation.view.frames.Prescriptions.Prescriptions;
 import org.example.presentation.view.frames.PrescriptionsMedicines.AddPM;
 import org.example.presentation.view.frames.PrescriptionsMedicines.PrescriptionMedicines;
+import org.example.presentation.view.frames.Staff.AddStaff;
 import org.example.utils.ConvertArray;
-
+import org.example.presentation.view.frames.Staff.Staffs;
 import javax.swing.*;
 import java.awt.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AppLayout extends Frame {
@@ -44,7 +43,7 @@ public class AppLayout extends Frame {
 
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines", "MedicalHistories", "MedicalCases","Users");
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines", "MedicalHistories", "MedicalCases","Staff");
     }
 
 
@@ -106,8 +105,8 @@ public class AppLayout extends Frame {
         navbar.addTabListener("MedicalCases", e -> {
             medicalCasesNavigation();
         });
-        navbar.addTabListener("Users", e -> {
-            usersNavigation();
+        navbar.addTabListener("Staff", e -> {
+            staffNavigation();
         });
     }
 
@@ -350,18 +349,19 @@ private void prescriptionMedicinesNavigation() {
                 a -> new AddMedicalCase(this)
         ));
     }
-    private void usersNavigation() {
-        MedicalCaseController controller = new MedicalCaseController();
-        List<MedicalCase> medicalCases = controller.getAllMedicalCase();
+    private void staffNavigation() {
+        StaffController controller = new StaffController();
+        List<Staff> staffList = controller.displayUsers();
 
-        Object[][] medicalCasesArray = ConvertArray.convertTo2DArray(
-                medicalCases,
-                m -> List.of(m.getId(), m.getPatient(), m.getCreationDate(), m.getAppointments().size(), m.getMedicalHistories().size())
+        Object[][] staffArray = ConvertArray.convertTo2DArray(
+                staffList,
+                m -> List.of(m.getId(),m.getFirstName(),m.getLastName(),m.getCIN(),m.getSalary(),m.getUserType())
         );
-        String columns[] = {"ID", "Patient ID", "Creation Date", "Appointments Count", "Medics Histories Count",  "Actions"};
+        String columns[] = {"ID", "Fist Name" , "Last Name","CIN","Salary","Staff Type", "Actions"};
 
-        setContent(new MedicalCases(medicalCasesArray, this, "Add new Medical Case", columns,
-                a -> new AddMedicalCase(this)
+
+        setContent(new Staffs(staffArray, this, "Add new Staff", columns,
+                a -> new AddStaff(this)
         ));
     }
 }
