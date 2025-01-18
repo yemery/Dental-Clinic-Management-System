@@ -1,6 +1,7 @@
 package org.example.presentation.view.layouts;
 
 import org.example.model.*;
+import org.example.model.enums.AppointementStatus;
 import org.example.presentation.controller.*;
 import org.example.presentation.records.AppointmentPatientInfo;
 import org.example.presentation.view.components.molecules.NavigationBar;
@@ -37,6 +38,7 @@ import org.example.presentation.view.frames.Staff.Staffs;
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.YearMonth;
 import java.util.Comparator;
 import java.util.List;
@@ -155,19 +157,28 @@ public class AppLayout extends Frame {
                         .map(appointmentId -> {
                             Appointment appointment = appointmentC.getAppointment(appointmentId);
                             Patient patient = patientC.getPatient(medicalCase.getPatient());
+
+                            // Parse date and time
+                            LocalDate appointmentDate = appointment.getDate();
+                            LocalTime appointmentTime =  appointment.getTime();
+
                             return new AppointmentPatientInfo(
                                     appointment.getId(),
-                                    appointment.getTime(),
-                                    appointment.getDate(),
+                                    appointmentTime,
+                                    appointmentDate,
                                     patient.getFirstName() + " " + patient.getLastName(),
                                     appointment.getType(),
                                     appointment.getStatus()
                             );
                         }))
-                .filter(appointmentInfo -> appointmentInfo.date().equals(LocalDate.now()))
+                .filter(appointmentInfo ->
+                        appointmentInfo.date().equals(LocalDate.now())
+                                &&
+                                !appointmentInfo.status().equals(AppointementStatus.CANCELLED)
+                )
                 .sorted(Comparator.comparing(AppointmentPatientInfo::time))
                 .toList();
-
+        System.out.println(todaysAppointments);
         String columns[] = {"ID", "Patient", "Hour", "Type", "Status"};
         Object[][] appointmentsArray = ConvertArray.convertTo2DArray(
                 todaysAppointments,
