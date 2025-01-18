@@ -338,7 +338,7 @@ public class AppLayout extends Frame {
                 p -> List.of(p.getId(), p.getDate(), p.getPrescriptionsMedicine().size())
         );
         String columns[] = {"ID", "Date", "Medicine Prescriptions", "Actions"};
-        setContent(new Prescriptions(prescriptionsArray, this, "Add new Medicine", columns,
+        setContent(new Prescriptions(prescriptionsArray, this, "Add new Prescription", columns,
                 a -> new AddPrescription(this)
         ));
     }
