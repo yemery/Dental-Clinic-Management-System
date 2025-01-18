@@ -5,6 +5,7 @@ import org.example.model.enums.Status;
 import org.example.model.enums.UserType;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Staff extends User {
     protected double salary;
@@ -53,5 +54,12 @@ public class Staff extends User {
         return super.toString() +
                 ", salary=" + salary +
                 ", status=" + status;
+    }
+
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(salary, status);
     }
 }

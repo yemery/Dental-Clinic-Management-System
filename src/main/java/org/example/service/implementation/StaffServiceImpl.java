@@ -4,6 +4,7 @@ import org.example.dao.IDao;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Staff;
 import org.example.model.User;
+import org.example.model.enums.UserType;
 import org.example.service.api.StaffService;
 
 import java.util.List;
@@ -61,4 +62,33 @@ public class StaffServiceImpl implements StaffService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public Long login(String username , String password) {
+        try {
+            List<Staff> allUsers = this.getAllUsers();
+
+            Staff foundStaff = allUsers.stream().filter(u -> u.getUsername().equals(username) &&
+                     u.getPassword().equals(password)
+                    ).findFirst().orElse(null);
+            if (foundStaff != null) {
+                return foundStaff.getId();
+            }
+            return null;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public UserType getRole(Long id) {
+        try {
+            Staff staff = dao.getById(id);
+            return staff.getUserType();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

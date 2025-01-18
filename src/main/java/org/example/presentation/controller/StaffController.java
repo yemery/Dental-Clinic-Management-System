@@ -1,6 +1,7 @@
 package org.example.presentation.controller;
 
 import org.example.model.Staff;
+import org.example.model.enums.UserType;
 import org.example.service.api.StaffService;
 import org.example.service.implementation.StaffServiceImpl;
 
@@ -24,4 +25,6 @@ public class StaffController {
     public void deleteUser(Long ID) {
         userService.deleteUser(ID);
     }
+    public Long login(String username, String password){return userService.login(username,password);}
+    public UserType getRole(Long ID){return userService.getRole(ID);}
 }
