@@ -2,6 +2,7 @@ package org.example.presentation.view.layouts;
 
 import org.example.model.*;
 import org.example.presentation.controller.*;
+import org.example.presentation.records.AppointmentPatientInfo;
 import org.example.presentation.view.components.molecules.NavigationBar;
 import org.example.presentation.view.frames.Acts.Acts;
 import org.example.presentation.view.frames.Acts.AddAct;
@@ -32,8 +33,12 @@ import org.example.presentation.view.frames.PrescriptionsMedicines.PrescriptionM
 import org.example.presentation.view.frames.Staff.AddStaff;
 import org.example.utils.ConvertArray;
 import org.example.presentation.view.frames.Staff.Staffs;
+
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.util.Comparator;
 import java.util.List;
 
 public class AppLayout extends Frame {
@@ -43,7 +48,7 @@ public class AppLayout extends Frame {
 
 
     public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines", "MedicalHistories", "MedicalCases","Staff");
+        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines", "MedicalHistories", "MedicalCases", "Staff");
     }
 
 
@@ -122,14 +127,57 @@ public class AppLayout extends Frame {
     }
 
     private void dashboardNavigation() {
-        // get appointments (+user full name) and pass it to the dashboard
-        Object[][] data = {
-                {"John Doe", "30", "New York", "r"},
-                {"Jane Smith", "25", "Los Angeles", "r"},
-                {"Bob Johnson", "35", "Chicago", "r"}
-        };
+        InvoiceController invoiceC = new InvoiceController();
+        AppointmentController appointmentC = new AppointmentController();
+        MedicalCaseController medicalCaseC = new MedicalCaseController();
+        PatientController patientC = new PatientController();
 
-        setContent(new Dashboard(data));
+        // month income
+        double income = invoiceC.displayAllInvoices()
+                .stream()
+                .filter(invoice -> {
+                    LocalDate invoiceDate = invoice.getDate();
+                    YearMonth currentMonth = YearMonth.now();
+                    return YearMonth.from(invoiceDate).equals(currentMonth);
+                })
+                .mapToDouble(Invoice::getPayedAmount)
+                .sum();
+
+        // unpaid invoices count
+        long unpaidInvoices = invoiceC.displayAllInvoices()
+                .stream()
+                .filter(invoice -> invoice.getPayedAmount().equals(0.0))
+                .count();
+
+        // get today s appointments
+        List<AppointmentPatientInfo> todaysAppointments = medicalCaseC.getAllMedicalCase().stream()
+                .flatMap(medicalCase -> medicalCase.getAppointments().stream()
+                        .map(appointmentId -> {
+                            Appointment appointment = appointmentC.getAppointment(appointmentId);
+                            Patient patient = patientC.getPatient(medicalCase.getPatient());
+                            return new AppointmentPatientInfo(
+                                    appointment.getId(),
+                                    appointment.getTime(),
+                                    appointment.getDate(),
+                                    patient.getFirstName() + " " + patient.getLastName(),
+                                    appointment.getType(),
+                                    appointment.getStatus()
+                            );
+                        }))
+                .filter(appointmentInfo -> appointmentInfo.date().equals(LocalDate.now()))
+                .sorted(Comparator.comparing(AppointmentPatientInfo::time))
+                .toList();
+
+        String columns[] = {"ID", "Patient", "Hour", "Type", "Status"};
+        Object[][] appointmentsArray = ConvertArray.convertTo2DArray(
+                todaysAppointments,
+                data -> List.of(data.appointmentId(), data.patientFullName(), data.time(), data.type(), data.status()
+                )
+        );
+
+        setContent(new Dashboard(
+                income, unpaidInvoices, appointmentsArray, columns
+        ));
     }
 
     private void patientsNavigation() {
@@ -240,29 +288,31 @@ public class AppLayout extends Frame {
 
         Object[][] certificatesArray = ConvertArray.convertTo2DArray(
                 certificatesList,
-                cer -> List.of(cer.getId(),cer.getReason(),cer.getStartDate(),cer.getEndDate())
+                cer -> List.of(cer.getId(), cer.getReason(), cer.getStartDate(), cer.getEndDate())
         );
-        String columns[] = {"ID", "Reasan" ,"Start Date","End Date","Actions"};
+        String columns[] = {"ID", "Reasan", "Start Date", "End Date", "Actions"};
 
         setContent(new Certificates(certificatesArray, this, "Add new Certificate", columns,
                 a -> new AddCertificate(this)
         ));
     }
+
     private void invoicesNavigation() {
-        InvoiceController  invoiceController = new InvoiceController();
+        InvoiceController invoiceController = new InvoiceController();
         List<Invoice> invoices = invoiceController.displayAllInvoices();
 
 
         Object[][] invoicesArray = ConvertArray.convertTo2DArray(
                 invoices,
-                inv -> List.of(inv.getId(),inv.getDate(),inv.getPayedAmount(),inv.getTotalAmount(),inv.getType())
+                inv -> List.of(inv.getId(), inv.getDate(), inv.getPayedAmount(), inv.getTotalAmount(), inv.getType())
         );
-        String columns[] = {"ID", "Date","Total Amount","Payed Amount" , "Type" , "Actions"};
+        String columns[] = {"ID", "Date", "Total Amount", "Payed Amount", "Type", "Actions"};
 
         setContent(new Invoices(invoicesArray, this, "Add new Invoice", columns,
                 a -> new AddInvoice(this)
         ));
     }
+
     private void medicinesNavigation() {
         MedicineController medicineController = new MedicineController();
         List<Medicine> medicines = medicineController.getAllMedicine();
@@ -270,13 +320,14 @@ public class AppLayout extends Frame {
 
         Object[][] medicinesArray = ConvertArray.convertTo2DArray(
                 medicines,
-                m -> List.of(m.getId(),m.getName(),m.getDescription(),m.getPrice())
+                m -> List.of(m.getId(), m.getName(), m.getDescription(), m.getPrice())
         );
-        String columns[] = {"ID", "Name","Description","Price","Actions"};
+        String columns[] = {"ID", "Name", "Description", "Price", "Actions"};
         setContent(new Medicines(medicinesArray, this, "Add new Medicine", columns,
                 a -> new AddMedicine(this)
         ));
     }
+
     private void prescriptionsNavigation() {
         PrescriptionController prescriptionController = new PrescriptionController();
         List<Prescription> prescriptions = prescriptionController.displayPrescriptions();
@@ -284,40 +335,40 @@ public class AppLayout extends Frame {
 
         Object[][] prescriptionsArray = ConvertArray.convertTo2DArray(
                 prescriptions,
-                p -> List.of(p.getId(),p.getDate(),p.getPrescriptionsMedicine().size())
+                p -> List.of(p.getId(), p.getDate(), p.getPrescriptionsMedicine().size())
         );
-        String columns[] = {"ID", "Date","Medicine Prescriptions", "Actions"};
+        String columns[] = {"ID", "Date", "Medicine Prescriptions", "Actions"};
         setContent(new Prescriptions(prescriptionsArray, this, "Add new Medicine", columns,
                 a -> new AddPrescription(this)
         ));
     }
 
-private void prescriptionMedicinesNavigation() {
-    PrescriptionMedicineController prescriptionMedicineController = new PrescriptionMedicineController();
-    List<PrescriptionMedicine> prescriptions = prescriptionMedicineController.displayAllPrescriptionMedicine();
+    private void prescriptionMedicinesNavigation() {
+        PrescriptionMedicineController prescriptionMedicineController = new PrescriptionMedicineController();
+        List<PrescriptionMedicine> prescriptions = prescriptionMedicineController.displayAllPrescriptionMedicine();
 
-    Object[][] prescriptionsArray = ConvertArray.convertTo2DArray(
-            prescriptions,
-            p ->
-                List.of(
-                        p.getId(),
-                        p.getDescription() ,
-                        p.getMin(),
-                        p.getMax(),
+        Object[][] prescriptionsArray = ConvertArray.convertTo2DArray(
+                prescriptions,
+                p ->
+                        List.of(
+                                p.getId(),
+                                p.getDescription(),
+                                p.getMin(),
+                                p.getMax(),
 
-                        p.getMedicine().equals(0L) ? "No Medicine" : p.getMedicine()
-                )
-    );
+                                p.getMedicine().equals(0L) ? "No Medicine" : p.getMedicine()
+                        )
+        );
 
-    String[] columns = {"ID", "Description", "Min", "Max", "Medicine ID", "Actions"};
-    setContent(new PrescriptionMedicines(
-            prescriptionsArray,
-            this,
-            "Add new Prescription Medicine",
-            columns,
-            a -> new AddPM(this)
-    ));
-}
+        String[] columns = {"ID", "Description", "Min", "Max", "Medicine ID", "Actions"};
+        setContent(new PrescriptionMedicines(
+                prescriptionsArray,
+                this,
+                "Add new Prescription Medicine",
+                columns,
+                a -> new AddPM(this)
+        ));
+    }
 
 
     private void medicalHistoriesNavigation() {
@@ -328,7 +379,7 @@ private void prescriptionMedicinesNavigation() {
                 medicalHistories,
                 mh -> List.of(mh.getId(), mh.getLabel(), mh.getCategory(), mh.getDescription(), mh.getRisk())
         );
-        String columns[] = {"ID", "Label", "Category", "Description", "Risk",  "Actions"};
+        String columns[] = {"ID", "Label", "Category", "Description", "Risk", "Actions"};
 
         setContent(new MedicalHistories(medicalHistoriesArray, this, "Add new Medical History", columns,
                 a -> new AddMedicalHistory(this)
@@ -343,21 +394,22 @@ private void prescriptionMedicinesNavigation() {
                 medicalCases,
                 m -> List.of(m.getId(), m.getPatient(), m.getCreationDate(), m.getAppointments().size(), m.getMedicalHistories().size())
         );
-        String columns[] = {"ID", "Patient ID", "Creation Date", "Appointments Count", "Medics Histories Count",  "Actions"};
+        String columns[] = {"ID", "Patient ID", "Creation Date", "Appointments Count", "Medics Histories Count", "Actions"};
 
         setContent(new MedicalCases(medicalCasesArray, this, "Add new Medical Case", columns,
                 a -> new AddMedicalCase(this)
         ));
     }
+
     private void staffNavigation() {
         StaffController controller = new StaffController();
         List<Staff> staffList = controller.displayUsers();
 
         Object[][] staffArray = ConvertArray.convertTo2DArray(
                 staffList,
-                m -> List.of(m.getId(),m.getFirstName(),m.getLastName(),m.getCIN(),m.getSalary(),m.getUserType())
+                m -> List.of(m.getId(), m.getFirstName(), m.getLastName(), m.getCIN(), m.getSalary(), m.getUserType())
         );
-        String columns[] = {"ID", "Fist Name" , "Last Name","CIN","Salary","Staff Type", "Actions"};
+        String columns[] = {"ID", "Fist Name", "Last Name", "CIN", "Salary", "Staff Type", "Actions"};
 
 
         setContent(new Staffs(staffArray, this, "Add new Staff", columns,

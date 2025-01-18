@@ -1,10 +1,5 @@
 package org.example.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-import org.example.utils.LocalDateDeserializer;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,15 +32,6 @@ public class MedicalCase {
     public Long getId() {
         return id;
     }
-
-
-
-//    to get consultations map over appointment we should use this method in the medialCase service
-//    public ArrayList<Consultation> getConsultations() {
-//        
-//    }
-
-    // no need to make an invoice array list attribute we can do a getter in the medicalCaseService to get appointments then consultations then invoices within them
 
     @Override
     public boolean equals(Object o) {

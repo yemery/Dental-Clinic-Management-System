@@ -6,7 +6,7 @@ import org.example.model.enums.UserType;
 
 import java.time.LocalDate;
 
-public  class Staff extends User {
+public class Staff extends User {
     protected double salary;
     protected Status status = Status.ACTIVE;
 
@@ -19,18 +19,17 @@ public  class Staff extends User {
         this.salary = salary;
     }
 
-    public Staff(String username, String password, double salary , UserType userType) {
+    public Staff(String username, String password, double salary, UserType userType) {
 
-        super(username, password , userType);
+        super(username, password, userType);
         this.salary = salary;
 
     }
 
     public Staff(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender, String username, String password, double salary, UserType userType) {
-        super(firstName, lastName, CIN, birthDate, address, phone, email, gender, username, password , userType);
+        super(firstName, lastName, CIN, birthDate, address, phone, email, gender, username, password, userType);
         this.salary = salary;
     }
-
 
 
     public final double getSalary() {
@@ -55,7 +54,4 @@ public  class Staff extends User {
                 ", salary=" + salary +
                 ", status=" + status;
     }
-
-
-
 }

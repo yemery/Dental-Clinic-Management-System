@@ -12,10 +12,9 @@ public class Patient extends Person {
     private String registration;
     private Mutuelle mutuelle;
     private String job;
-//    private MedicalCase medicalCase;
 
     public Patient() {
-        super(); // Call the default constructor of Person
+        super();
     }
 
     public Patient(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender, String registration, Mutuelle mutuelle, String job) {

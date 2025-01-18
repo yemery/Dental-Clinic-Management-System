@@ -10,11 +10,10 @@ public class Dashboard extends JPanel {
     private JPanel statsContainer;
     private JPanel mainContainer;
     StatCard income;
-    StatCard unpaidClients;
     StatCard unpaidInvoices;
     Table table;
 
-    public Dashboard(Object[][] data) {
+    public Dashboard(double incomeStat, long invoicesStat, Object[][] data, String[] cols) {
         super();
         setLayout(new BorderLayout()); // to have the full width
 
@@ -37,16 +36,13 @@ public class Dashboard extends JPanel {
         JPanel tableContainer = new JPanel(new BorderLayout());
         tableContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        this.income = new StatCard("month's income", 1000F);
-        this.unpaidClients = new StatCard("unpaid clients", 5F);
-        this.unpaidInvoices = new StatCard("unpaid invoices", 25F);
+        this.income = new StatCard("month's income", (float) incomeStat);
+        this.unpaidInvoices = new StatCard("unpaid invoices", (float) invoicesStat);
 
         statsContainer.add(income);
-        statsContainer.add(unpaidClients);
         statsContainer.add(unpaidInvoices);
         mainContainer.add(statsContainer);
 
-        String[] cols = {"patient", "hour", "status", "reason"};
         this.table = new Table(data, cols);
         tableContainer.add(new JScrollPane(table), BorderLayout.CENTER);
         mainContainer.add(tableContainer);
