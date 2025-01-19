@@ -55,8 +55,12 @@ public class AddConsultation extends Frame {
         typeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(typeLabel);
 
+        Dimension comboBoxSize = new Dimension(300, 30);
+
         typeComboBox = new JComboBox<>(ConsultationType.values());
         typeComboBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        typeComboBox.setPreferredSize(comboBoxSize);
         panel.add(typeComboBox);
 
         panel.add(Box.createRigidArea(new Dimension(0, 15)));
@@ -107,6 +111,8 @@ public class AddConsultation extends Frame {
             }
         });
         certificateComboBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        certificateComboBox.setPreferredSize(comboBoxSize);
         panel.add(certificateComboBox);
 
         panel.add(Box.createRigidArea(new Dimension(0, 15)));
@@ -128,6 +134,8 @@ public class AddConsultation extends Frame {
             }
         });
         invoiceComboBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        invoiceComboBox.setPreferredSize(comboBoxSize);
         panel.add(invoiceComboBox);
 
         panel.add(Box.createRigidArea(new Dimension(0, 15)));

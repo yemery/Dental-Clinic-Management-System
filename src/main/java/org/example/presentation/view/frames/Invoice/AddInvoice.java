@@ -53,6 +53,8 @@ public class AddInvoice extends Frame {
 
         paymentTypeComboBox = new JComboBox<>(PaymentType.values());
         paymentTypeComboBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        paymentTypeComboBox.setPreferredSize(new Dimension(150, 30));
         panel.add(paymentTypeComboBox);
         panel.add(Box.createRigidArea(new Dimension(0, 30))); // Add spacing before the button
 

@@ -60,6 +60,7 @@ public class AddPM extends Frame {
         panel.add(medicineLabel);
 
         medicineComboBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+        medicineComboBox.setPreferredSize(new Dimension(200, 30));
         panel.add(medicineComboBox);
         panel.add(Box.createRigidArea(new Dimension(0, 15))); // Add spacing between inputs
 
