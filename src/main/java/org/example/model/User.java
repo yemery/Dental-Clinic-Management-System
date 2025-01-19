@@ -15,17 +15,18 @@ public class User extends Person {
     protected String password;
     protected UserType userType;
 
-    public User(){
+    public User() {
         super();
     }
-    public User(String username, String password , UserType userType) {
+
+    public User(String username, String password, UserType userType) {
         super();
         this.username = username;
         this.password = password;
         this.userType = userType;
     }
 
-    public User(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender, String username, String password , UserType userType) {
+    public User(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender, String username, String password, UserType userType) {
         super(firstName, lastName, CIN, birthDate, address, phone, email, gender);
         this.username = username;
         this.password = password;
@@ -65,12 +66,6 @@ public class User extends Person {
         return Objects.equals(username, user.username) && Objects.equals(password, user.password);
     }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(username, password);
-//    }
-
-
     @Override
     public String toString() {
         return "User{" +
@@ -79,5 +74,4 @@ public class User extends Person {
                 ", userType=" + userType +
                 '}';
     }
-
 }

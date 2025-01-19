@@ -6,9 +6,9 @@ import org.example.model.enums.UserType;
 
 import java.time.LocalDate;
 
-public class Assistant extends Staff{
+public class Assistant extends Staff {
 
-    public Assistant(){
+    public Assistant() {
         super();
     }
 
@@ -17,17 +17,17 @@ public class Assistant extends Staff{
     }
 
     public Assistant(String username, String password, double salary, UserType userType) {
-        super(username, password, salary , userType);
+        super(username, password, salary, userType);
     }
 
-    public Assistant(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender, String username, String password, double salary, Status status, Double prime , UserType userType) {
+    public Assistant(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender, String username, String password, double salary, Status status, Double prime, UserType userType) {
         super(firstName, lastName, CIN, birthDate, address, phone, email, gender, username, password, salary, userType);
     }
 
-@Override
-public String toString() {
-    return "Assistant{" +
-            super.toString() +
-            '}';
-}
+    @Override
+    public String toString() {
+        return "Assistant{" +
+                super.toString() +
+                '}';
+    }
 }

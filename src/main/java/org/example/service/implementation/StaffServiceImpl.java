@@ -36,7 +36,6 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public void deleteUser(Long id) {
             try{
-//                User u = dao.getById(id);
                 dao.delete(id);
                 System.out.println("User Deleted");
             }catch(Exception e){

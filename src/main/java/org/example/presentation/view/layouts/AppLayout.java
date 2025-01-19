@@ -48,12 +48,6 @@ public class AppLayout extends Frame {
     private JPanel contentPanel; // content to be shown (pages)
     private Object[][] data;
 
-
-    public static void main(String[] args) {
-        new AppLayout("Dashboard", "Appointments", "Patients", "Consultations", "Acts", "Interventions", "Certificates", "Invoices", "Medicines", "Prescriptions", "PrescriptionMedicines", "MedicalHistories", "MedicalCases", "Staff");
-    }
-
-
     public AppLayout(String... tabs) {
         navbar = new NavigationBar(tabs);
         contentPanel = new JPanel();
@@ -134,7 +128,7 @@ public class AppLayout extends Frame {
         MedicalCaseController medicalCaseC = new MedicalCaseController();
         PatientController patientC = new PatientController();
 
-        // month income
+        // month income calculation - leave as is
         double income = invoiceC.displayAllInvoices()
                 .stream()
                 .filter(invoice -> {
@@ -155,40 +149,46 @@ public class AppLayout extends Frame {
         List<AppointmentPatientInfo> todaysAppointments = medicalCaseC.getAllMedicalCase().stream()
                 .flatMap(medicalCase -> medicalCase.getAppointments().stream()
                         .map(appointmentId -> {
-                            Appointment appointment = appointmentC.getAppointment(appointmentId);
-                            Patient patient = patientC.getPatient(medicalCase.getPatient());
+                            try {
+                                Appointment appointment = appointmentC.getAppointment(appointmentId);
+                                Patient patient = patientC.getPatient(medicalCase.getPatient());
 
-                            // Parse date and time
-                            LocalDate appointmentDate = appointment.getDate();
-                            LocalTime appointmentTime =  appointment.getTime();
+                                if (appointment == null || patient == null) {
+                                    return null;
+                                }
 
-                            return new AppointmentPatientInfo(
-                                    appointment.getId(),
-                                    appointmentTime,
-                                    appointmentDate,
-                                    patient.getFirstName() + " " + patient.getLastName(),
-                                    appointment.getType(),
-                                    appointment.getStatus()
-                            );
+                                return new AppointmentPatientInfo(
+                                        appointment.getId(),
+                                        appointment.getTime(),
+                                        appointment.getDate(),
+                                        patient.getFirstName() + " " + patient.getLastName(),
+                                        appointment.getType(),
+                                        appointment.getStatus()
+                                );
+                            } catch (Exception e) {
+                                System.out.println("Error processing appointment: " + appointmentId);
+                                return null;
+                            }
                         }))
-                .filter(appointmentInfo ->
-                        appointmentInfo.date().equals(LocalDate.now())
-                                &&
-                                !appointmentInfo.status().equals(AppointementStatus.CANCELLED)
-                )
+                .filter(appointmentInfo -> appointmentInfo != null &&
+                        appointmentInfo.date().equals(LocalDate.now()) &&
+                        !appointmentInfo.status().equals(AppointementStatus.CANCELLED))
                 .sorted(Comparator.comparing(AppointmentPatientInfo::time))
                 .toList();
-        System.out.println(todaysAppointments);
+
         String columns[] = {"ID", "Patient", "Hour", "Type", "Status"};
         Object[][] appointmentsArray = ConvertArray.convertTo2DArray(
                 todaysAppointments,
-                data -> List.of(data.appointmentId(), data.patientFullName(), data.time(), data.type(), data.status()
+                data -> List.of(
+                        data.appointmentId(),
+                        data.patientFullName(),
+                        data.time(),
+                        data.type(),
+                        data.status()
                 )
         );
 
-        setContent(new Dashboard(
-                income, unpaidInvoices, appointmentsArray, columns
-        ));
+        setContent(new Dashboard(income, unpaidInvoices, appointmentsArray, columns));
     }
 
     private void patientsNavigation() {
@@ -301,7 +301,7 @@ public class AppLayout extends Frame {
                 certificatesList,
                 cer -> List.of(cer.getId(), cer.getReason(), cer.getStartDate(), cer.getEndDate())
         );
-        String columns[] = {"ID", "Reasan", "Start Date", "End Date", "Actions"};
+        String columns[] = {"ID", "Reason", "Start Date", "End Date", "Actions"};
 
         setContent(new Certificates(certificatesArray, this, "Add new Certificate", columns,
                 a -> new AddCertificate(this)

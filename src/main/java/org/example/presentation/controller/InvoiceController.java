@@ -14,7 +14,4 @@ public class InvoiceController {
     public void updateInvoice(Invoice i){invoiceService.updateInvoice(i);}
     public void deleteInvoice(Long ID){invoiceService.deleteInvoice(ID);}
     public Invoice getInvoice(Long ID){return invoiceService.getInvoice(ID);}
-
-
-
 }

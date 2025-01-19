@@ -1,8 +1,5 @@
 package org.example.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,8 +10,8 @@ public class Intervention {
     private double price;
     private List<Long> acts = new ArrayList<>();
 
-    public Intervention()  {
-        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
+    public Intervention() {
+        this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
         this.acts = new ArrayList<>();
     }
 

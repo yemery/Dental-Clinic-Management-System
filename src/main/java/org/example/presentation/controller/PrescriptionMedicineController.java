@@ -26,6 +26,4 @@ public class PrescriptionMedicineController {
     }
 
     public PrescriptionMedicine getPrescriptionMedicine(Long ID) {return  prescriptionMedicineService.getMedicinePrescription(ID);}
-
-
 }

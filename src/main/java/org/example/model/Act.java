@@ -15,9 +15,10 @@ public class Act {
 
 
     public Act() {
-        this.id=System.currentTimeMillis();
+        this.id = System.currentTimeMillis();
     }
-    public Act( String name, double basePrice, ActCategory category) {
+
+    public Act(String name, double basePrice, ActCategory category) {
         this();
         this.name = name;
         this.basePrice = basePrice;
@@ -57,26 +58,17 @@ public class Act {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Act act = (Act) o;
-        return Objects.equals(id, act.id) || Objects.equals(name, act.name); // we donno where and how to use it (might change the equals criteria)
+        return Objects.equals(id, act.id) || Objects.equals(name, act.name);
     }
 
-//    @Override
-//    public String toString() {
-//        return "Act{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", basePrice=" + basePrice +
-//                ", category=" + category +
-//                '}';
-//    }
-@Override
-public String toString() {
-    ObjectMapper mapper = new ObjectMapper();
-    try {
-        return mapper.writeValueAsString(this);
-    } catch (JsonProcessingException e) {
-        e.printStackTrace();
-        return super.toString(); // fallback
+    @Override
+    public String toString() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return super.toString();
+        }
     }
-}
 }

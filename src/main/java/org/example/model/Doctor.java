@@ -26,5 +26,4 @@ public class Doctor extends Staff {
                 super.toString() +
                 '}';
     }
-
 }

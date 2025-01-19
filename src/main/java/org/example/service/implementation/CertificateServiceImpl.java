@@ -19,7 +19,6 @@ public class CertificateServiceImpl implements CertificateService {
     @Override
     public Certificate addCertificate(Certificate certificate) {
         try{
-
             Certificate cer= dao.add(certificate);
             System.out.println("Certificate added");
             return cer;

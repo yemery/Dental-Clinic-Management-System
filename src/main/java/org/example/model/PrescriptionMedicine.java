@@ -11,7 +11,7 @@ public class PrescriptionMedicine {
     private Long medicine;
 
     public PrescriptionMedicine() {
-        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
+        this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
     public PrescriptionMedicine(Integer minQuantity, Integer maxQuantity, String description, Long medicine) {
@@ -22,13 +22,17 @@ public class PrescriptionMedicine {
         this.medicine = medicine;
     }
 
-    public Long getId() {return id;}
+    public Long getId() {
+        return id;
+    }
 
     public int getMin() {
         return minQuantity;
     }
 
-    public void setMin(int min) { this.minQuantity = min; }
+    public void setMin(int min) {
+        this.minQuantity = min;
+    }
 
     public int getMax() {
         return maxQuantity;
@@ -61,7 +65,6 @@ public class PrescriptionMedicine {
                 ", minQuantity=" + minQuantity +
                 ", maxQuantity=" + maxQuantity +
                 ", description='" + description + '\'' +
-//                ", medicine=" +  +
                 '}';
     }
 

@@ -69,7 +69,6 @@ public class AppointmentServiceImpl implements AppointmentService {
         AtomicBoolean updated = new AtomicBoolean(false);
         medicalCaseList.stream().filter(mc -> mc.getAppointments().contains(ID))
                 .forEach(pm -> {
-// LATER TEST
                     pm.getAppointments().remove(ID);
                     medicalCaseService.updateMedicalCase(pm);
                     updated.set(true);

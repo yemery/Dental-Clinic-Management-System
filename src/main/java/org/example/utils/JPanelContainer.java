@@ -49,8 +49,8 @@ public abstract class JPanelContainer extends JPanel {
         String[] columnNames = colNames;
         Object[][] dataWithActions = new Object[data.length][columnNames.length];
         this.dataTable = new Table(data, columnNames,
-                id -> onEdit(id , appLayout), // Pass Long to onEdit
-                id -> onDelete(id , appLayout), // Pass Long to onDelete
+                id -> onEdit(id , appLayout),
+                id -> onDelete(id , appLayout),
                 id -> onShow(id)
         );
 

@@ -19,7 +19,7 @@ public abstract class Person {
 
 
     public Person() {
-        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
+        this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
     public Person(String firstName, String lastName, String CIN, LocalDate birthDate, String address, String phone, String email, Gender gender) {
@@ -60,7 +60,6 @@ public abstract class Person {
 
     public final void setCIN(String CIN) {
         this.CIN = CIN;
-        // check later unicity
     }
 
     public final LocalDate getBirthDate() {
@@ -75,7 +74,7 @@ public abstract class Person {
         return Address;
     }
 
-    public final void setAddress(String address)  {
+    public final void setAddress(String address) {
         Address = address;
     }
 
@@ -123,10 +122,7 @@ public abstract class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(CIN, person.CIN) ;
+        return Objects.equals(CIN, person.CIN);
 
     }
-
-
-
 }

@@ -14,8 +14,9 @@ public class MedicalHistory {
     private Risk risk;
 
     public MedicalHistory() {
-        this.id=System.currentTimeMillis();
+        this.id = System.currentTimeMillis();
     }
+
     public MedicalHistory(String label, String description, CategoryMedicalHistory category, Risk risk) {
         this();
         this.label = label;

@@ -21,7 +21,7 @@ public class NavigationBar extends JPanel {
         setBackground(defaultBgColor);
 
         JPopupMenu overflowPopup = new JPopupMenu();
-        overflowMenu = new JMenu("More");
+        overflowMenu = new JMenu("");
         overflowMenu.setForeground(Color.WHITE);
         overflowMenu.setOpaque(true);
         overflowMenu.setBackground(defaultBgColor);
@@ -51,7 +51,7 @@ public class NavigationBar extends JPanel {
 
         // Add overflow menu if necessary
         if (tabButtons.size() > maxVisibleTabs) {
-            JButton moreButton = createTabButton("More");
+            JButton moreButton = createTabButton("...");
             moreButton.addActionListener(e -> overflowPopup.show(moreButton, moreButton.getWidth(), 0));
             add(moreButton);
         }

@@ -16,12 +16,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MedicineServiceImp implements MedicineService {
 
-//    private  final IDao<Medicine,Long> dao = new MedicineDaoIml();
-    private  final IDao<Medicine,Long> dao = new JsonDaoImpl<>("Medicines.json", Medicine.class);
+    //    private  final IDao<Medicine,Long> dao = new MedicineDaoIml();
+    private final IDao<Medicine, Long> dao = new JsonDaoImpl<>("Medicines.json", Medicine.class);
 
     @Override
     public Medicine addMedicine(Medicine medicine) {
-        try{
+        try {
             System.out.println("This medicine is added");
             return dao.add(
                     medicine
@@ -34,10 +34,10 @@ public class MedicineServiceImp implements MedicineService {
 
     @Override
     public Medicine getMedicine(Long id) {
-        try{
+        try {
             System.out.println("This Medicne is Founded");
             return dao.getById(id);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
@@ -45,7 +45,7 @@ public class MedicineServiceImp implements MedicineService {
 
     @Override
     public Medicine updateMedicine(Medicine medicine) {
-        try{
+        try {
             dao.update(medicine);
             System.out.println("This Medicne is Updated");
             return medicine;
@@ -57,19 +57,19 @@ public class MedicineServiceImp implements MedicineService {
 
     @Override
     public void deleteMedicine(Long ID) {
-    try{
-        System.out.println("This Medicine is deleted");
-        dao.delete(ID);
-        this.removeMedicineFromPrescriptionMedicine(ID);
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-        throw new RuntimeException(e);
-    }
+        try {
+            System.out.println("This Medicine is deleted");
+            dao.delete(ID);
+            this.removeMedicineFromPrescriptionMedicine(ID);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public List<Medicine> getMedicines() {
-        try{
+        try {
             return dao.getAll();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -95,7 +95,4 @@ public class MedicineServiceImp implements MedicineService {
 
         return updated.get();
     }
-
-
-
 }

@@ -121,18 +121,6 @@ public class ConsultationServiceImpl implements ConsultationService {
         }
     }
 
-
-//    @Override
-//    public boolean removeInvoice(Consultation consultation) {
-//        try{
-//            consultation.setInvoice(null);
-//            return true;
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
-
     @Override
     public boolean addPrescription(Consultation consultation, Long prescriptionID) {
         try{

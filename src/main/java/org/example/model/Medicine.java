@@ -1,17 +1,19 @@
 package org.example.model;
 
-
 import java.util.Objects;
 import java.util.UUID;
+
 public class Medicine {
-    private  Long id;
+    private Long id;
     private Double price;
     private String name;
     private String description;
 
     public Medicine() {
-        this.id=Math.abs(UUID.randomUUID().getLeastSignificantBits());
-    };
+        this.id = Math.abs(UUID.randomUUID().getLeastSignificantBits());
+    }
+
+    ;
 
     public Medicine(Double price, String name, String description) {
         this();
@@ -55,8 +57,6 @@ public class Medicine {
         Medicine medicine = (Medicine) o;
         return Objects.equals(id, medicine.id);
     }
-
-
 
     @Override
     public String toString() {

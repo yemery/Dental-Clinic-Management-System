@@ -78,13 +78,11 @@ public class MedicsHistoryServiceImpl implements MedicslHistoryService {
         AtomicBoolean updated = new AtomicBoolean(false);
         medicalCaseList.stream().filter(mc -> mc.getMedicalHistories().contains(ID))
                 .forEach(pm -> {
-// LATER TEST
                     pm.getMedicalHistories().remove(ID);
                     medicalCaseService.updateMedicalCase(pm);
                     updated.set(true);
                 });
 
         return updated.get();
-
     }
 }

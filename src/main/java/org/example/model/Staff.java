@@ -56,8 +56,6 @@ public class Staff extends User {
                 ", status=" + status;
     }
 
-
-
     @Override
     public int hashCode() {
         return Objects.hash(salary, status);

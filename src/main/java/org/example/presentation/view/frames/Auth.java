@@ -1,19 +1,19 @@
-package org.example.presentation.view.layouts;
+package org.example.presentation.view.frames;
 
 import org.example.model.enums.UserType;
 import org.example.presentation.controller.StaffController;
 import org.example.presentation.view.components.atoms.Button;
-import org.example.presentation.view.frames.Frame;
+import org.example.presentation.view.layouts.AppLayout;
 import org.example.utils.NavbarLinks;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class AuthView extends Frame {
+public class Auth extends Frame {
     private JTextField login;
     private JPasswordField pwd;
 
-    public AuthView() {
+    public Auth() {
         super();
 
         this.setLayout(new GridBagLayout());

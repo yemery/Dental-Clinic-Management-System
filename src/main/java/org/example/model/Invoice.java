@@ -1,14 +1,9 @@
 package org.example.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.example.model.enums.PaymentType;
-import org.example.utils.LocalDateDeserializer;
 
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.UUID;
 
 public class Invoice {
     private final Long id;
@@ -78,7 +73,7 @@ public class Invoice {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Invoice invoice = (Invoice) o;
-        return Objects.equals(id, invoice.id); // yemery personnaly does not see the point fr that equal
+        return Objects.equals(id, invoice.id);
     }
 
     @Override

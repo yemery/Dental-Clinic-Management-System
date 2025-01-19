@@ -1,5 +1,4 @@
 package org.example.utils;
-import org.example.model.Intervention;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,6 +15,4 @@ public class ConvertArray {
                 .map(l -> l.toArray(new Object[0]))
                 .toArray(Object[][]::new);
     }
-
-
 }

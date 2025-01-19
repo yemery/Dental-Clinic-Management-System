@@ -1,13 +1,8 @@
 package org.example.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-import org.example.utils.LocalDateDeserializer;
 
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.UUID;
 
 public class Certificate {
     private final Long id;

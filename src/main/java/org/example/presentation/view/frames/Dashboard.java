@@ -45,6 +45,18 @@ public class Dashboard extends JPanel {
 
         this.table = new Table(data, cols);
         tableContainer.add(new JScrollPane(table), BorderLayout.CENTER);
+
+        if (data == null || data.length == 0) {
+            JLabel noDataLabel = new JLabel("No data found");
+            noDataLabel.setHorizontalAlignment(JLabel.CENTER);
+            noDataLabel.setFont(new Font(noDataLabel.getFont().getName(), Font.BOLD, 14));
+            noDataLabel.setForeground(Color.GRAY);
+            tableContainer.add(noDataLabel, BorderLayout.CENTER);
+        } else {
+            this.table = new Table(data, cols);
+            tableContainer.add(new JScrollPane(table), BorderLayout.CENTER);
+        }
+
         mainContainer.add(tableContainer);
 
         this.add(mainContainer, BorderLayout.CENTER);
