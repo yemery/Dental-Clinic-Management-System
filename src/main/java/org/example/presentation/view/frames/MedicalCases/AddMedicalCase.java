@@ -2,6 +2,7 @@ package org.example.presentation.view.frames.MedicalCases;
 
 import org.example.model.*;
 import org.example.presentation.controller.*;
+import org.example.presentation.records.PatientDisplay;
 import org.example.presentation.view.components.atoms.Button;
 import org.example.presentation.view.frames.Frame;
 import org.example.presentation.view.layouts.AppLayout;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class AddMedicalCase extends Frame {
-    private JComboBox<Long> patientComboBox;
+    private JComboBox<PatientDisplay> patientComboBox;
     private JList<Long> appointmentsList;
     private JList<Long> medicalHistoriesList;
 
@@ -43,15 +44,24 @@ public class AddMedicalCase extends Frame {
         titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 30, 0));
         panel.add(titleLabel);
 
-        // Patient ComboBox
+        // Patient ComboBox with improved styling
         JLabel patientLabel = new JLabel("Select Patient:");
         patientLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(patientLabel);
 
-        patientComboBox = new JComboBox<>(
-                patients.stream().map(Patient::getId).toArray(Long[]::new)
-        );
+        // Create PatientDisplay records array
+        PatientDisplay[] patientDisplays = patients.stream()
+                .map(patient -> new PatientDisplay(patient.getId(), patient.getFullName()))
+                .toArray(PatientDisplay[]::new);
+
+        patientComboBox = new JComboBox<>(patientDisplays);
         patientComboBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        // Set preferred size for better height
+        Dimension comboBoxSize = new Dimension(200, 30);
+        patientComboBox.setPreferredSize(comboBoxSize);
+        patientComboBox.setMaximumSize(comboBoxSize);
+
         panel.add(patientComboBox);
         panel.add(Box.createRigidArea(new Dimension(0, 15)));
 
@@ -98,13 +108,15 @@ public class AddMedicalCase extends Frame {
 
     private void saveMedicalCase() {
         try {
-            Long selectedPatientId = (Long) patientComboBox.getSelectedItem();
+            PatientDisplay selectedPatient = (PatientDisplay) patientComboBox.getSelectedItem();
+            if (selectedPatient == null) {
+                throw new IllegalArgumentException("A patient must be selected.");
+            }
+
+            Long selectedPatientId = selectedPatient.id(); // Using record accessor
             List<Long> selectedAppointmentIds = appointmentsList.getSelectedValuesList();
             List<Long> selectedMedicalHistoryIds = medicalHistoriesList.getSelectedValuesList();
 
-            if (selectedPatientId == null) {
-                throw new IllegalArgumentException("A patient must be selected.");
-            }
             if (selectedAppointmentIds.isEmpty()) {
                 throw new IllegalArgumentException("At least one appointment must be selected.");
             }

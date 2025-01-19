@@ -1,10 +1,8 @@
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
 import org.example.model.Invoice;
 import org.example.model.enums.PaymentType;
 import org.example.presentation.controller.InvoiceController;
-
-import java.time.LocalDate;
 
 public class InvoiceView {
     public static void main(String[] args) {

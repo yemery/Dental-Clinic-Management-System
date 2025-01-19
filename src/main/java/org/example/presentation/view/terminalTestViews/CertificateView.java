@@ -1,4 +1,4 @@
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
 import org.example.model.Certificate;
 import org.example.presentation.controller.CertificateController;

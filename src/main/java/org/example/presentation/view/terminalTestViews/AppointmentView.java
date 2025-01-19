@@ -1,11 +1,6 @@
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
-import org.example.model.*;
-import org.example.model.enums.*;
 import org.example.presentation.controller.AppointmentController;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class AppointmentView {
     public static void main(String[] args) {

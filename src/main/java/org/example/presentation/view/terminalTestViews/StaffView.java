@@ -1,8 +1,6 @@
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
-import org.example.model.Assistant;
 import org.example.model.Doctor;
-import org.example.model.Staff;
 import org.example.model.enums.Gender;
 import org.example.model.enums.UserType;
 import org.example.presentation.controller.StaffController;

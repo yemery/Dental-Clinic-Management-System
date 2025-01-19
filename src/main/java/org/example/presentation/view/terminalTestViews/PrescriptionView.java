@@ -1,11 +1,7 @@
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
-import org.example.model.Medicine;
 import org.example.model.Prescription;
-import org.example.model.PrescriptionMedicine;
 import org.example.presentation.controller.PrescriptionController;
-
-import java.util.List;
 
 public class PrescriptionView {
 

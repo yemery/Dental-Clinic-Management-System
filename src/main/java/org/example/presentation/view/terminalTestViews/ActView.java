@@ -1,8 +1,6 @@
 
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
-import org.example.model.Act;
-import org.example.model.enums.ActCategory;
 import org.example.presentation.controller.ActController;
 
 public class ActView {

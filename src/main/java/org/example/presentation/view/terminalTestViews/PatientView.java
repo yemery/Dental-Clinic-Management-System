@@ -1,11 +1,7 @@
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
 import org.example.model.Patient;
-import org.example.model.enums.Gender;
-import org.example.model.enums.Mutuelle;
 import org.example.presentation.controller.PatientController;
-
-import java.time.LocalDate;
 
 public class PatientView {
     public static void main(String[] args) {

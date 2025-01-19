@@ -1,4 +1,4 @@
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
 import org.example.model.MedicalHistory;
 import org.example.model.enums.CategoryMedicalHistory;

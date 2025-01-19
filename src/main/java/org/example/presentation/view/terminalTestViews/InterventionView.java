@@ -1,12 +1,6 @@
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
-import org.example.model.Act;
-import org.example.model.Intervention;
-import org.example.model.enums.ActCategory;
-import org.example.presentation.controller.ActController;
 import org.example.presentation.controller.InterventionController;
-
-import java.util.List;
 
 public class InterventionView {
     public static void main(String[] args) {

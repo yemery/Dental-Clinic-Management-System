@@ -5,6 +5,7 @@ import org.example.model.enums.Gender;
 import org.example.model.enums.Mutuelle;
 
 import java.time.LocalDate;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Patient extends Person {
@@ -23,8 +24,6 @@ public class Patient extends Person {
         this.mutuelle = mutuelle;
         this.job = job;
     }
-
-
 
     public String getRegistration() {
         return registration;
@@ -50,25 +49,15 @@ public class Patient extends Person {
         this.job = job;
     }
 
-//    public MedicalCase getMedicalCase() {
-//        return medicalCase;
-//    }
-//
-//    public void setMedicalCase(MedicalCase medicalCase) {
-//        this.medicalCase = medicalCase;
-//    }
-
-//    @Override
-//    public String getType() {
-//        return "Patient";
-//    }
+    public String getFullName() {
+        return super.getFirstName() + " " + super.getLastName();
+    }
 
     @Override
     public String toString() {
         return "Patient{" + super.toString()
                 + mutuelle +
                 ", job='" + job + '\'' +
-//                ", medicalCase=" + medicalCase +
                 '}';
     }
 }

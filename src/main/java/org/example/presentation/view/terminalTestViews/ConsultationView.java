@@ -1,14 +1,6 @@
-package org.example.presentation.view;
+package org.example.presentation.view.terminalTestViews;
 
-import org.example.model.*;
-import org.example.model.enums.ActCategory;
-import org.example.model.enums.ConsultationType;
-import org.example.model.enums.PaymentType;
 import org.example.presentation.controller.*;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConsultationView {
     public static void main(String[] args) {
