@@ -13,7 +13,7 @@ public abstract class JPanelContainer extends JPanel {
     private JPanel addContainer;
 
     Button addBtn;
-    Table dataTable;
+    protected Table dataTable;
 
     private AppLayout appLayout;
 
