@@ -24,14 +24,14 @@ public class AuthView extends Frame {
 
         // Login field
         login = new JTextField(30);
-        login.setPreferredSize(new Dimension(300, 40)); // Adjust width and height
+        login.setPreferredSize(new Dimension(300, 40));
         JLabel loginLabel = new JLabel("Login");
         this.add(loginLabel, gbc);
         this.add(login, gbc);
 
         // Password field
         pwd = new JPasswordField(30);
-        pwd.setPreferredSize(new Dimension(300, 40)); // Adjust width and height
+        pwd.setPreferredSize(new Dimension(300, 40));
         JLabel pwdLabel = new JLabel("Password");
         this.add(pwdLabel, gbc);
         this.add(pwd, gbc);
@@ -41,23 +41,25 @@ public class AuthView extends Frame {
         submitBtn.setPreferredSize(new Dimension(300, 40));
         submitBtn.addActionListener(e -> {
             String loginValue = login.getText();
-            String pwdValue = new String(pwd.getPassword()); // Retrieve password from JPasswordField
+            String pwdValue = new String(pwd.getPassword());
 
-            System.out.println(loginValue + ":" + pwdValue);
-            // Add auth controller logic here
             StaffController staffController = new StaffController();
 
             try {
                 Long userId = staffController.login(loginValue, pwdValue);
-                System.out.println("Logged in user ID: " + userId);
-                JOptionPane.showMessageDialog(this, "Login successful. User ID: " + userId, "Success", JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();
-                UserType userType= staffController.getRole(userId);
-                NavbarLinks navbarLinks = new NavbarLinks();
-                String[] getNavbar= navbarLinks.getNavlinks(userType);
+                if (userId != null) {  // Only proceed if login was successful
+                    UserType userType = staffController.getRole(userId);
+                    NavbarLinks navbarLinks = new NavbarLinks();
+                    String[] getNavbar = navbarLinks.getNavlinks(userType);
 
-                new AppLayout(getNavbar);
-
+                    JOptionPane.showMessageDialog(this, "Login successful. Welcome back",
+                            "Success", JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+                    new AppLayout(getNavbar);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Invalid credentials",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Login failed: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
