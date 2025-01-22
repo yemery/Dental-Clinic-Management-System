@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "firstName": "doc",
+    "lastName": "doc1",
+    "birthDate": [
+      1987,
+      1,
+      18
+    ],
+    "phone": "000",
+    "email": "sd@S0.s",
+    "gender": "MALE",
+    "username": "doctor",
+    "password": "doctor",
+    "userType": "DOCTOR",
+    "salary": 12000.0,
+    "status": "ACTIVE",
+    "address": "Rabat",
+    "cin": "ABC5200"
+  },
+  {
+    "id": 2,
+    "firstName": "yub",
+    "lastName": "ij",
+    "birthDate": [
+      1995,
+      1,
+      18
+    ],
+    "phone": "okm",
+    "email": "km",
+    "gender": "MALE",
+    "username": "assistant",
+    "password": "assistant",
+    "userType": "ASSISTANT",
+    "salary": 5000.0,
+    "status": "ACTIVE",
+    "address": "Rabat",
+    "cin": "AC48422"
+  }
+]
