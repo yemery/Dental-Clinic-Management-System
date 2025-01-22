@@ -9,6 +9,7 @@ import org.example.presentation.view.frames.Acts.Acts;
 import org.example.presentation.view.frames.Acts.AddAct;
 import org.example.presentation.view.frames.Appoitments.AddAppointment;
 import org.example.presentation.view.frames.Appoitments.Appointments;
+import org.example.presentation.view.frames.Auth;
 import org.example.presentation.view.frames.Certificates.AddCertificate;
 import org.example.presentation.view.frames.Certificates.Certificates;
 import org.example.presentation.view.frames.Consultations.AddConsultation;
@@ -108,6 +109,9 @@ public class AppLayout extends Frame {
         });
         navbar.addTabListener("Staff", e -> {
             staffNavigation();
+        });
+        navbar.addTabListener("Logout", e -> {
+            logoutNavigation();
         });
     }
 
@@ -426,5 +430,11 @@ public class AppLayout extends Frame {
         setContent(new Staffs(staffArray, this, "Add new Staff", columns,
                 a -> new AddStaff(this)
         ));
+    }
+
+
+    private void logoutNavigation(){
+        this.dispose();
+        new Auth();
     }
 }
