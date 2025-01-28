@@ -17,7 +17,7 @@ public class InterventionServiceImpl implements InterventionService {
 
 //    public final IDao<Intervention, Long> dao = new InterventionDaoImp();
 //public final IDao<Intervention, Long> dao = new JsonDaoImpl<>("Interventions.json" , Intervention.class);
-    public final IDao<Intervention, Long> dao = new InterventionDaoImpl("Interventions.json");
+    public final InterventionDaoImpl dao = new InterventionDaoImpl("Interventions.json");
 
 
     @Override

@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ConsultationServiceImpl implements ConsultationService {
 //    private final IDao<Consultation, Long> dao = new ConsultationDaoImpl();
 // private final IDao<Consultation, Long> dao = new JsonDaoImpl<>("Consultations.json",Consultation.class);
-    private final IDao<Consultation, Long> dao = new ConsultationDaoImpl("Consultations.json");
+    private final ConsultationDaoImpl dao = new ConsultationDaoImpl("Consultations.json");
 
     @Override
     public Consultation addConsultation(Consultation consultation) {

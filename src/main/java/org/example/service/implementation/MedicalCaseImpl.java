@@ -12,7 +12,7 @@ import java.util.List;
 public class MedicalCaseImpl implements MedicalCaseService {
 //    private final IDao<MedicalCase, Long> dao = new MedicalCaseDaoImpl();
 //private final IDao<MedicalCase, Long> dao = new JsonDaoImpl<>("MedicalCase.json", MedicalCase.class);
-    private final IDao<MedicalCase, Long> dao = new MedicalCaseDaoImpl("MedicalCase.json");
+    private final MedicalCaseDaoImpl dao = new MedicalCaseDaoImpl("MedicalCase.json");
 
     @Override
     public MedicalCase addMedicalCase(MedicalCase MedicalCase) {

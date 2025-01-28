@@ -7,10 +7,11 @@ public class PatientDaoImpl extends JsonDaoImpl<Patient, Long> {
         super(fileName, Patient.class);
     }
 
-    public Patient getPatientByCIN(String cin) throws Exception{
-        return (Patient) this.getAll().stream()
-                .filter(patient -> patient.getCIN().toLowerCase().contains(cin))
-                .findFirst()
-                .orElse(null);
+    public Patient getPatientByCin(String cin) throws Exception {
+
+        return getAll().stream(
+
+                patient
+        )
     }
 }

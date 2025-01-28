@@ -2,6 +2,7 @@ package org.example.service.implementation;
 
 import org.example.dao.IDao;
 import org.example.dao.ArrayListImpl.CertificateDaoImp;
+import org.example.dao.JsonFileImpl.CertificateDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Certificate;
 import org.example.model.Consultation;
@@ -14,8 +15,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CertificateServiceImpl implements CertificateService {
 //    private  final IDao<Certificate,Long> dao = new CertificateDaoImp();
- public final IDao<Certificate, Long> dao = new JsonDaoImpl<>("Certifications.json" , Certificate.class);
-     // public final IDao<Certificate, Long> dao = new CertificateDaoImpl();
+ // public final IDao<Certificate, Long> dao = new JsonDaoImpl<>("Certifications.json" , Certificate.class);
+      public final CertificateDaoImpl dao = new CertificateDaoImpl("Certifications.json");
 
     @Override
     public Certificate addCertificate(Certificate certificate) {

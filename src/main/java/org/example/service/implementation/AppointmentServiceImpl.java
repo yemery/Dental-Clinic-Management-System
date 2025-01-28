@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class AppointmentServiceImpl implements AppointmentService {
 //    private final IDao<Appointment, Long> dao = new AppointmentDaoImpl();
 // private final IDao<Appointment, Long> dao = new JsonDaoImpl<>("Appointement.json",Appointment.class);
-    private final IDao<Appointment, Long> dao = new AppointmentDaoImpl("Appointement.json");
+    private final AppointmentDaoImpl dao = new AppointmentDaoImpl("Appointement.json");
 
     @Override
     public Appointment addAppointment(Appointment appointment) {

@@ -59,12 +59,9 @@ public class PatientServiceImpl implements PatientService {
         }
     }
 
-    public Patient getPatientByCin(String cin) {
-        try{
-            return dao.getPatientByCIN(cin);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public Patient getPatient(String cin){
+
+        return dao.getPatientByCIN()
     }
 
 
