@@ -2,6 +2,7 @@ package org.example.service.implementation;
 
 import org.example.dao.IDao;
 import org.example.dao.ArrayListImpl.InterventionDaoImp;
+import org.example.dao.JsonFileImpl.InterventionDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Act;
 import org.example.model.Consultation;
@@ -15,7 +16,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class InterventionServiceImpl implements InterventionService {
 
 //    public final IDao<Intervention, Long> dao = new InterventionDaoImp();
-    public final IDao<Intervention, Long> dao = new JsonDaoImpl<>("Interventions.json" , Intervention.class);
+//public final IDao<Intervention, Long> dao = new JsonDaoImpl<>("Interventions.json" , Intervention.class);
+    public final IDao<Intervention, Long> dao = new InterventionDaoImpl("Interventions.json");
 
 
     @Override

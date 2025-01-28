@@ -1,4 +1,9 @@
 package org.example.dao.JsonFileImpl;
 
-public class InvoiceDaoImpl {
+import org.example.model.Invoice;
+
+public class InvoiceDaoImpl extends JsonDaoImpl<Invoice,Long>{
+    public InvoiceDaoImpl(String fileName) {
+        super(fileName, Invoice.class);
+    }
 }

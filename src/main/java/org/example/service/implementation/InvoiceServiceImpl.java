@@ -1,7 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.ArrayListImpl.InvoiceDaoImpl;
+import org.example.dao.JsonFileImpl.InvoiceDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Consultation;
 import org.example.model.Invoice;
@@ -15,7 +15,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class InvoiceServiceImpl implements InvoiceService {
 //    private final IDao<Invoice, Long> dao = new InvoiceDaoImpl();
-    private final IDao<Invoice, Long> dao = new JsonDaoImpl<>("Invoice.json", Invoice.class);
+//private final IDao<Invoice, Long> dao = new JsonDaoImpl<>("Invoice.json", Invoice.class);
+    private final IDao<Invoice, Long> dao = new InvoiceDaoImpl("Invoice.json");
 
     @Override
     public Invoice addInvoice(Invoice invoice) {

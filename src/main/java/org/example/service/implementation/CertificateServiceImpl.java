@@ -14,7 +14,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CertificateServiceImpl implements CertificateService {
 //    private  final IDao<Certificate,Long> dao = new CertificateDaoImp();
-    public final IDao<Certificate, Long> dao = new JsonDaoImpl<>("Certifications.json" , Certificate.class);
+ public final IDao<Certificate, Long> dao = new JsonDaoImpl<>("Certifications.json" , Certificate.class);
+     // public final IDao<Certificate, Long> dao = new CertificateDaoImpl();
 
     @Override
     public Certificate addCertificate(Certificate certificate) {

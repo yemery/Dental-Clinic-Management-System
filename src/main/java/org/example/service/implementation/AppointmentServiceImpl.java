@@ -1,7 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.ArrayListImpl.AppointmentDaoImpl;
+import org.example.dao.JsonFileImpl.AppointmentDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Appointment;
 import org.example.model.MedicalCase;
@@ -13,7 +13,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AppointmentServiceImpl implements AppointmentService {
 //    private final IDao<Appointment, Long> dao = new AppointmentDaoImpl();
-    private final IDao<Appointment, Long> dao = new JsonDaoImpl<>("Appointement.json",Appointment.class);
+// private final IDao<Appointment, Long> dao = new JsonDaoImpl<>("Appointement.json",Appointment.class);
+    private final IDao<Appointment, Long> dao = new AppointmentDaoImpl("Appointement.json");
 
     @Override
     public Appointment addAppointment(Appointment appointment) {

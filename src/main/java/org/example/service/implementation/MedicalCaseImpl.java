@@ -1,8 +1,8 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.ArrayListImpl.MedicalCaseDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
+import org.example.dao.JsonFileImpl.MedicalCaseDaoImpl;
 import org.example.model.*;
 import org.example.model.MedicalCase;
 import org.example.service.api.MedicalCaseService;
@@ -11,7 +11,8 @@ import java.util.List;
 
 public class MedicalCaseImpl implements MedicalCaseService {
 //    private final IDao<MedicalCase, Long> dao = new MedicalCaseDaoImpl();
-    private final IDao<MedicalCase, Long> dao = new JsonDaoImpl<>("MedicalCase.json", MedicalCase.class);
+//private final IDao<MedicalCase, Long> dao = new JsonDaoImpl<>("MedicalCase.json", MedicalCase.class);
+    private final IDao<MedicalCase, Long> dao = new MedicalCaseDaoImpl("MedicalCase.json");
 
     @Override
     public MedicalCase addMedicalCase(MedicalCase MedicalCase) {
