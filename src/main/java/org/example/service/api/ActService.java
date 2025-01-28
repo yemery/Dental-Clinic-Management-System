@@ -11,4 +11,5 @@ public interface ActService {
     void deleteAct(Long id);
     List<Act> getActs();
     boolean deleteActInIntervention(Long ID);
+    Act findByName(String name);
 }

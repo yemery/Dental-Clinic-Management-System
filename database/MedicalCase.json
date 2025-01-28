@@ -1,0 +1,216 @@
+[
+  {
+    "id": 1,
+    "patient": 1,
+    "creationDate": [
+      2025,
+      1,
+      12
+    ],
+    "appointments": [
+      1
+    ],
+    "medicalHistories": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "patient": 2,
+    "creationDate": [
+      2025,
+      1,
+      13
+    ],
+    "appointments": [
+      2,
+      3
+    ],
+    "medicalHistories": [
+      4
+    ]
+  },
+  {
+    "id": 3,
+    "patient": 3,
+    "creationDate": [
+      2025,
+      1,
+      14
+    ],
+    "appointments": [
+      4
+    ],
+    "medicalHistories": []
+  },
+  {
+    "id": 4,
+    "patient": 4,
+    "creationDate": [
+      2025,
+      1,
+      15
+    ],
+    "appointments": [
+      5
+    ],
+    "medicalHistories": [
+      5,
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "patient": 5,
+    "creationDate": [
+      2025,
+      1,
+      16
+    ],
+    "appointments": [
+      6,
+      7
+    ],
+    "medicalHistories": [
+      7
+    ]
+  },
+  {
+    "id": 6,
+    "patient": 6,
+    "creationDate": [
+      2025,
+      1,
+      17
+    ],
+    "appointments": [
+      8
+    ],
+    "medicalHistories": [
+      8,
+      9
+    ]
+  },
+  {
+    "id": 7,
+    "patient": 7,
+    "creationDate": [
+      2025,
+      1,
+      18
+    ],
+    "appointments": [
+      9
+    ],
+    "medicalHistories": [
+      10
+    ]
+  },
+  {
+    "id": 8,
+    "patient": 8,
+    "creationDate": [
+      2025,
+      1,
+      19
+    ],
+    "appointments": [
+      10,
+      11
+    ],
+    "medicalHistories": [
+    ]
+  },
+  {
+    "id": 9,
+    "patient": 9,
+    "creationDate": [
+      2025,
+      1,
+      20
+    ],
+    "appointments": [
+      12
+    ],
+    "medicalHistories": [
+      11
+    ]
+  },
+  {
+    "id": 10,
+    "patient": 10,
+    "creationDate": [
+      2025,
+      1,
+      21
+    ],
+    "appointments": [
+      13
+    ],
+    "medicalHistories": [
+      12
+    ]
+  },
+  {
+    "id": 11,
+    "patient": 11,
+    "creationDate": [
+      2025,
+      1,
+      22
+    ],
+    "appointments": [
+      14,
+      15
+    ],
+    "medicalHistories": [
+      13
+    ]
+  },
+  {
+    "id": 12,
+    "patient": 12,
+    "creationDate": [
+      2025,
+      1,
+      23
+    ],
+    "appointments": [
+      16
+    ],
+    "medicalHistories": [
+    ]
+  },
+  {
+    "id": 13,
+    "patient": 13,
+    "creationDate": [
+      2025,
+      1,
+      24
+    ],
+    "appointments": [
+      17
+    ],
+    "medicalHistories": []
+  },
+  {
+    "id": 14,
+    "patient": 14,
+    "creationDate": [
+      2025,
+      1,
+      25
+    ],
+    "appointments": [
+      18,
+      19
+    ],
+    "medicalHistories": [
+      14,
+      15
+    ]
+  }
+]

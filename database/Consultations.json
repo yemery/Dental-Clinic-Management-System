@@ -1,0 +1,206 @@
+[
+  {
+    "id": 1,
+    "type": "GENERAL_CONSULTATION",
+    "note": "Routine dental check-up with no issues noted.",
+    "date": [
+      2025,
+      1,
+      24
+    ],
+    "interventions": [
+      2,
+      3,
+      4
+    ],
+    "certificate": 1,
+    "invoice": 1,
+    "prescription": 1
+  },
+  {
+    "id": 2,
+    "type": "FOLLOW_UP",
+    "note": "Follow-up after surgery to check healing progress.",
+    "date": [
+      2025,
+      1,
+      20
+    ],
+    "interventions": [
+      5,
+      6
+    ],
+    "certificate": 2,
+    "invoice": 2,
+    "prescription": 2
+  },
+  {
+    "id": 3,
+    "type": "EMERGENCY",
+    "note": "Emergency visit due to severe tooth pain.",
+    "date": [
+      2025,
+      1,
+      15
+    ],
+    "interventions": [
+      7,
+      8
+    ],
+    "certificate": 3,
+    "invoice": 3,
+    "prescription": 3
+  },
+  {
+    "id": 4,
+    "type": "GENERAL_CONSULTATION",
+    "note": "Routine consultation with a recommendation for a cleaning.",
+    "date": [
+      2025,
+      1,
+      23
+    ],
+    "interventions": [
+      9,
+      10
+    ],
+    "certificate": 4,
+    "invoice": 4,
+    "prescription": 4
+  },
+  {
+    "id": 5,
+    "type": "FOLLOW_UP",
+    "note": "Follow-up consultation after a dental filling.",
+    "date": [
+      2025,
+      1,
+      21
+    ],
+    "interventions": [
+      11,
+      12
+    ],
+    "certificate": 5,
+    "invoice": 5,
+    "prescription": 5
+  },
+  {
+    "id": 6,
+    "type": "EMERGENCY",
+    "note": "Emergency treatment for a cracked tooth.",
+    "date": [
+      2025,
+      1,
+      17
+    ],
+    "interventions": [
+      13,
+      14
+    ],
+    "certificate": 6,
+    "invoice": 6,
+    "prescription": 6
+  },
+  {
+    "id": 7,
+    "type": "GENERAL_CONSULTATION",
+    "note": "Regular check-up and cleaning scheduled.",
+    "date": [
+      2025,
+      1,
+      18
+    ],
+    "interventions": [
+      15,
+      16
+    ],
+    "certificate": 7,
+    "invoice": 7,
+    "prescription": 7
+  },
+  {
+    "id": 8,
+    "type": "FOLLOW_UP",
+    "note": "Follow-up after dental surgery for wisdom tooth extraction.",
+    "date": [
+      2025,
+      1,
+      22
+    ],
+    "interventions": [
+      17,
+      18
+    ],
+    "certificate": 8,
+    "invoice": 8,
+    "prescription": 8
+  },
+  {
+    "id": 9,
+    "type": "EMERGENCY",
+    "note": "Emergency consultation for a loose crown.",
+    "date": [
+      2025,
+      1,
+      14
+    ],
+    "interventions": [
+      19,
+      20
+    ],
+    "certificate": 9,
+    "invoice": 9,
+    "prescription": 9
+  },
+  {
+    "id": 10,
+    "type": "GENERAL_CONSULTATION",
+    "note": "Routine cleaning and check-up, no issues noted.",
+    "date": [
+      2025,
+      1,
+      19
+    ],
+    "interventions": [
+      21,
+      22
+    ],
+    "certificate": 10,
+    "invoice": 10,
+    "prescription": 10
+  },
+  {
+    "id": 11,
+    "type": "FOLLOW_UP",
+    "note": "Follow-up consultation for root canal treatment.",
+    "date": [
+      2025,
+      1,
+      16
+    ],
+    "interventions": [
+      23,
+      24
+    ],
+    "certificate": 11,
+    "invoice": 11,
+    "prescription": 11
+  },
+  {
+    "id": 12,
+    "type": "EMERGENCY",
+    "note": "Emergency visit for tooth extraction due to abscess.",
+    "date": [
+      2025,
+      1,
+      13
+    ],
+    "interventions": [
+      25
+    ],
+    "certificate": 12,
+    "invoice": 12,
+    "prescription": 12
+  }
+]

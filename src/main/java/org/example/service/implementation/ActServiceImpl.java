@@ -1,6 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
+import org.example.dao.JsonFileImpl.ActDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
 import org.example.model.Act;
 import org.example.model.Intervention;
@@ -10,7 +11,8 @@ import org.example.service.api.InterventionService;
 import java.util.List;
 
 public class ActServiceImpl implements ActService {
-    private final IDao<Act, Long> dao = new JsonDaoImpl<>("Acts.json", Act.class);
+//    private final IDao<Act, Long> dao = new JsonDaoImpl<>("Acts.json", Act.class);
+    private final ActDaoImpl dao = new ActDaoImpl();
     private final InterventionService interventionService = new InterventionServiceImpl();
 
     @Override
@@ -91,6 +93,14 @@ public class ActServiceImpl implements ActService {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Act findByName(String name){
+        try{
+            return dao.findByName(name);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

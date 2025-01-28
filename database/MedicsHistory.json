@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "label": "Latex Allergy",
+    "category": "ALLERGY",
+    "description": "Allergic reaction to latex materials used in dental gloves or equipment.",
+    "risk": "HIGH"
+  },
+  {
+    "id": 2,
+    "label": "Diabetes",
+    "category": "CHRONIC_DISEASE",
+    "description": "Chronic condition affecting blood sugar levels, impacting wound healing and gum health.",
+    "risk": "MEDIUM"
+  },
+  {
+    "id": 3,
+    "label": "Family History of Gum Disease",
+    "category": "HEREDITARY_DISEASE",
+    "description": "Increased susceptibility to periodontal diseases due to genetic predisposition.",
+    "risk": "LOW"
+  },
+  {
+    "id": 4,
+    "label": "Asthma",
+    "category": "CHRONIC_DISEASE",
+    "description": "Respiratory condition that can be triggered by certain dental materials or stress.",
+    "risk": "MEDIUM"
+  },
+  {
+    "id": 5,
+    "label": "Heart Valve Replacement",
+    "category": "CONTRAINDICATION",
+    "description": "Requires antibiotic prophylaxis before dental procedures to prevent endocarditis.",
+    "risk": "HIGH"
+  },
+  {
+    "id": 6,
+    "label": "Allergy to Local Anesthetics",
+    "category": "ALLERGY",
+    "description": "Adverse reactions to commonly used anesthetics like lidocaine or novocaine.",
+    "risk": "HIGH"
+  },
+  {
+    "id": 7,
+    "label": "Bruxism",
+    "category": "OTHER",
+    "description": "Habitual grinding or clenching of teeth, leading to enamel wear and jaw issues.",
+    "risk": "MEDIUM"
+  },
+  {
+    "id": 8,
+    "label": "Bleeding Disorder",
+    "category": "CONTRAINDICATION",
+    "description": "Conditions like hemophilia that require special precautions during dental surgery.",
+    "risk": "HIGH"
+  },
+  {
+    "id": 9,
+    "label": "Smoking History",
+    "category": "OTHER",
+    "description": "Increased risk of oral cancer, gum disease, and delayed healing post-surgery.",
+    "risk": "HIGH"
+  },
+  {
+    "id": 10,
+    "label": "Sjogren's Syndrome",
+    "category": "CHRONIC_DISEASE",
+    "description": "Autoimmune condition causing dry mouth and increasing cavity risk.",
+    "risk": "MEDIUM"
+  },
+  {
+    "id": 11,
+    "label": "Penicillin Allergy",
+    "category": "ALLERGY",
+    "description": "Adverse reactions to antibiotics often prescribed for dental infections.",
+    "risk": "MEDIUM"
+  },
+  {
+    "id": 12,
+    "label": "Osteoporosis",
+    "category": "CHRONIC_DISEASE",
+    "description": "Bone-thinning disease affecting jawbone density, complicating implant procedures.",
+    "risk": "MEDIUM"
+  },
+  {
+    "id": 13,
+    "label": "Radiation Therapy History",
+    "category": "CONTRAINDICATION",
+    "description": "Previous head or neck radiation increases risk of osteoradionecrosis after surgery.",
+    "risk": "HIGH"
+  },
+  {
+    "id": 14,
+    "label": "Pregnancy",
+    "category": "OTHER",
+    "description": "May limit use of certain medications and require modifications in treatment plans.",
+    "risk": "LOW"
+  },
+  {
+    "id": 15,
+    "label": "Vitamin D Deficiency",
+    "category": "OTHER",
+    "description": "Impairment in calcium absorption, affecting teeth and jawbone health.",
+    "risk": "UNKNOWN"
+  }
+]

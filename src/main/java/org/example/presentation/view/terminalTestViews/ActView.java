@@ -14,16 +14,16 @@ public class ActView {
 //        actC.addNewAct(a2);
 //        actC.addNewAct(a3);
 //        actC.addNewAct(a4);
-        // actC.displayAllActs();
+        System.out.println(actC.displayAllActs());
 //        actC.deleteAct(123333L);
 
 
 //        Act act = actC.getAct(14L);
 //        act.setBasePrice(2);
 //        actC.updateAct(act);
-            actC.deleteAct(14L);
+//            actC.deleteAct(14L);
 //        System.out.println(actC.getAct(1735L));
-        actC.displayAllActs();
+        System.out.println(actC.findByName("Act1")  );
 
 
 

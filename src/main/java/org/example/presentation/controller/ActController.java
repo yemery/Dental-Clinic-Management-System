@@ -26,6 +26,8 @@ public class ActController  {
     }
 
     public Act getAct(Long ID) {return actService.getAct(ID);}
-
+    public Act findByName(String name) {
+        return actService.findByName(name);
+    }
 
 }

@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "price": 45.0,
+    "name": "Ibuprofen 400mg",
+    "description": "Pain reliever and anti-inflammatory for post-dental surgery."
+  },
+  {
+    "id": 2,
+    "price": 60.0,
+    "name": "Amoxicillin 500mg",
+    "description": "Antibiotic for bacterial infections after dental procedures."
+  },
+  {
+    "id": 3,
+    "price": 85.0,
+    "name": "Chlorhexidine Mouthwash",
+    "description": "Antiseptic mouthwash for preventing gum infections."
+  },
+  {
+    "id": 4,
+    "price": 95.0,
+    "name": "Fluoride Gel",
+    "description": "Gel for strengthening tooth enamel and preventing cavities."
+  },
+  {
+    "id": 5,
+    "price": 40.0,
+    "name": "Paracetamol 500mg",
+    "description": "Pain reliever for mild to moderate dental pain."
+  },
+  {
+    "id": 6,
+    "price": 55.0,
+    "name": "Lidocaine Gel",
+    "description": "Topical anesthetic for numbing oral tissues during procedures."
+  },
+  {
+    "id": 7,
+    "price": 75.0,
+    "name": "Metronidazole 400mg",
+    "description": "Antibiotic for severe gum infections or abscesses."
+  },
+  {
+    "id": 8,
+    "price": 50.0,
+    "name": "Dental Cement",
+    "description": "Temporary adhesive for dental crowns and fillings."
+  },
+  {
+    "id": 9,
+    "price": 65.0,
+    "name": "Eugenol",
+    "description": "Clove oil derivative for temporary relief of toothache."
+  },
+  {
+    "id": 10,
+    "price": 90.0,
+    "name": "Articaine 4%",
+    "description": "Local anesthetic for dental surgeries and extractions."
+  },
+  {
+    "id": 11,
+    "price": 30.0,
+    "name": "Hydrogen Peroxide 3%",
+    "description": "Antiseptic for oral rinsing and gum disinfection."
+  },
+  {
+    "id": 12,
+    "price": 70.0,
+    "name": "Diclofenac 50mg",
+    "description": "Anti-inflammatory for swelling after dental procedures."
+  },
+  {
+    "id": 13,
+    "price": 80.0,
+    "name": "Clindamycin 300mg",
+    "description": "Antibiotic for serious oral infections."
+  },
+  {
+    "id": 14,
+    "price": 55.0,
+    "name": "Xylocaine Spray",
+    "description": "Topical anesthetic for numbing oral tissues."
+  },
+  {
+    "id": 15,
+    "price": 85.0,
+    "name": "Ketorolac 10mg",
+    "description": "Potent pain reliever for severe dental pain."
+  },
+  {
+    "id": 16,
+    "price": 95.0,
+    "name": "Calcium Hydroxide Paste",
+    "description": "Material for root canal treatments."
+  },
+  {
+    "id": 17,
+    "price": 45.0,
+    "name": "Acetaminophen 500mg",
+    "description": "Pain reliever for moderate dental discomfort."
+  },
+  {
+    "id": 18,
+    "price": 50.0,
+    "name": "Zinc Oxide Eugenol Cement",
+    "description": "Temporary filling material."
+  },
+  {
+    "id": 19,
+    "price": 110.0,
+    "name": "Azithromycin 250mg",
+    "description": "Antibiotic for oral bacterial infections."
+  },
+  {
+    "id": 20,
+    "price": 65.0,
+    "name": "Chlorhexidine Gel",
+    "description": "Gel for treating gingivitis and periodontal diseases."
+  },
+  {
+    "id": 21,
+    "price": 70.0,
+    "name": "Miconazole Oral Gel",
+    "description": "Antifungal gel for oral thrush."
+  },
+  {
+    "id": 22,
+    "price": 95.0,
+    "name": "Dexamethasone 0.5mg",
+    "description": "Corticosteroid for reducing oral swelling."
+  },
+  {
+    "id": 23,
+    "price": 40.0,
+    "name": "Benzydamine Mouthwash",
+    "description": "Mouthwash for reducing oral pain and inflammation."
+  },
+  {
+    "id": 24,
+    "price": 100.0,
+    "name": "Oral Probiotics",
+    "description": "Probiotics for improving oral health."
+  },
+  {
+    "id": 25,
+    "price": 35.0,
+    "name": "Sulfur Hexafluoride Varnish",
+    "description": "Varnish for protecting teeth from decay."
+  },
+  {
+    "id": 26,
+    "price": 85.0,
+    "name": "Tetracycline 250mg",
+    "description": "Antibiotic for treating oral infections."
+  },
+  {
+    "id": 27,
+    "price": 50.0,
+    "name": "Mouth Moisturizer",
+    "description": "Gel for managing dry mouth symptoms."
+  },
+  {
+    "id": 28,
+    "price": 60.0,
+    "name": "Hexetidine Mouthwash",
+    "description": "Antiseptic mouthwash for oral hygiene."
+  },
+  {
+    "id": 29,
+    "price": 45.0,
+    "name": "Analgesic Gel",
+    "description": "Gel for pain relief during dental procedures."
+  },
+  {
+    "id": 30,
+    "price": 75.0,
+    "name": "Antibacterial Toothpaste",
+    "description": "Toothpaste for maintaining oral hygiene."
+  },
+  {
+    "id": 31,
+    "price": 65.0,
+    "name": "Procaine Injection",
+    "description": "Local anesthetic for oral surgeries."
+  },
+  {
+    "id": 32,
+    "price": 90.0,
+    "name": "Prednisolone 5mg",
+    "description": "Steroid for reducing severe oral inflammation."
+  },
+  {
+    "id": 33,
+    "price": 100.0,
+    "name": "Potassium Nitrate Gel",
+    "description": "Gel for treating tooth sensitivity."
+  },
+  {
+    "id": 34,
+    "price": 55.0,
+    "name": "Saline Solution",
+    "description": "Solution for oral rinsing and wound cleaning."
+  },
+  {
+    "id": 35,
+    "price": 80.0,
+    "name": "Nystatin Oral Suspension",
+    "description": "Antifungal suspension for oral infections."
+  },
+  {
+    "id": 36,
+    "price": 65.0,
+    "name": "Antiseptic Powder",
+    "description": "Powder for preventing oral infections."
+  },
+  {
+    "id": 37,
+    "price": 45.0,
+    "name": "Dental Wax",
+    "description": "Wax for orthodontic braces comfort."
+  },
+  {
+    "id": 38,
+    "price": 110.0,
+    "name": "Ringer's Solution",
+    "description": "Hydration solution for oral surgeries."
+  },
+  {
+    "id": 39,
+    "price": 85.0,
+    "name": "Sodium Hypochlorite Solution",
+    "description": "Disinfectant for root canals."
+  },
+  {
+    "id": 40,
+    "price": 95.0,
+    "name": "Silver Diamine Fluoride",
+    "description": "Treatment for preventing tooth decay."
+  },
+  {
+    "id": 41,
+    "price": 70.0,
+    "name": "Epoxy Resin Sealer",
+    "description": "Sealer for root canal treatments."
+  },
+  {
+    "id": 42,
+    "price": 60.0,
+    "name": "Oxymetazoline Spray",
+    "description": "Spray for reducing oral bleeding."
+  },
+  {
+    "id": 43,
+    "price": 100.0,
+    "name": "Ceftriaxone Injection",
+    "description": "Antibiotic for severe oral infections."
+  },
+  {
+    "id": 44,
+    "price": 55.0,
+    "name": "Antibacterial Rinse",
+    "description": "Rinse for post-surgical oral care."
+  },
+  {
+    "id": 45,
+    "price": 85.0,
+    "name": "Acetylsalicylic Acid 500mg",
+    "description": "Pain reliever for oral pain and inflammation."
+  },
+  {
+    "id": 46,
+    "price": 90.0,
+    "name": "Hydrocortisone Cream",
+    "description": "Cream for reducing oral irritation."
+  },
+  {
+    "id": 47,
+    "price": 75.0,
+    "name": "Dental Adhesive",
+    "description": "Adhesive for securing dental appliances."
+  },
+  {
+    "id": 48,
+    "price": 65.0,
+    "name": "Topical Fluoride Foam",
+    "description": "Foam for fluoride treatment in children."
+  },
+  {
+    "id": 49,
+    "price": 95.0,
+    "name": "Ibuprofen Gel",
+    "description": "Gel for topical oral pain relief."
+  },
+  {
+    "id": 50,
+    "price": 85.0,
+    "name": "Anti-inflammatory Spray",
+    "description": "Spray for oral swelling and pain."
+  }
+]

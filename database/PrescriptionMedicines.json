@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "description": "For post-surgery pain relief.",
+    "medicine": 1,
+    "min": 1,
+    "max": 4
+  },
+  {
+    "id": 2,
+    "description": "To treat bacterial infections after dental procedures.",
+    "medicine": 2,
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": 3,
+    "description": "For inflammation after dental surgery.",
+    "medicine": 3,
+    "min": 1,
+    "max": 2
+  },
+  {
+    "id": 4,
+    "description": "To manage gum infections.",
+    "medicine": 5,
+    "min": 1,
+    "max": 6
+  },
+  {
+    "id": 5,
+    "description": "Antibiotic for oral bacterial infections.",
+    "medicine": 7,
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": 6,
+    "description": "For root canal treatments.",
+    "medicine": 16,
+    "min": 1,
+    "max": 5
+  },
+  {
+    "id": 7,
+    "description": "For reducing tooth sensitivity.",
+    "medicine": 19,
+    "min": 1,
+    "max": 4
+  },
+  {
+    "id": 8,
+    "description": "To treat oral thrush.",
+    "medicine": 21,
+    "min": 1,
+    "max": 6
+  },
+  {
+    "id": 9,
+    "description": "For oral pain management.",
+    "medicine": 24,
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": 10,
+    "description": "Antiseptic for gingivitis.",
+    "medicine": 28,
+    "min": 1,
+    "max": 2
+  },
+  {
+    "id": 11,
+    "description": "For bacterial gum infections.",
+    "medicine": 33,
+    "min": 1,
+    "max": 4
+  },
+  {
+    "id": 12,
+    "description": "For dry mouth symptoms.",
+    "medicine": 27,
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": 13,
+    "description": "To prevent tooth decay.",
+    "medicine": 25,
+    "min": 1,
+    "max": 6
+  },
+  {
+    "id": 14,
+    "description": "To reduce swelling in oral tissues.",
+    "medicine": 32,
+    "min": 1,
+    "max": 4
+  },
+  {
+    "id": 15,
+    "description": "Pain reliever for oral discomfort.",
+    "medicine": 45,
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": 16,
+    "description": "For temporary relief from dental pain.",
+    "medicine": 10,
+    "min": 1,
+    "max": 2
+  },
+  {
+    "id": 17,
+    "description": "To disinfect root canals.",
+    "medicine": 39,
+    "min": 1,
+    "max": 5
+  },
+  {
+    "id": 18,
+    "description": "For post-dental procedure antiseptic care.",
+    "medicine": 44,
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": 19,
+    "description": "For managing oral fungal infections.",
+    "medicine": 35,
+    "min": 1,
+    "max": 3
+  },
+  {
+    "id": 20,
+    "description": "For severe oral infections.",
+    "medicine": 43,
+    "min": 1,
+    "max": 2
+  }
+]

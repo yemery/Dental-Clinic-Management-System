@@ -1,0 +1,268 @@
+[
+  {
+    "id": 1,
+    "firstName": "Ahmed",
+    "lastName": "Benzakour",
+    "birthDate": [
+      1995,
+      4,
+      12
+    ],
+    "phone": "0623456782",
+    "email": "ahmed.benzakour2@example.com",
+    "gender": "MALE",
+    "registration": "R842152",
+    "mutuelle": "CIMR",
+    "job": "Engineer",
+    "type": "Patient",
+    "cin": "AB01553",
+    "address": "Rabat, Morocco"
+  },
+  {
+    "id": 2,
+    "firstName": "Youssef",
+    "lastName": "Alami",
+    "birthDate": [
+      1989,
+      11,
+      5
+    ],
+    "phone": "0623456784",
+    "email": "youssef.alami4@example.com",
+    "gender": "MALE",
+    "registration": "R842154",
+    "mutuelle": "CNSS",
+    "job": "Doctor",
+    "type": "Patient",
+    "cin": "AB01555",
+    "address": "Agadir, Morocco"
+  },
+  {
+    "id": 3,
+    "firstName": "Imane",
+    "lastName": "Benabbas",
+    "birthDate": [
+      1990,
+      9,
+      18
+    ],
+    "phone": "0623456785",
+    "email": "imane.benabbas5@example.com",
+    "gender": "FEMALE",
+    "registration": "R842155",
+    "mutuelle": "CNAM",
+    "job": "Teacher",
+    "type": "Patient",
+    "cin": "AB01556",
+    "address": "Fez, Morocco"
+  },
+  {
+    "id": 4,
+    "firstName": "Karim",
+    "lastName": "ElKamal",
+    "birthDate": [
+      1997,
+      5,
+      10
+    ],
+    "phone": "0623456786",
+    "email": "karim.elkamal6@example.com",
+    "gender": "MALE",
+    "registration": "R842156",
+    "mutuelle": "CNOPS",
+    "job": "Freelancer",
+    "type": "Patient",
+    "cin": "AB01557",
+    "address": "Oujda, Morocco"
+  },
+  {
+    "id": 5,
+    "firstName": "Nadia",
+    "lastName": "Ouahid",
+    "birthDate": [
+      1993,
+      8,
+      22
+    ],
+    "phone": "0623456787",
+    "email": "nadia.ouahid7@example.com",
+    "gender": "FEMALE",
+    "registration": "R842157",
+    "mutuelle": "CNSS",
+    "job": "Pharmacist",
+    "type": "Patient",
+    "cin": "AB01558",
+    "address": "Meknes, Morocco"
+  },
+  {
+    "id": 6,
+    "firstName": "Hicham",
+    "lastName": "Ziani",
+    "birthDate": [
+      1985,
+      1,
+      15
+    ],
+    "phone": "0623456788",
+    "email": "hicham.ziani8@example.com",
+    "gender": "MALE",
+    "registration": "R842158",
+    "mutuelle": "NONE",
+    "job": "Mechanic",
+    "type": "Patient",
+    "cin": "AB01559",
+    "address": "Kenitra, Morocco"
+  },
+  {
+    "id": 7,
+    "firstName": "Laila",
+    "lastName": "Koutoub",
+    "birthDate": [
+      2000,
+      12,
+      1
+    ],
+    "phone": "0623456789",
+    "email": "laila.koutoub9@example.com",
+    "gender": "FEMALE",
+    "registration": "R842159",
+    "mutuelle": "CIMR",
+    "job": "Student",
+    "type": "Patient",
+    "cin": "AB01560",
+    "address": "Essaouira, Morocco"
+  },
+  {
+    "id": 8,
+    "firstName": "Mohammed",
+    "lastName": "Aziz",
+    "birthDate": [
+      1992,
+      6,
+      30
+    ],
+    "phone": "0623456790",
+    "email": "mohammed.aziz10@example.com",
+    "gender": "MALE",
+    "registration": "R842160",
+    "mutuelle": "CNOPS",
+    "job": "Driver",
+    "type": "Patient",
+    "cin": "AB01561",
+    "address": "Tetouan, Morocco"
+  },
+  {
+    "id": 9,
+    "firstName": "Fatima",
+    "lastName": "Zahra",
+    "birthDate": [
+      1991,
+      10,
+      4
+    ],
+    "phone": "0623456791",
+    "email": "fatima.zahra11@example.com",
+    "gender": "FEMALE",
+    "registration": "R842161",
+    "mutuelle": "CNAM",
+    "job": "Accountant",
+    "type": "Patient",
+    "cin": "AB01562",
+    "address": "El Jadida, Morocco"
+  },
+  {
+    "id": 10,
+    "firstName": "Samir",
+    "lastName": "Belkacem",
+    "birthDate": [
+      1994,
+      2,
+      8
+    ],
+    "phone": "0623456792",
+    "email": "samir.belkacem12@example.com",
+    "gender": "MALE",
+    "registration": "R842162",
+    "mutuelle": "NONE",
+    "job": "Painter",
+    "type": "Patient",
+    "cin": "AB01563",
+    "address": "Mohammedia, Morocco"
+  },
+  {
+    "id": 11,
+    "firstName": "Hanae",
+    "lastName": "ElKhalfi",
+    "birthDate": [
+      1999,
+      3,
+      20
+    ],
+    "phone": "0623456793",
+    "email": "hanae.elkhalfi13@example.com",
+    "gender": "FEMALE",
+    "registration": "R842163",
+    "mutuelle": "CIMR",
+    "job": "Student",
+    "type": "Patient",
+    "cin": "AB01564",
+    "address": "Chefchaouen, Morocco"
+  },
+  {
+    "id": 12,
+    "firstName": "Rachid",
+    "lastName": "Fennane",
+    "birthDate": [
+      1986,
+      7,
+      7
+    ],
+    "phone": "0623456794",
+    "email": "rachid.fennane14@example.com",
+    "gender": "MALE",
+    "registration": "R842164",
+    "mutuelle": "CNSS",
+    "job": "Technician",
+    "type": "Patient",
+    "cin": "AB01565",
+    "address": "Settat, Morocco"
+  },
+  {
+    "id": 13,
+    "firstName": "Zineb",
+    "lastName": "Amrani",
+    "birthDate": [
+      1990,
+      11,
+      12
+    ],
+    "phone": "0623456795",
+    "email": "zineb.amrani15@example.com",
+    "gender": "FEMALE",
+    "registration": "R842165",
+    "mutuelle": "CNAM",
+    "job": "Nurse",
+    "type": "Patient",
+    "cin": "AB01566",
+    "address": "Safi, Morocco"
+  },
+  {
+    "id": 14,
+    "firstName": "Khalid",
+    "lastName": "Dlimi",
+    "birthDate": [
+      1988,
+      5,
+      15
+    ],
+    "phone": "0623456796",
+    "email": "khalid.dlimi16@example.com",
+    "gender": "MALE",
+    "registration": "R842166",
+    "mutuelle": "CNSS",
+    "job": "Architect",
+    "type": "Patient",
+    "cin": "AB01567",
+    "address": "Nador, Morocco"
+  }
+]
