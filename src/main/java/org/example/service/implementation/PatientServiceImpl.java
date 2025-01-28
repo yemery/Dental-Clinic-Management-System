@@ -1,16 +1,15 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.ArrayListImpl.PatientDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
+import org.example.dao.JsonFileImpl.PatientDaoImpl;
 import org.example.model.Patient;
 import org.example.service.api.PatientService;
 
 import java.util.List;
 
 public class PatientServiceImpl implements PatientService {
-//    private final IDao<Patient,Long > dao = new PatientDaoImpl();
-    private final IDao<Patient,Long > dao = new JsonDaoImpl<>("Patient.json", Patient.class);
+    private final IDao<Patient,Long > dao = new PatientDaoImpl("Patient.json");
 
     @Override
     public Patient addPatient(Patient Patient) {

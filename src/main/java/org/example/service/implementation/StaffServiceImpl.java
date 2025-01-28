@@ -1,7 +1,7 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.JsonFileImpl.JsonDaoImpl;
+import org.example.dao.JsonFileImpl.StaffDaoImpl;
 import org.example.model.Staff;
 import org.example.model.User;
 import org.example.model.enums.UserType;
@@ -10,8 +10,7 @@ import org.example.service.api.StaffService;
 import java.util.List;
 
 public class StaffServiceImpl implements StaffService {
-    private final IDao<Staff,Long > dao = new JsonDaoImpl<>("Staffs.json" , Staff.class);
-
+    private final IDao<Staff, Long> dao = new StaffDaoImpl("Staffs.json");
     @Override
     public Staff getUser(Long id) {
         try{

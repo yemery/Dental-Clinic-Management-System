@@ -1,8 +1,8 @@
 package org.example.service.implementation;
 
 import org.example.dao.IDao;
-import org.example.dao.ArrayListImpl.PrescriptionDaoImpl;
 import org.example.dao.JsonFileImpl.JsonDaoImpl;
+import org.example.dao.JsonFileImpl.PrescriptionDaoImpl;
 import org.example.model.Consultation;
 import org.example.model.Prescription;
 import org.example.model.PrescriptionMedicine;
@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PrescriptionServiceImpl implements PrescriptionService {
-//    public final IDao<Prescription, Long> dao = new PrescriptionDaoImpl();
-    public final IDao<Prescription, Long> dao = new JsonDaoImpl<>("Prescriptions.json", Prescription.class);
+    public final IDao<Prescription, Long> dao = new PrescriptionDaoImpl("Prescriptions.json");
 
     @Override
     public Prescription getPrescriptionById(Long ID) {
