@@ -65,9 +65,7 @@ public class Patients extends JPanelContainer {
         if (searchCIN.isEmpty()) {
             filteredPatients = allPatients;
         } else {
-            filteredPatients = allPatients.stream()
-                    .filter(patient -> patient.getCIN().toLowerCase().contains(searchCIN))
-                    .collect(Collectors.toList());
+
         }
 
         Object[][] filteredData = ConvertArray.convertTo2DArray(
