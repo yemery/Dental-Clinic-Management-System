@@ -4,8 +4,8 @@ import org.example.model.Act;
 
 public class ActDaoImpl extends JsonDaoImpl <Act,Long>{
 
-    public ActDaoImpl() {
-        super("Acts.json" , Act.class);
+    public ActDaoImpl(String fileName) {
+        super(fileName, Act.class);
     }
 
     public Act findByName(String name) throws Exception {
