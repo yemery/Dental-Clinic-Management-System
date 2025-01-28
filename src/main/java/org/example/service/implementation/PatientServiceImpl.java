@@ -1,6 +1,5 @@
 package org.example.service.implementation;
 
-import org.example.dao.IDao;
 import org.example.dao.JsonFileImpl.PatientDaoImpl;
 import org.example.model.Patient;
 import org.example.service.api.PatientService;
@@ -59,9 +58,14 @@ public class PatientServiceImpl implements PatientService {
         }
     }
 
-    public Patient getPatient(String cin){
+    public List<Patient> getPatientByCin(String cin){
 
-        return dao.getPatientByCIN()
+        try{
+            return dao.getPatientByCin(cin);
+        }
+        catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
 

@@ -12,17 +12,24 @@ public class PatientController {
     public void addPatient(Patient Patient) {
         patientService.addPatient(Patient);
     }
+
     public List<Patient> displayPatients() {
         return patientService.getPatients();
     }
+
     public Patient getPatient(Long id) {
         return patientService.getPatient(id);
     }
+
     public void updatePatient(Patient Patient) {
         patientService.updatePatient(Patient);
     }
+
     public void deletePatient(Long ID) {
         patientService.deletePatient(ID);
     }
 
+    public List<Patient> getPatientsByCIN(String cin) {
+        return patientService.getPatientByCin(cin);
+    }
 }

@@ -60,12 +60,13 @@ public class Patients extends JPanelContainer {
 
     private void performSearch() {
         String searchCIN = searchField.getText().trim().toLowerCase();
+        PatientController patientController = new PatientController();
 
         List<Patient> filteredPatients;
         if (searchCIN.isEmpty()) {
             filteredPatients = allPatients;
         } else {
-
+            filteredPatients = patientController.getPatientsByCIN(searchCIN);
         }
 
         Object[][] filteredData = ConvertArray.convertTo2DArray(
