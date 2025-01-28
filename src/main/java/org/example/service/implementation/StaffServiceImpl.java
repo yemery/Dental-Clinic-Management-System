@@ -10,7 +10,7 @@ import org.example.service.api.StaffService;
 import java.util.List;
 
 public class StaffServiceImpl implements StaffService {
-    private final IDao<Staff, Long> dao = new StaffDaoImpl("Staffs.json");
+    private final StaffDaoImpl dao = new StaffDaoImpl("Staffs.json");
     @Override
     public Staff getUser(Long id) {
         try{

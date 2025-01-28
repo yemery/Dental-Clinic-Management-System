@@ -1,6 +1,5 @@
 package org.example.service.implementation;
 
-import org.example.dao.IDao;
 import org.example.dao.JsonFileImpl.MedicsHistoryDaoImpl;
 import org.example.model.MedicalCase;
 import org.example.model.MedicalHistory;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MedicsHistoryServiceImpl implements MedicslHistoryService {
-    private final IDao<MedicalHistory, Long> dao = new MedicsHistoryDaoImpl("MedicsHistory.json");
+    private final MedicsHistoryDaoImpl dao = new MedicsHistoryDaoImpl("MedicsHistory.json");
 
     @Override
     public List<MedicalHistory> getAllMedicsHistory() {

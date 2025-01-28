@@ -8,7 +8,7 @@ import org.example.service.api.PatientService;
 import java.util.List;
 
 public class PatientServiceImpl implements PatientService {
-    private final IDao<Patient,Long > dao = new PatientDaoImpl("Patient.json");
+    private final PatientDaoImpl dao = new PatientDaoImpl("Patient.json");
 
     @Override
     public Patient addPatient(Patient Patient) {

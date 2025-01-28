@@ -1,6 +1,5 @@
 package org.example.service.implementation;
 
-import org.example.dao.IDao;
 import org.example.dao.JsonFileImpl.MedicineDaoImpl;
 import org.example.model.Medicine;
 import org.example.model.PrescriptionMedicine;
@@ -12,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MedicineServiceImp implements MedicineService {
 
-    private final IDao<Medicine, Long> dao = new MedicineDaoImpl("Medicines.json");
+    private final MedicineDaoImpl dao = new MedicineDaoImpl("Medicines.json");
 
     @Override
     public Medicine addMedicine(Medicine medicine) {
